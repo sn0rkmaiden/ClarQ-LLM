@@ -3,7 +3,7 @@ from agents.provider_agent import helpers as general_provider
 from agents.multi_info_provider_agent import helpers_m as multi_info_provider
 from ALL_KEYS import *
 from utils.data_loader import *
-from utils.llm import ChatGPT,QianFan,LLAMA,AWSBedrockLLAMA
+from utils.llm import ChatGPT,QianFan,LLAMA,AWSBedrockLLAMA, CustomLLM
 import argparse
 
 
@@ -127,6 +127,9 @@ if __name__ == "__main__":
     elif args.seeker_agent_llm  == 'llama3.1-405B':
         player_llm = AWSBedrockLLAMA("llama3.1-405B", 'log/llm_player_cache_llama3.1-405B.pkl')
         output_path = "results/l2l_llama3.1-405B.{}.{}.json".format(mode,language)
+    elif args.seeker_agent_llm == 'deepseek':
+        player_llm = CustomLLM(args.seeker_agent_llm, f'log/llm_player_cache_deepseek.pkl')
+        output_path = "results/l2l_deepseek.{}.{}.json".format(mode,language)
     else:
         player_llm = ChatGPT("gpt-3.5-turbo-0125", 'log/gpt3_plyaer_cache.pkl')
         output_path = "results/l2l_gpt3.5.{}.{}.json".format(mode,language)
