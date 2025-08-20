@@ -5,6 +5,7 @@ from ALL_KEYS import *
 from utils.data_loader import *
 from utils.llm import ChatGPT,QianFan,LLAMA,AWSBedrockLLAMA, CustomLLM
 import argparse
+from dotenv import load_dotenv
 
 
 def evaluate_player(task_data_path, output_path, player_llm, player_chat_mode, provider_constructor, provider_llm):
@@ -90,6 +91,9 @@ def test_helper(task_data_path, provider_constructor, provider_llm):
 
 
 if __name__ == "__main__":
+    
+    load_dotenv()
+
     parser = argparse.ArgumentParser(description='Run language model evaluation.')
     parser.add_argument('--seeker_agent_llm', type=str, default='gpt4o')
     parser.add_argument('--provider_agent_llm', type=str, default='gpt4o')

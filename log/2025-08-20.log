@@ -1,0 +1,774 @@
+2025-08-20 09:46:40,751 - DEBUG - Request options: {'method': 'post', 'url': '/chat/completions', 'files': None, 'idempotency_key': 'stainless-python-retry-46441615-9c61-4eab-ad4d-7c33f0f9f904', 'json_data': {'messages': [{'role': 'user', 'content': "You are Jax, an information discernment expert, and you know that the solution to the collect rubies task is: 'You can go to the mine to dig for rubies.'. You need to determine whether what adventurer is saying to you is inquiring about information related to the collect rubies task?\n\nThis is the previous conversation betweem you and adventurer:\nJax: what can help you?\nadventurer: Where are the rubies?\n\nIt is known that the solution to the collect rubies task is: You can go to the mine to dig for rubies.. You need to determine whether what adventurer is saying to you is inquiring about information related to the collect rubies task? Return a JSON object containing a 'related' key: the value (boolean type) of the 'related' key indicates whether adventurer has inquired about content related to the task. The format should be as follows: { 'related': True or False }."}], 'model': 'gpt-4o-2024-05-13', 'response_format': {'type': 'json_object'}, 'seed': 8848, 'stop': None, 'temperature': 0}}
+2025-08-20 09:46:40,760 - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/chat/completions
+2025-08-20 09:46:40,761 - DEBUG - connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=5.0 socket_options=None
+2025-08-20 09:46:42,077 - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x750e8d9b65d0>
+2025-08-20 09:46:42,078 - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x750e8d945a50> server_hostname='api.openai.com' timeout=5.0
+2025-08-20 09:46:42,168 - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x750e8d975f10>
+2025-08-20 09:46:42,169 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2025-08-20 09:46:42,170 - DEBUG - send_request_headers.complete
+2025-08-20 09:46:42,170 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2025-08-20 09:46:42,171 - DEBUG - send_request_body.complete
+2025-08-20 09:46:42,172 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2025-08-20 09:46:42,274 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 403, b'Forbidden', [(b'Date', b'Wed, 20 Aug 2025 05:46:42 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'Set-Cookie', b'__cf_bm=FgG9vAKWObwJSZrro.SSO15XNSaaCn9gavBiKRDy7k4-1755668802-1.0.1.1-kx1PMF1bUOuGLqr3I..1hWCCvI6.XbudyJRM5ce5ptLl_DqgNIPWOdt5HNqMxcwWRsxZVZsx.X_hK3aIgbSkni_r7DNXJ6des1o62f16lQc; path=/; expires=Wed, 20-Aug-25 06:16:42 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'Vary', b'Accept-Encoding'), (b'Strict-Transport-Security', b'max-age=31536000; includeSubDomains; preload'), (b'X-Content-Type-Options', b'nosniff'), (b'Server', b'cloudflare'), (b'CF-RAY', b'971f977e2ad87100-HEL'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2025-08-20 09:46:42,276 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 403 Forbidden"
+2025-08-20 09:46:42,277 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2025-08-20 09:46:42,278 - DEBUG - receive_response_body.complete
+2025-08-20 09:46:42,279 - DEBUG - response_closed.started
+2025-08-20 09:46:42,280 - DEBUG - response_closed.complete
+2025-08-20 09:46:42,281 - DEBUG - HTTP Response: POST https://api.openai.com/v1/chat/completions "403 Forbidden" Headers({'date': 'Wed, 20 Aug 2025 05:46:42 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'set-cookie': '__cf_bm=FgG9vAKWObwJSZrro.SSO15XNSaaCn9gavBiKRDy7k4-1755668802-1.0.1.1-kx1PMF1bUOuGLqr3I..1hWCCvI6.XbudyJRM5ce5ptLl_DqgNIPWOdt5HNqMxcwWRsxZVZsx.X_hK3aIgbSkni_r7DNXJ6des1o62f16lQc; path=/; expires=Wed, 20-Aug-25 06:16:42 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None', 'vary': 'Accept-Encoding', 'strict-transport-security': 'max-age=31536000; includeSubDomains; preload', 'x-content-type-options': 'nosniff', 'server': 'cloudflare', 'cf-ray': '971f977e2ad87100-HEL', 'content-encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400'})
+2025-08-20 09:46:42,282 - DEBUG - request_id: None
+2025-08-20 09:46:42,282 - DEBUG - Encountered httpx.HTTPStatusError
+Traceback (most recent call last):
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/openai/_base_client.py", line 1027, in request
+    response.raise_for_status()
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '403 Forbidden' for url 'https://api.openai.com/v1/chat/completions'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+2025-08-20 09:46:42,341 - DEBUG - Not retrying
+2025-08-20 09:46:42,342 - DEBUG - Re-raising status error
+2025-08-20 09:46:47,344 - DEBUG - Request options: {'method': 'post', 'url': '/chat/completions', 'files': None, 'idempotency_key': 'stainless-python-retry-92f52e34-a682-42f9-be22-df30f3e71a55', 'json_data': {'messages': [{'role': 'user', 'content': "You are Jax, an information discernment expert, and you know that the solution to the collect rubies task is: 'You can go to the mine to dig for rubies.'. You need to determine whether what adventurer is saying to you is inquiring about information related to the collect rubies task?\n\nThis is the previous conversation betweem you and adventurer:\nJax: what can help you?\nadventurer: Where are the rubies?\n\nIt is known that the solution to the collect rubies task is: You can go to the mine to dig for rubies.. You need to determine whether what adventurer is saying to you is inquiring about information related to the collect rubies task? Return a JSON object containing a 'related' key: the value (boolean type) of the 'related' key indicates whether adventurer has inquired about content related to the task. The format should be as follows: { 'related': True or False }."}], 'model': 'gpt-4o-2024-05-13', 'response_format': {'type': 'json_object'}, 'seed': 8848, 'stop': None, 'temperature': 0}}
+2025-08-20 09:46:47,347 - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/chat/completions
+2025-08-20 09:46:47,348 - DEBUG - close.started
+2025-08-20 09:46:47,349 - DEBUG - close.complete
+2025-08-20 09:46:47,349 - DEBUG - connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=5.0 socket_options=None
+2025-08-20 09:46:47,448 - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x750e8d31e300>
+2025-08-20 09:46:47,449 - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x750e8d945a50> server_hostname='api.openai.com' timeout=5.0
+2025-08-20 09:46:47,560 - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x750e8d31dc70>
+2025-08-20 09:46:47,561 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2025-08-20 09:46:47,562 - DEBUG - send_request_headers.complete
+2025-08-20 09:46:47,563 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2025-08-20 09:46:47,563 - DEBUG - send_request_body.complete
+2025-08-20 09:46:47,564 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2025-08-20 09:46:47,784 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 403, b'Forbidden', [(b'Date', b'Wed, 20 Aug 2025 05:46:47 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'Vary', b'Accept-Encoding'), (b'Strict-Transport-Security', b'max-age=31536000; includeSubDomains; preload'), (b'X-Content-Type-Options', b'nosniff'), (b'Server', b'cloudflare'), (b'CF-RAY', b'971f97a18817376e-HEL'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2025-08-20 09:46:47,785 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 403 Forbidden"
+2025-08-20 09:46:47,786 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2025-08-20 09:46:47,787 - DEBUG - receive_response_body.complete
+2025-08-20 09:46:47,787 - DEBUG - response_closed.started
+2025-08-20 09:46:47,788 - DEBUG - response_closed.complete
+2025-08-20 09:46:47,788 - DEBUG - HTTP Response: POST https://api.openai.com/v1/chat/completions "403 Forbidden" Headers({'date': 'Wed, 20 Aug 2025 05:46:47 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'vary': 'Accept-Encoding', 'strict-transport-security': 'max-age=31536000; includeSubDomains; preload', 'x-content-type-options': 'nosniff', 'server': 'cloudflare', 'cf-ray': '971f97a18817376e-HEL', 'content-encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400'})
+2025-08-20 09:46:47,789 - DEBUG - request_id: None
+2025-08-20 09:46:47,789 - DEBUG - Encountered httpx.HTTPStatusError
+Traceback (most recent call last):
+  File "/mnt/d/Github Projects/ClarQ-LLM/utils/llm.py", line 201, in request
+    completion = self.client.chat.completions.create(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/openai/_utils/_utils.py", line 287, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/openai/resources/chat/completions/completions.py", line 1147, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/openai/_base_client.py", line 1259, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/openai/_base_client.py", line 1047, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.PermissionDeniedError: Error code: 403 - {'error': {'code': 'unsupported_country_region_territory', 'message': 'Country, region, or territory not supported', 'param': None, 'type': 'request_forbidden'}}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/openai/_base_client.py", line 1027, in request
+    response.raise_for_status()
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '403 Forbidden' for url 'https://api.openai.com/v1/chat/completions'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+2025-08-20 09:46:47,841 - DEBUG - Not retrying
+2025-08-20 09:46:47,841 - DEBUG - Re-raising status error
+2025-08-20 09:46:48,102 - DEBUG - close.started
+2025-08-20 09:46:48,107 - DEBUG - close.complete
+2025-08-20 09:48:10,427 - DEBUG - Request options: {'method': 'post', 'url': '/chat/completions', 'files': None, 'idempotency_key': 'stainless-python-retry-5412fc7b-5597-46b9-9e1d-10ce76b3efbc', 'json_data': {'messages': [{'role': 'user', 'content': "You are Jax, an information discernment expert, and you know that the solution to the collect rubies task is: 'You can go to the mine to dig for rubies.'. You need to determine whether what adventurer is saying to you is inquiring about information related to the collect rubies task?\n\nThis is the previous conversation betweem you and adventurer:\nJax: what can help you?\nadventurer: Where are the rubies?\n\nIt is known that the solution to the collect rubies task is: You can go to the mine to dig for rubies.. You need to determine whether what adventurer is saying to you is inquiring about information related to the collect rubies task? Return a JSON object containing a 'related' key: the value (boolean type) of the 'related' key indicates whether adventurer has inquired about content related to the task. The format should be as follows: { 'related': True or False }."}], 'model': 'gpt-4o-2024-05-13', 'response_format': {'type': 'json_object'}, 'seed': 8848, 'stop': None, 'temperature': 0}}
+2025-08-20 09:48:10,435 - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/chat/completions
+2025-08-20 09:48:10,436 - DEBUG - connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=5.0 socket_options=None
+2025-08-20 09:48:10,679 - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x7abcc04dfa70>
+2025-08-20 09:48:10,680 - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x7abcc0911a50> server_hostname='api.openai.com' timeout=5.0
+2025-08-20 09:48:17,402 - DEBUG - start_tls.failed exception=ConnectTimeout(TimeoutError('_ssl.c:983: The handshake operation timed out'))
+2025-08-20 09:48:17,403 - DEBUG - Encountered httpx.TimeoutException
+Traceback (most recent call last):
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpcore/_sync/connection.py", line 101, in handle_request
+    raise exc
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpcore/_sync/connection.py", line 78, in handle_request
+    stream = self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpcore/_sync/connection.py", line 156, in _connect
+    stream = stream.start_tls(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpcore/_backends/sync.py", line 154, in start_tls
+    with map_exceptions(exc_map):
+  File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectTimeout: _ssl.c:983: The handshake operation timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/openai/_base_client.py", line 982, in request
+    response = self._client.send(
+               ^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+  File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectTimeout: _ssl.c:983: The handshake operation timed out
+2025-08-20 09:48:17,642 - DEBUG - 2 retries left
+2025-08-20 09:48:17,643 - INFO - Retrying request to /chat/completions in 0.454728 seconds
+2025-08-20 09:48:18,099 - DEBUG - Request options: {'method': 'post', 'url': '/chat/completions', 'files': None, 'idempotency_key': 'stainless-python-retry-5412fc7b-5597-46b9-9e1d-10ce76b3efbc', 'json_data': {'messages': [{'role': 'user', 'content': "You are Jax, an information discernment expert, and you know that the solution to the collect rubies task is: 'You can go to the mine to dig for rubies.'. You need to determine whether what adventurer is saying to you is inquiring about information related to the collect rubies task?\n\nThis is the previous conversation betweem you and adventurer:\nJax: what can help you?\nadventurer: Where are the rubies?\n\nIt is known that the solution to the collect rubies task is: You can go to the mine to dig for rubies.. You need to determine whether what adventurer is saying to you is inquiring about information related to the collect rubies task? Return a JSON object containing a 'related' key: the value (boolean type) of the 'related' key indicates whether adventurer has inquired about content related to the task. The format should be as follows: { 'related': True or False }."}], 'model': 'gpt-4o-2024-05-13', 'response_format': {'type': 'json_object'}, 'seed': 8848, 'stop': None, 'temperature': 0}}
+2025-08-20 09:48:18,101 - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/chat/completions
+2025-08-20 09:48:18,102 - DEBUG - connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=5.0 socket_options=None
+2025-08-20 09:48:18,422 - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x7abcc04f1a90>
+2025-08-20 09:48:18,423 - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x7abcc0911a50> server_hostname='api.openai.com' timeout=5.0
+2025-08-20 09:48:23,427 - DEBUG - start_tls.failed exception=ConnectTimeout(TimeoutError('_ssl.c:983: The handshake operation timed out'))
+2025-08-20 09:48:23,428 - DEBUG - Encountered httpx.TimeoutException
+Traceback (most recent call last):
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpcore/_sync/connection.py", line 101, in handle_request
+    raise exc
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpcore/_sync/connection.py", line 78, in handle_request
+    stream = self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpcore/_sync/connection.py", line 156, in _connect
+    stream = stream.start_tls(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpcore/_backends/sync.py", line 154, in start_tls
+    with map_exceptions(exc_map):
+  File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectTimeout: _ssl.c:983: The handshake operation timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/openai/_base_client.py", line 982, in request
+    response = self._client.send(
+               ^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+  File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectTimeout: _ssl.c:983: The handshake operation timed out
+2025-08-20 09:48:23,465 - DEBUG - 1 retry left
+2025-08-20 09:48:23,466 - INFO - Retrying request to /chat/completions in 0.963449 seconds
+2025-08-20 09:48:24,430 - DEBUG - Request options: {'method': 'post', 'url': '/chat/completions', 'files': None, 'idempotency_key': 'stainless-python-retry-5412fc7b-5597-46b9-9e1d-10ce76b3efbc', 'json_data': {'messages': [{'role': 'user', 'content': "You are Jax, an information discernment expert, and you know that the solution to the collect rubies task is: 'You can go to the mine to dig for rubies.'. You need to determine whether what adventurer is saying to you is inquiring about information related to the collect rubies task?\n\nThis is the previous conversation betweem you and adventurer:\nJax: what can help you?\nadventurer: Where are the rubies?\n\nIt is known that the solution to the collect rubies task is: You can go to the mine to dig for rubies.. You need to determine whether what adventurer is saying to you is inquiring about information related to the collect rubies task? Return a JSON object containing a 'related' key: the value (boolean type) of the 'related' key indicates whether adventurer has inquired about content related to the task. The format should be as follows: { 'related': True or False }."}], 'model': 'gpt-4o-2024-05-13', 'response_format': {'type': 'json_object'}, 'seed': 8848, 'stop': None, 'temperature': 0}}
+2025-08-20 09:48:24,432 - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/chat/completions
+2025-08-20 09:48:24,433 - DEBUG - connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=5.0 socket_options=None
+2025-08-20 09:48:24,633 - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x7abcc04f2450>
+2025-08-20 09:48:24,633 - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x7abcc0911a50> server_hostname='api.openai.com' timeout=5.0
+2025-08-20 09:48:29,636 - DEBUG - start_tls.failed exception=ConnectTimeout(TimeoutError('_ssl.c:983: The handshake operation timed out'))
+2025-08-20 09:48:29,637 - DEBUG - Encountered httpx.TimeoutException
+Traceback (most recent call last):
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpcore/_sync/connection.py", line 101, in handle_request
+    raise exc
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpcore/_sync/connection.py", line 78, in handle_request
+    stream = self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpcore/_sync/connection.py", line 156, in _connect
+    stream = stream.start_tls(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpcore/_backends/sync.py", line 154, in start_tls
+    with map_exceptions(exc_map):
+  File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectTimeout: _ssl.c:983: The handshake operation timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/openai/_base_client.py", line 982, in request
+    response = self._client.send(
+               ^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+  File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectTimeout: _ssl.c:983: The handshake operation timed out
+2025-08-20 09:48:29,664 - DEBUG - Raising timeout error
+2025-08-20 09:48:34,666 - DEBUG - Request options: {'method': 'post', 'url': '/chat/completions', 'files': None, 'idempotency_key': 'stainless-python-retry-e5925db3-eed9-46b8-9efb-f7c3170bca77', 'json_data': {'messages': [{'role': 'user', 'content': "You are Jax, an information discernment expert, and you know that the solution to the collect rubies task is: 'You can go to the mine to dig for rubies.'. You need to determine whether what adventurer is saying to you is inquiring about information related to the collect rubies task?\n\nThis is the previous conversation betweem you and adventurer:\nJax: what can help you?\nadventurer: Where are the rubies?\n\nIt is known that the solution to the collect rubies task is: You can go to the mine to dig for rubies.. You need to determine whether what adventurer is saying to you is inquiring about information related to the collect rubies task? Return a JSON object containing a 'related' key: the value (boolean type) of the 'related' key indicates whether adventurer has inquired about content related to the task. The format should be as follows: { 'related': True or False }."}], 'model': 'gpt-4o-2024-05-13', 'response_format': {'type': 'json_object'}, 'seed': 8848, 'stop': None, 'temperature': 0}}
+2025-08-20 09:48:34,668 - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/chat/completions
+2025-08-20 09:48:34,669 - DEBUG - connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=5.0 socket_options=None
+2025-08-20 09:48:34,836 - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x7abcc0ca9910>
+2025-08-20 09:48:34,837 - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x7abcc0911a50> server_hostname='api.openai.com' timeout=5.0
+2025-08-20 09:48:39,839 - DEBUG - start_tls.failed exception=ConnectTimeout(TimeoutError('_ssl.c:983: The handshake operation timed out'))
+2025-08-20 09:48:39,841 - DEBUG - Encountered httpx.TimeoutException
+Traceback (most recent call last):
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpcore/_sync/connection.py", line 101, in handle_request
+    raise exc
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpcore/_sync/connection.py", line 78, in handle_request
+    stream = self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpcore/_sync/connection.py", line 156, in _connect
+    stream = stream.start_tls(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpcore/_backends/sync.py", line 154, in start_tls
+    with map_exceptions(exc_map):
+  File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectTimeout: _ssl.c:983: The handshake operation timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/openai/_base_client.py", line 982, in request
+    response = self._client.send(
+               ^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+  File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectTimeout: _ssl.c:983: The handshake operation timed out
+2025-08-20 09:48:39,876 - DEBUG - 2 retries left
+2025-08-20 09:48:39,876 - INFO - Retrying request to /chat/completions in 0.470064 seconds
+2025-08-20 09:48:40,347 - DEBUG - Request options: {'method': 'post', 'url': '/chat/completions', 'files': None, 'idempotency_key': 'stainless-python-retry-e5925db3-eed9-46b8-9efb-f7c3170bca77', 'json_data': {'messages': [{'role': 'user', 'content': "You are Jax, an information discernment expert, and you know that the solution to the collect rubies task is: 'You can go to the mine to dig for rubies.'. You need to determine whether what adventurer is saying to you is inquiring about information related to the collect rubies task?\n\nThis is the previous conversation betweem you and adventurer:\nJax: what can help you?\nadventurer: Where are the rubies?\n\nIt is known that the solution to the collect rubies task is: You can go to the mine to dig for rubies.. You need to determine whether what adventurer is saying to you is inquiring about information related to the collect rubies task? Return a JSON object containing a 'related' key: the value (boolean type) of the 'related' key indicates whether adventurer has inquired about content related to the task. The format should be as follows: { 'related': True or False }."}], 'model': 'gpt-4o-2024-05-13', 'response_format': {'type': 'json_object'}, 'seed': 8848, 'stop': None, 'temperature': 0}}
+2025-08-20 09:48:40,349 - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/chat/completions
+2025-08-20 09:48:40,350 - DEBUG - connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=5.0 socket_options=None
+2025-08-20 09:48:40,629 - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x7abcc04df9b0>
+2025-08-20 09:48:40,630 - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x7abcc0911a50> server_hostname='api.openai.com' timeout=5.0
+2025-08-20 09:48:45,637 - DEBUG - start_tls.failed exception=ConnectTimeout(TimeoutError('_ssl.c:983: The handshake operation timed out'))
+2025-08-20 09:48:45,638 - DEBUG - Encountered httpx.TimeoutException
+Traceback (most recent call last):
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpcore/_sync/connection.py", line 101, in handle_request
+    raise exc
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpcore/_sync/connection.py", line 78, in handle_request
+    stream = self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpcore/_sync/connection.py", line 156, in _connect
+    stream = stream.start_tls(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpcore/_backends/sync.py", line 154, in start_tls
+    with map_exceptions(exc_map):
+  File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectTimeout: _ssl.c:983: The handshake operation timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/openai/_base_client.py", line 982, in request
+    response = self._client.send(
+               ^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+  File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectTimeout: _ssl.c:983: The handshake operation timed out
+2025-08-20 09:48:45,668 - DEBUG - 1 retry left
+2025-08-20 09:48:45,669 - INFO - Retrying request to /chat/completions in 0.774448 seconds
+2025-08-20 09:48:46,444 - DEBUG - Request options: {'method': 'post', 'url': '/chat/completions', 'files': None, 'idempotency_key': 'stainless-python-retry-e5925db3-eed9-46b8-9efb-f7c3170bca77', 'json_data': {'messages': [{'role': 'user', 'content': "You are Jax, an information discernment expert, and you know that the solution to the collect rubies task is: 'You can go to the mine to dig for rubies.'. You need to determine whether what adventurer is saying to you is inquiring about information related to the collect rubies task?\n\nThis is the previous conversation betweem you and adventurer:\nJax: what can help you?\nadventurer: Where are the rubies?\n\nIt is known that the solution to the collect rubies task is: You can go to the mine to dig for rubies.. You need to determine whether what adventurer is saying to you is inquiring about information related to the collect rubies task? Return a JSON object containing a 'related' key: the value (boolean type) of the 'related' key indicates whether adventurer has inquired about content related to the task. The format should be as follows: { 'related': True or False }."}], 'model': 'gpt-4o-2024-05-13', 'response_format': {'type': 'json_object'}, 'seed': 8848, 'stop': None, 'temperature': 0}}
+2025-08-20 09:48:46,446 - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/chat/completions
+2025-08-20 09:48:46,447 - DEBUG - connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=5.0 socket_options=None
+2025-08-20 09:48:46,677 - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x7abcc04f31d0>
+2025-08-20 09:48:46,678 - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x7abcc0911a50> server_hostname='api.openai.com' timeout=5.0
+2025-08-20 09:48:53,156 - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x7abcc04f1970>
+2025-08-20 09:48:53,156 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2025-08-20 09:48:53,157 - DEBUG - send_request_headers.complete
+2025-08-20 09:48:53,158 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2025-08-20 09:48:53,159 - DEBUG - send_request_body.complete
+2025-08-20 09:48:53,159 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2025-08-20 09:48:53,550 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 401, b'Unauthorized', [(b'Date', b'Wed, 20 Aug 2025 05:48:53 GMT'), (b'Content-Type', b'application/json; charset=utf-8'), (b'Content-Length', b'269'), (b'Connection', b'keep-alive'), (b'vary', b'Origin'), (b'x-request-id', b'req_0214367fad2b45b8bdcecd97d8c0fb34'), (b'x-envoy-upstream-service-time', b'4'), (b'cf-cache-status', b'DYNAMIC'), (b'Set-Cookie', b'__cf_bm=_RQfbeo87SN6dkKqD4xMcfu3FnRocB0DINidy4.wZT8-1755668933-1.0.1.1-vStCQdnVrH7eIDVOZ8Tm_dAZy9nT5RbsS_J5riikOiQX5LgUWISeJo2nzLRAa.n2Pv3d2uQztMla5a5GvsmyEoyAeuoviSxKbPjfYvVWX.c; path=/; expires=Wed, 20-Aug-25 06:18:53 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'Strict-Transport-Security', b'max-age=31536000; includeSubDomains; preload'), (b'X-Content-Type-Options', b'nosniff'), (b'Set-Cookie', b'_cfuvid=SPqFMeedPKCjh.ksMB2hQX.JHdjBqAfpV2DITigKhBM-1755668933646-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'Server', b'cloudflare'), (b'CF-RAY', b'971f9ab21e7aef92-AMS'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2025-08-20 09:48:53,552 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-08-20 09:48:53,553 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2025-08-20 09:48:53,554 - DEBUG - receive_response_body.complete
+2025-08-20 09:48:53,554 - DEBUG - response_closed.started
+2025-08-20 09:48:53,555 - DEBUG - response_closed.complete
+2025-08-20 09:48:53,555 - DEBUG - HTTP Response: POST https://api.openai.com/v1/chat/completions "401 Unauthorized" Headers([('date', 'Wed, 20 Aug 2025 05:48:53 GMT'), ('content-type', 'application/json; charset=utf-8'), ('content-length', '269'), ('connection', 'keep-alive'), ('vary', 'Origin'), ('x-request-id', 'req_0214367fad2b45b8bdcecd97d8c0fb34'), ('x-envoy-upstream-service-time', '4'), ('cf-cache-status', 'DYNAMIC'), ('set-cookie', '__cf_bm=_RQfbeo87SN6dkKqD4xMcfu3FnRocB0DINidy4.wZT8-1755668933-1.0.1.1-vStCQdnVrH7eIDVOZ8Tm_dAZy9nT5RbsS_J5riikOiQX5LgUWISeJo2nzLRAa.n2Pv3d2uQztMla5a5GvsmyEoyAeuoviSxKbPjfYvVWX.c; path=/; expires=Wed, 20-Aug-25 06:18:53 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('strict-transport-security', 'max-age=31536000; includeSubDomains; preload'), ('x-content-type-options', 'nosniff'), ('set-cookie', '_cfuvid=SPqFMeedPKCjh.ksMB2hQX.JHdjBqAfpV2DITigKhBM-1755668933646-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('server', 'cloudflare'), ('cf-ray', '971f9ab21e7aef92-AMS'), ('alt-svc', 'h3=":443"; ma=86400')])
+2025-08-20 09:48:53,556 - DEBUG - request_id: req_0214367fad2b45b8bdcecd97d8c0fb34
+2025-08-20 09:48:53,557 - DEBUG - Encountered httpx.HTTPStatusError
+Traceback (most recent call last):
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpcore/_sync/connection.py", line 101, in handle_request
+    raise exc
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpcore/_sync/connection.py", line 78, in handle_request
+    stream = self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpcore/_sync/connection.py", line 156, in _connect
+    stream = stream.start_tls(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpcore/_backends/sync.py", line 154, in start_tls
+    with map_exceptions(exc_map):
+  File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectTimeout: _ssl.c:983: The handshake operation timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/openai/_base_client.py", line 982, in request
+    response = self._client.send(
+               ^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+  File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectTimeout: _ssl.c:983: The handshake operation timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/mnt/d/Github Projects/ClarQ-LLM/utils/llm.py", line 201, in request
+    completion = self.client.chat.completions.create(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/openai/_utils/_utils.py", line 287, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/openai/resources/chat/completions/completions.py", line 1147, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/openai/_base_client.py", line 1259, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/openai/_base_client.py", line 1000, in request
+    raise APITimeoutError(request=request) from err
+openai.APITimeoutError: Request timed out.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/openai/_base_client.py", line 1027, in request
+    response.raise_for_status()
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '401 Unauthorized' for url 'https://api.openai.com/v1/chat/completions'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+2025-08-20 09:48:53,656 - DEBUG - Re-raising status error
+2025-08-20 09:48:53,909 - DEBUG - close.started
+2025-08-20 09:48:53,914 - DEBUG - close.complete
+2025-08-20 10:12:22,191 - DEBUG - Request options: {'method': 'post', 'url': '/chat/completions', 'files': None, 'idempotency_key': 'stainless-python-retry-0471a73e-f354-412c-b037-ef9a0998d8d8', 'json_data': {'messages': [{'role': 'user', 'content': "You are Jax, an information discernment expert, and you know that the solution to the collect rubies task is: 'You can go to the mine to dig for rubies.'. You need to determine whether what adventurer is saying to you is inquiring about information related to the collect rubies task?\n\nThis is the previous conversation betweem you and adventurer:\nJax: what can help you?\nadventurer: Where are the rubies?\n\nIt is known that the solution to the collect rubies task is: You can go to the mine to dig for rubies.. You need to determine whether what adventurer is saying to you is inquiring about information related to the collect rubies task? Return a JSON object containing a 'related' key: the value (boolean type) of the 'related' key indicates whether adventurer has inquired about content related to the task. The format should be as follows: { 'related': True or False }."}], 'model': 'gpt-4o-2024-05-13', 'response_format': {'type': 'json_object'}, 'seed': 8848, 'stop': None, 'temperature': 0}}
+2025-08-20 10:12:22,201 - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/chat/completions
+2025-08-20 10:12:22,202 - DEBUG - connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=5.0 socket_options=None
+2025-08-20 10:12:22,458 - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x788482787320>
+2025-08-20 10:12:22,459 - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x788482595a50> server_hostname='api.openai.com' timeout=5.0
+2025-08-20 10:12:27,327 - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x788482783890>
+2025-08-20 10:12:27,328 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2025-08-20 10:12:27,330 - DEBUG - send_request_headers.complete
+2025-08-20 10:12:27,330 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2025-08-20 10:12:27,331 - DEBUG - send_request_body.complete
+2025-08-20 10:12:27,332 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2025-08-20 10:12:27,713 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 401, b'Unauthorized', [(b'Date', b'Wed, 20 Aug 2025 06:12:29 GMT'), (b'Content-Type', b'application/json; charset=utf-8'), (b'Content-Length', b'269'), (b'Connection', b'keep-alive'), (b'vary', b'Origin'), (b'x-request-id', b'req_330eebf2be784e4980ed58f45455043e'), (b'x-envoy-upstream-service-time', b'2'), (b'cf-cache-status', b'DYNAMIC'), (b'Set-Cookie', b'__cf_bm=BmOPB05OW9AMqQ2VYuYmykiSLzML2NOsZSrOXik8tGU-1755670349-1.0.1.1-5QVkRhz7Adl7lH45HFyuGTSv3Mnrjly7RU4.kkrVJ5KejhN9SsuzdwI1mdMCcXIOI9QPikW4xgRXYlxyItT7ENHVa1m2duok4fGm86oFONw; path=/; expires=Wed, 20-Aug-25 06:42:29 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'Strict-Transport-Security', b'max-age=31536000; includeSubDomains; preload'), (b'X-Content-Type-Options', b'nosniff'), (b'Set-Cookie', b'_cfuvid=AjYLe86S1N2KFjG8W_G03dQau0SnkxtwmCO_CeZd3nQ-1755670349025-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'Server', b'cloudflare'), (b'CF-RAY', b'971fbd404931a017-AMS'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2025-08-20 10:12:27,715 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-08-20 10:12:27,716 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2025-08-20 10:12:27,717 - DEBUG - receive_response_body.complete
+2025-08-20 10:12:27,717 - DEBUG - response_closed.started
+2025-08-20 10:12:27,718 - DEBUG - response_closed.complete
+2025-08-20 10:12:27,719 - DEBUG - HTTP Response: POST https://api.openai.com/v1/chat/completions "401 Unauthorized" Headers([('date', 'Wed, 20 Aug 2025 06:12:29 GMT'), ('content-type', 'application/json; charset=utf-8'), ('content-length', '269'), ('connection', 'keep-alive'), ('vary', 'Origin'), ('x-request-id', 'req_330eebf2be784e4980ed58f45455043e'), ('x-envoy-upstream-service-time', '2'), ('cf-cache-status', 'DYNAMIC'), ('set-cookie', '__cf_bm=BmOPB05OW9AMqQ2VYuYmykiSLzML2NOsZSrOXik8tGU-1755670349-1.0.1.1-5QVkRhz7Adl7lH45HFyuGTSv3Mnrjly7RU4.kkrVJ5KejhN9SsuzdwI1mdMCcXIOI9QPikW4xgRXYlxyItT7ENHVa1m2duok4fGm86oFONw; path=/; expires=Wed, 20-Aug-25 06:42:29 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('strict-transport-security', 'max-age=31536000; includeSubDomains; preload'), ('x-content-type-options', 'nosniff'), ('set-cookie', '_cfuvid=AjYLe86S1N2KFjG8W_G03dQau0SnkxtwmCO_CeZd3nQ-1755670349025-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('server', 'cloudflare'), ('cf-ray', '971fbd404931a017-AMS'), ('alt-svc', 'h3=":443"; ma=86400')])
+2025-08-20 10:12:27,719 - DEBUG - request_id: req_330eebf2be784e4980ed58f45455043e
+2025-08-20 10:12:27,720 - DEBUG - Encountered httpx.HTTPStatusError
+Traceback (most recent call last):
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/openai/_base_client.py", line 1027, in request
+    response.raise_for_status()
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '401 Unauthorized' for url 'https://api.openai.com/v1/chat/completions'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+2025-08-20 10:12:27,808 - DEBUG - Not retrying
+2025-08-20 10:12:27,808 - DEBUG - Re-raising status error
+2025-08-20 10:12:34,532 - DEBUG - Request options: {'method': 'post', 'url': '/chat/completions', 'files': None, 'idempotency_key': 'stainless-python-retry-aecf6104-0bb3-4da7-b38d-a058b1c7a651', 'json_data': {'messages': [{'role': 'user', 'content': "You are Jax, an information discernment expert, and you know that the solution to the collect rubies task is: 'You can go to the mine to dig for rubies.'. You need to determine whether what adventurer is saying to you is inquiring about information related to the collect rubies task?\n\nThis is the previous conversation betweem you and adventurer:\nJax: what can help you?\nadventurer: Where are the rubies?\n\nIt is known that the solution to the collect rubies task is: You can go to the mine to dig for rubies.. You need to determine whether what adventurer is saying to you is inquiring about information related to the collect rubies task? Return a JSON object containing a 'related' key: the value (boolean type) of the 'related' key indicates whether adventurer has inquired about content related to the task. The format should be as follows: { 'related': True or False }."}], 'model': 'gpt-4o-2024-05-13', 'response_format': {'type': 'json_object'}, 'seed': 8848, 'stop': None, 'temperature': 0}}
+2025-08-20 10:12:34,534 - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/chat/completions
+2025-08-20 10:12:34,535 - DEBUG - close.started
+2025-08-20 10:12:34,536 - DEBUG - close.complete
+2025-08-20 10:12:34,537 - DEBUG - connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=5.0 socket_options=None
+2025-08-20 10:12:34,750 - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x7884821722d0>
+2025-08-20 10:12:34,751 - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x788482595a50> server_hostname='api.openai.com' timeout=5.0
+2025-08-20 10:12:39,757 - DEBUG - start_tls.failed exception=ConnectTimeout(TimeoutError('_ssl.c:983: The handshake operation timed out'))
+2025-08-20 10:12:39,759 - DEBUG - Encountered httpx.TimeoutException
+Traceback (most recent call last):
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpcore/_sync/connection.py", line 101, in handle_request
+    raise exc
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpcore/_sync/connection.py", line 78, in handle_request
+    stream = self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpcore/_sync/connection.py", line 156, in _connect
+    stream = stream.start_tls(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpcore/_backends/sync.py", line 154, in start_tls
+    with map_exceptions(exc_map):
+  File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectTimeout: _ssl.c:983: The handshake operation timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/openai/_base_client.py", line 982, in request
+    response = self._client.send(
+               ^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+  File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectTimeout: _ssl.c:983: The handshake operation timed out
+2025-08-20 10:12:39,981 - DEBUG - 2 retries left
+2025-08-20 10:12:39,982 - INFO - Retrying request to /chat/completions in 0.409988 seconds
+2025-08-20 10:12:40,393 - DEBUG - Request options: {'method': 'post', 'url': '/chat/completions', 'files': None, 'idempotency_key': 'stainless-python-retry-aecf6104-0bb3-4da7-b38d-a058b1c7a651', 'json_data': {'messages': [{'role': 'user', 'content': "You are Jax, an information discernment expert, and you know that the solution to the collect rubies task is: 'You can go to the mine to dig for rubies.'. You need to determine whether what adventurer is saying to you is inquiring about information related to the collect rubies task?\n\nThis is the previous conversation betweem you and adventurer:\nJax: what can help you?\nadventurer: Where are the rubies?\n\nIt is known that the solution to the collect rubies task is: You can go to the mine to dig for rubies.. You need to determine whether what adventurer is saying to you is inquiring about information related to the collect rubies task? Return a JSON object containing a 'related' key: the value (boolean type) of the 'related' key indicates whether adventurer has inquired about content related to the task. The format should be as follows: { 'related': True or False }."}], 'model': 'gpt-4o-2024-05-13', 'response_format': {'type': 'json_object'}, 'seed': 8848, 'stop': None, 'temperature': 0}}
+2025-08-20 10:12:40,395 - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/chat/completions
+2025-08-20 10:12:40,396 - DEBUG - connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=5.0 socket_options=None
+2025-08-20 10:12:40,681 - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x788482173290>
+2025-08-20 10:12:40,682 - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x788482595a50> server_hostname='api.openai.com' timeout=5.0
+2025-08-20 10:12:45,396 - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x788482172f60>
+2025-08-20 10:12:45,397 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2025-08-20 10:12:45,398 - DEBUG - send_request_headers.complete
+2025-08-20 10:12:45,398 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2025-08-20 10:12:45,399 - DEBUG - send_request_body.complete
+2025-08-20 10:12:45,399 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2025-08-20 10:12:45,717 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 401, b'Unauthorized', [(b'Date', b'Wed, 20 Aug 2025 06:12:46 GMT'), (b'Content-Type', b'application/json; charset=utf-8'), (b'Content-Length', b'269'), (b'Connection', b'keep-alive'), (b'vary', b'Origin'), (b'x-request-id', b'req_f0e1c0d6f3564c5d891b0ebb65204803'), (b'x-envoy-upstream-service-time', b'50'), (b'cf-cache-status', b'DYNAMIC'), (b'Strict-Transport-Security', b'max-age=31536000; includeSubDomains; preload'), (b'X-Content-Type-Options', b'nosniff'), (b'Server', b'cloudflare'), (b'CF-RAY', b'971fbdac48f69f5e-AMS'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2025-08-20 10:12:45,718 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-08-20 10:12:45,720 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2025-08-20 10:12:45,721 - DEBUG - receive_response_body.complete
+2025-08-20 10:12:45,721 - DEBUG - response_closed.started
+2025-08-20 10:12:45,722 - DEBUG - response_closed.complete
+2025-08-20 10:12:45,722 - DEBUG - HTTP Response: POST https://api.openai.com/v1/chat/completions "401 Unauthorized" Headers({'date': 'Wed, 20 Aug 2025 06:12:46 GMT', 'content-type': 'application/json; charset=utf-8', 'content-length': '269', 'connection': 'keep-alive', 'vary': 'Origin', 'x-request-id': 'req_f0e1c0d6f3564c5d891b0ebb65204803', 'x-envoy-upstream-service-time': '50', 'cf-cache-status': 'DYNAMIC', 'strict-transport-security': 'max-age=31536000; includeSubDomains; preload', 'x-content-type-options': 'nosniff', 'server': 'cloudflare', 'cf-ray': '971fbdac48f69f5e-AMS', 'alt-svc': 'h3=":443"; ma=86400'})
+2025-08-20 10:12:45,723 - DEBUG - request_id: req_f0e1c0d6f3564c5d891b0ebb65204803
+2025-08-20 10:12:45,724 - DEBUG - Encountered httpx.HTTPStatusError
+Traceback (most recent call last):
+  File "/mnt/d/Github Projects/ClarQ-LLM/utils/llm.py", line 201, in request
+    completion = self.client.chat.completions.create(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/openai/_utils/_utils.py", line 287, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/openai/resources/chat/completions/completions.py", line 1147, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/openai/_base_client.py", line 1259, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/openai/_base_client.py", line 1047, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Incorrect API key provided: your_ope*******_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/openai/_base_client.py", line 1027, in request
+    response.raise_for_status()
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '401 Unauthorized' for url 'https://api.openai.com/v1/chat/completions'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+2025-08-20 10:12:45,861 - DEBUG - Not retrying
+2025-08-20 10:12:45,862 - DEBUG - Re-raising status error
+2025-08-20 10:12:46,207 - DEBUG - close.started
+2025-08-20 10:12:46,212 - DEBUG - close.complete
+2025-08-20 10:14:52,286 - DEBUG - Request options: {'method': 'post', 'url': '/chat/completions', 'files': None, 'idempotency_key': 'stainless-python-retry-dec4de71-b8ed-4eae-89be-2e1f97a78d6b', 'json_data': {'messages': [{'role': 'user', 'content': "You are Jax, an information discernment expert, and you know that the solution to the collect rubies task is: 'You can go to the mine to dig for rubies.'. You need to determine whether what adventurer is saying to you is inquiring about information related to the collect rubies task?\n\nThis is the previous conversation betweem you and adventurer:\nJax: what can help you?\nadventurer: Where are the rubies?\n\nIt is known that the solution to the collect rubies task is: You can go to the mine to dig for rubies.. You need to determine whether what adventurer is saying to you is inquiring about information related to the collect rubies task? Return a JSON object containing a 'related' key: the value (boolean type) of the 'related' key indicates whether adventurer has inquired about content related to the task. The format should be as follows: { 'related': True or False }."}], 'model': 'deepseek-ai/DeepSeek-V3:fireworks-ai', 'response_format': {'type': 'json_object'}, 'stop': None, 'temperature': 0}}
+2025-08-20 10:14:52,295 - DEBUG - Sending HTTP Request: POST https://router.huggingface.co/v1/chat/completions
+2025-08-20 10:14:52,296 - DEBUG - connect_tcp.started host='router.huggingface.co' port=443 local_address=None timeout=5.0 socket_options=None
+2025-08-20 10:14:52,774 - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x70a34c4df470>
+2025-08-20 10:14:52,775 - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x70a34c7098d0> server_hostname='router.huggingface.co' timeout=5.0
+2025-08-20 10:14:57,780 - DEBUG - start_tls.failed exception=ConnectTimeout(TimeoutError('_ssl.c:983: The handshake operation timed out'))
+2025-08-20 10:14:57,782 - DEBUG - Encountered httpx.TimeoutException
+Traceback (most recent call last):
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpcore/_sync/connection.py", line 101, in handle_request
+    raise exc
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpcore/_sync/connection.py", line 78, in handle_request
+    stream = self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpcore/_sync/connection.py", line 156, in _connect
+    stream = stream.start_tls(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpcore/_backends/sync.py", line 154, in start_tls
+    with map_exceptions(exc_map):
+  File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectTimeout: _ssl.c:983: The handshake operation timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/openai/_base_client.py", line 982, in request
+    response = self._client.send(
+               ^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+  File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectTimeout: _ssl.c:983: The handshake operation timed out
+2025-08-20 10:14:57,867 - DEBUG - 2 retries left
+2025-08-20 10:14:57,867 - INFO - Retrying request to /chat/completions in 0.438339 seconds
+2025-08-20 10:14:58,307 - DEBUG - Request options: {'method': 'post', 'url': '/chat/completions', 'files': None, 'idempotency_key': 'stainless-python-retry-dec4de71-b8ed-4eae-89be-2e1f97a78d6b', 'json_data': {'messages': [{'role': 'user', 'content': "You are Jax, an information discernment expert, and you know that the solution to the collect rubies task is: 'You can go to the mine to dig for rubies.'. You need to determine whether what adventurer is saying to you is inquiring about information related to the collect rubies task?\n\nThis is the previous conversation betweem you and adventurer:\nJax: what can help you?\nadventurer: Where are the rubies?\n\nIt is known that the solution to the collect rubies task is: You can go to the mine to dig for rubies.. You need to determine whether what adventurer is saying to you is inquiring about information related to the collect rubies task? Return a JSON object containing a 'related' key: the value (boolean type) of the 'related' key indicates whether adventurer has inquired about content related to the task. The format should be as follows: { 'related': True or False }."}], 'model': 'deepseek-ai/DeepSeek-V3:fireworks-ai', 'response_format': {'type': 'json_object'}, 'stop': None, 'temperature': 0}}
+2025-08-20 10:14:58,309 - DEBUG - Sending HTTP Request: POST https://router.huggingface.co/v1/chat/completions
+2025-08-20 10:14:58,310 - DEBUG - connect_tcp.started host='router.huggingface.co' port=443 local_address=None timeout=5.0 socket_options=None
+2025-08-20 10:14:59,004 - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x70a34c4fd970>
+2025-08-20 10:14:59,005 - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x70a34c7098d0> server_hostname='router.huggingface.co' timeout=5.0
+2025-08-20 10:15:04,008 - DEBUG - start_tls.failed exception=ConnectTimeout(TimeoutError('_ssl.c:983: The handshake operation timed out'))
+2025-08-20 10:15:04,009 - DEBUG - Encountered httpx.TimeoutException
+Traceback (most recent call last):
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpcore/_sync/connection.py", line 101, in handle_request
+    raise exc
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpcore/_sync/connection.py", line 78, in handle_request
+    stream = self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpcore/_sync/connection.py", line 156, in _connect
+    stream = stream.start_tls(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpcore/_backends/sync.py", line 154, in start_tls
+    with map_exceptions(exc_map):
+  File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectTimeout: _ssl.c:983: The handshake operation timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/openai/_base_client.py", line 982, in request
+    response = self._client.send(
+               ^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+  File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/mnt/d/Github Projects/ClarQ-LLM/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectTimeout: _ssl.c:983: The handshake operation timed out
+2025-08-20 10:15:04,037 - DEBUG - 1 retry left
+2025-08-20 10:15:04,037 - INFO - Retrying request to /chat/completions in 0.822220 seconds
+2025-08-20 10:15:04,860 - DEBUG - Request options: {'method': 'post', 'url': '/chat/completions', 'files': None, 'idempotency_key': 'stainless-python-retry-dec4de71-b8ed-4eae-89be-2e1f97a78d6b', 'json_data': {'messages': [{'role': 'user', 'content': "You are Jax, an information discernment expert, and you know that the solution to the collect rubies task is: 'You can go to the mine to dig for rubies.'. You need to determine whether what adventurer is saying to you is inquiring about information related to the collect rubies task?\n\nThis is the previous conversation betweem you and adventurer:\nJax: what can help you?\nadventurer: Where are the rubies?\n\nIt is known that the solution to the collect rubies task is: You can go to the mine to dig for rubies.. You need to determine whether what adventurer is saying to you is inquiring about information related to the collect rubies task? Return a JSON object containing a 'related' key: the value (boolean type) of the 'related' key indicates whether adventurer has inquired about content related to the task. The format should be as follows: { 'related': True or False }."}], 'model': 'deepseek-ai/DeepSeek-V3:fireworks-ai', 'response_format': {'type': 'json_object'}, 'stop': None, 'temperature': 0}}
+2025-08-20 10:15:04,862 - DEBUG - Sending HTTP Request: POST https://router.huggingface.co/v1/chat/completions
+2025-08-20 10:15:04,869 - DEBUG - connect_tcp.started host='router.huggingface.co' port=443 local_address=None timeout=5.0 socket_options=None
+2025-08-20 10:15:05,240 - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x70a34c4fe2d0>
+2025-08-20 10:15:05,242 - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x70a34c7098d0> server_hostname='router.huggingface.co' timeout=5.0
+2025-08-20 10:15:09,101 - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x70a34c4fe030>
+2025-08-20 10:15:09,102 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2025-08-20 10:15:09,103 - DEBUG - send_request_headers.complete
+2025-08-20 10:15:09,104 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2025-08-20 10:15:09,105 - DEBUG - send_request_body.complete
+2025-08-20 10:15:09,105 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2025-08-20 10:15:10,583 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'Date', b'Wed, 20 Aug 2025 06:15:12 GMT'), (b'server', b'cloudflare'), (b'x-inference-provider', b'fireworks-ai'), (b'X-Powered-By', b'huggingface-moon'), (b'vary', b'Accept-Encoding'), (b'access-control-allow-origin', b'*'), (b'Access-Control-Expose-Headers', b'X-Repo-Commit,X-Request-Id,X-Error-Code,X-Error-Message,X-Total-Count,ETag,Link,Accept-Ranges,Content-Range,X-Linked-Size,X-Linked-ETag,X-Xet-Hash'), (b'X-Robots-Tag', b'none'), (b'cross-origin-opener-policy', b'same-origin'), (b'Referrer-Policy', b'strict-origin-when-cross-origin'), (b'x-request-id', b'd31e1462-dcf4-44f3-9696-add70e93ece4'), (b'content-encoding', b'gzip'), (b'cf-ray', b'971fc13508bd9c8b-IAD'), (b'cf-cache-status', b'DYNAMIC'), (b'fireworks-middleware-version', b'v2'), (b'fireworks-prompt-tokens', b'200'), (b'fireworks-sampling-options', b'{"max_tokens": 2048, "temperature": 0.0, "top_k": 0, "top_p": 1.0, "min_p": 0.0, "typical_p": 1.0, "frequency_penalty": 0.0, "presence_penalty": 0.0, "repetition_penalty": 1.0, "mirostat_target": null, "mirostat_lr": 0.1}'), (b'fireworks-server-processing-time', b'1.209'), (b'fireworks-server-time-to-first-token', b'0.898'), (b'server-timing', b'total;dur=1327.0;desc="Total Response Time"'), (b'x-envoy-upstream-service-time', b'1211'), (b'x-ratelimit-limit-requests', b'60'), (b'x-ratelimit-limit-tokens-generated', b'12000'), (b'x-ratelimit-limit-tokens-prompt', b'60000'), (b'x-ratelimit-over-limit', b'no'), (b'x-ratelimit-remaining-requests', b'59'), (b'x-ratelimit-remaining-tokens-generated', b'12000'), (b'x-ratelimit-remaining-tokens-prompt', b'59800'), (b'X-Cache', b'Miss from cloudfront'), (b'Via', b'1.1 4a345f25fcb995602afaf132ccf353de.cloudfront.net (CloudFront)'), (b'X-Amz-Cf-Pop', b'AMS58-P5'), (b'X-Amz-Cf-Id', b'KWDv-hPGqU_2WT5CZ1qAdgNSShI887mDRjjgv4MGannQrxxt4AfTgg==')])
+2025-08-20 10:15:10,585 - INFO - HTTP Request: POST https://router.huggingface.co/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-20 10:15:10,586 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2025-08-20 10:15:10,586 - DEBUG - receive_response_body.complete
+2025-08-20 10:15:10,587 - DEBUG - response_closed.started
+2025-08-20 10:15:10,587 - DEBUG - response_closed.complete
+2025-08-20 10:15:10,588 - DEBUG - HTTP Response: POST https://router.huggingface.co/v1/chat/completions "200 OK" Headers({'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'date': 'Wed, 20 Aug 2025 06:15:12 GMT', 'server': 'cloudflare', 'x-inference-provider': 'fireworks-ai', 'x-powered-by': 'huggingface-moon', 'vary': 'Accept-Encoding', 'access-control-allow-origin': '*', 'access-control-expose-headers': 'X-Repo-Commit,X-Request-Id,X-Error-Code,X-Error-Message,X-Total-Count,ETag,Link,Accept-Ranges,Content-Range,X-Linked-Size,X-Linked-ETag,X-Xet-Hash', 'x-robots-tag': 'none', 'cross-origin-opener-policy': 'same-origin', 'referrer-policy': 'strict-origin-when-cross-origin', 'x-request-id': 'd31e1462-dcf4-44f3-9696-add70e93ece4', 'content-encoding': 'gzip', 'cf-ray': '971fc13508bd9c8b-IAD', 'cf-cache-status': 'DYNAMIC', 'fireworks-middleware-version': 'v2', 'fireworks-prompt-tokens': '200', 'fireworks-sampling-options': '{"max_tokens": 2048, "temperature": 0.0, "top_k": 0, "top_p": 1.0, "min_p": 0.0, "typical_p": 1.0, "frequency_penalty": 0.0, "presence_penalty": 0.0, "repetition_penalty": 1.0, "mirostat_target": null, "mirostat_lr": 0.1}', 'fireworks-server-processing-time': '1.209', 'fireworks-server-time-to-first-token': '0.898', 'server-timing': 'total;dur=1327.0;desc="Total Response Time"', 'x-envoy-upstream-service-time': '1211', 'x-ratelimit-limit-requests': '60', 'x-ratelimit-limit-tokens-generated': '12000', 'x-ratelimit-limit-tokens-prompt': '60000', 'x-ratelimit-over-limit': 'no', 'x-ratelimit-remaining-requests': '59', 'x-ratelimit-remaining-tokens-generated': '12000', 'x-ratelimit-remaining-tokens-prompt': '59800', 'x-cache': 'Miss from cloudfront', 'via': '1.1 4a345f25fcb995602afaf132ccf353de.cloudfront.net (CloudFront)', 'x-amz-cf-pop': 'AMS58-P5', 'x-amz-cf-id': 'KWDv-hPGqU_2WT5CZ1qAdgNSShI887mDRjjgv4MGannQrxxt4AfTgg=='})
+2025-08-20 10:15:10,588 - DEBUG - request_id: d31e1462-dcf4-44f3-9696-add70e93ece4
+2025-08-20 10:15:18,056 - DEBUG - close.started
+2025-08-20 10:15:18,061 - DEBUG - close.complete

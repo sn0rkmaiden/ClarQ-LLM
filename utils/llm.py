@@ -450,7 +450,6 @@ class AWSBedrockLLAMA(LLM):
         
         return (self.extract_json_string(response_text), message) if 'json_format' in kwargs and kwargs['json_format'] else (response_text, message)
 
-
 class CustomLLM(LLM):
     def __init__(self, name, cache = None) -> None:
         super().__init__(cache)   
@@ -460,7 +459,7 @@ class CustomLLM(LLM):
             self.model_name = name
         self.client = OpenAI(
             base_url="https://router.huggingface.co/v1",
-            api_key=os.environ["HF_TOKEN"],
+            api_key=os.getenv("HF_TOKEN"),
         )
         
     def request(self, prompt, stop, **kwargs):
