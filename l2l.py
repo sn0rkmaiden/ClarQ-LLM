@@ -3,8 +3,9 @@ from agents.provider_agent import helpers as general_provider
 from agents.multi_info_provider_agent import helpers_m as multi_info_provider
 from ALL_KEYS import *
 from utils.data_loader import *
-from utils.llm import ChatGPT,QianFan,LLAMA,AWSBedrockLLAMA
+from utils.llm import ChatGPT,QianFan,LLAMA,AWSBedrockLLAMA, CustomLLM
 import argparse
+from dotenv import load_dotenv
 
 
 def evaluate_player(task_data_path, output_path, player_llm, player_chat_mode, provider_constructor, provider_llm):
@@ -90,6 +91,9 @@ def test_helper(task_data_path, provider_constructor, provider_llm):
 
 
 if __name__ == "__main__":
+    
+    load_dotenv()
+
     parser = argparse.ArgumentParser(description='Run language model evaluation.')
     parser.add_argument('--seeker_agent_llm', type=str, default='gpt4o')
     parser.add_argument('--provider_agent_llm', type=str, default='gpt4o')
@@ -127,6 +131,9 @@ if __name__ == "__main__":
     elif args.seeker_agent_llm  == 'llama3.1-405B':
         player_llm = AWSBedrockLLAMA("llama3.1-405B", 'log/llm_player_cache_llama3.1-405B.pkl')
         output_path = "results/l2l_llama3.1-405B.{}.{}.json".format(mode,language)
+    elif args.seeker_agent_llm == 'deepseek':
+        player_llm = CustomLLM(args.seeker_agent_llm, f'log/llm_player_cache_deepseek.pkl')
+        output_path = "results/l2l_deepseek.{}.{}.json".format(mode,language)
     else:
         player_llm = ChatGPT("gpt-3.5-turbo-0125", 'log/gpt3_plyaer_cache.pkl')
         output_path = "results/l2l_gpt3.5.{}.{}.json".format(mode,language)

@@ -1,7 +1,7 @@
 import copy
 from ALL_KEYS import *
 from utils.data_loader import *
-from utils.llm import ChatGPT, AWSBedrockLLAMA
+from utils.llm import ChatGPT, AWSBedrockLLAMA, CustomLLM
 from agents.simple_provider_agent import helper
 
 
@@ -11,6 +11,8 @@ class helpers(helper):
         super().__init__(gold, task_data, gold_structure, all_task_data)
         if llm == 'llama3.1-405B':
             self.llm = AWSBedrockLLAMA("llama3.1-405B", 'log/llm_helpers_cache_llama3.1-405B.pkl')
+        elif llm == 'deepseek':
+            self.llm = CustomLLM(llm, f'log/llm_helpers_cache_{llm}.pkl')
         else:
             self.llm = ChatGPT("gpt-4o-2024-05-13", 'log/llm_helpers_cache.pkl')
         self.strict = True
