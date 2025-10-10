@@ -412,7 +412,7 @@ class HookedGEMMA(LLM):
 
     def _extract_assistant_answer(self, text: str) -> str:
         # Remove an echoed prompt and special tokens, returning the assistant reply.
-        if text is None:
+        if text is None:    
             return ""
         # If the model echo contains "Assistant:", keep everything after the last occurrence
         if "Assistant:" in text:
@@ -483,6 +483,8 @@ class HookedGEMMA(LLM):
                 decoded = str(gen_out)
 
         # decoded may be full text including prompt echo; extract assistant answer
+        if isinstance(decoded, (list, tuple)):
+            decoded = decoded[0]
         assistant_text = self._extract_assistant_answer(decoded)
 
         # log and cache
