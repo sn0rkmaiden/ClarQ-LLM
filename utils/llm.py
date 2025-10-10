@@ -10,6 +10,8 @@ from collections import OrderedDict
 
 import boto3
 from botocore.exceptions import ClientError
+from transformer_lens import HookedTransformer
+from sae_lens import SAE, ActivationsStore
 
 class LLM:
     def __init__(self, cache = None) -> None:
@@ -357,7 +359,138 @@ class LLAMA(LLM):
     
 
 
+class HookedGEMMA(LLM):
+    """
+    HookedTransformer + SAE wrapper for gemma-2b-it that follows the repository LLM interface.
+    - If `model` or `sae` are provided, they are used directly. Otherwise defaults try to load:
+        SAE.from_pretrained(release=sae_release, sae_id=sae_id, device=device)
+        HookedTransformer.from_pretrained(model_name, device=device)
+    - request(prompt, stop=None, **kwargs) returns (output_text, message)
+    """
 
+    def __init__(
+        self,
+        model_name: str = "gemma-2b-it",
+        sae_release: str = "gemma-2b-it-res-jb",
+        sae_id: str = "blocks.12.hook_resid_post",
+        model=None,
+        sae=None,
+        cache: str | None = None,
+        device: str | None = None,
+        max_new_tokens: int = 150,
+    ) -> None:
+        import torch
+        from transformer_lens import HookedTransformer
+        from sae_lens import SAE
+
+        super().__init__(cache)
+        self.model_name = model_name
+        self.is_chat_version = True
+        self.max_new_tokens = max_new_tokens
+
+        # device selection
+        if device is None:
+            device = "cuda" if torch.cuda.is_available() else "cpu"
+        self.device = device
+
+        # Use provided sae/model if present, else load them
+        if sae is not None:
+            self.sae = sae
+        else:
+            # load SAE - this matches your snippet
+            self.sae = SAE.from_pretrained(release=sae_release, sae_id=sae_id, device=device)
+
+        if model is not None:
+            self.model = model
+        else:
+            # load HookedTransformer model
+            # note: pass device through to from_pretrained
+            self.model = HookedTransformer.from_pretrained(model_name, device=device)
+
+        # The HookedTransformer exposes tokenization helpers (to_tokens, to_string)
+        # If you have a separate tokenizer object available in your environment, you can attach it as self.tokenizer.
+
+    def _extract_assistant_answer(self, text: str) -> str:
+        # Remove an echoed prompt and special tokens, returning the assistant reply.
+        if text is None:
+            return ""
+        # If the model echo contains "Assistant:", keep everything after the last occurrence
+        if "Assistant:" in text:
+            text = text.split("Assistant:")[-1]
+        # strip common special tokens and role names
+        for token in ["<bos>", "<eos>", "System:", "User:"]:
+            text = text.replace(token, "")
+        return text.strip()
+
+    def request(self, prompt, stop=None, **kwargs):
+        """
+        Accepts prompt (string or list of chat messages if you prefer).
+        Returns (output_text, message) where message is a list of dicts matching repo expectation.
+        """
+        import torch
+
+        # Build message structure similar to other LLM classes in repo
+        message = [{"role": "user", "content": prompt}]
+
+        # support chaining previous_message like the repo's other LLMs
+        if "previous_message" in kwargs and kwargs["previous_message"]:
+            try:
+                pm = kwargs["previous_message"]
+                if isinstance(pm, list):
+                    message = pm + message
+                else:
+                    # preserve previous_message if it's some other structure
+                    message = kwargs["previous_message"]
+            except Exception:
+                message = kwargs["previous_message"]
+
+        # Check cache
+        cached = self.from_cache(message)
+        if cached:
+            message.append({"role": "assistant", "content": cached})
+            return cached, message
+
+        # prompt could be a list (chat) or a string; keep it as string for HookedTransformer
+        prompt_text = prompt
+        if isinstance(prompt, list):
+            # If user passed chat-structured list, join into text (simple join - adapt if you have template)
+            prompt_text = "\n".join([f"{m['role'].capitalize()}: {m['content']}" for m in prompt])
+
+        # Decide whether to prepend BOS (respect sae metadata)
+        prepend_bos = bool(getattr(self.sae.cfg.metadata, "prepend_bos", False))
+
+        # Tokenize / prepare input tokens for HookedTransformer
+        # model.to_tokens accepts prepend_bos flag in your setup
+        try:
+            input_ids = self.model.to_tokens(prompt_text, prepend_bos=prepend_bos)
+        except Exception:
+            # fallback: try to call tokenizer if attached (rare for HookedTransformer)
+            if hasattr(self, "tokenizer"):
+                input_ids = self.tokenizer(prompt_text, return_tensors="pt").to(self.device)["input_ids"]
+            else:
+                raise
+
+        # Generate (no-steering path)
+        with torch.no_grad():
+            gen_out = self.model.generate(input_ids, max_new_tokens=self.max_new_tokens)
+            # Convert tokens -> string. HookedTransformer usually provides to_string()
+            if hasattr(self.model, "to_string"):
+                decoded = self.model.to_string(gen_out)
+            elif hasattr(self.model, "to_str_tokens"):
+                decoded = self.model.to_str_tokens(gen_out)
+            else:
+                # Best-effort fallback
+                decoded = str(gen_out)
+
+        # decoded may be full text including prompt echo; extract assistant answer
+        assistant_text = self._extract_assistant_answer(decoded)
+
+        # log and cache
+        super().log(prompt_text, assistant_text, model=self.model_name)
+        self.save_to_cache(message, assistant_text)
+
+        message.append({"role": "assistant", "content": assistant_text})
+        return assistant_text, message
 
 
 class AWSBedrockLLAMA(LLM):
