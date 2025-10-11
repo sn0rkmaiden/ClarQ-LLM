@@ -67,7 +67,7 @@ def generate_with_steering(
             max_new_tokens=max_new_tokens,
             temperature=0.7,
             top_p=0.9,
-            stop_at_eos=False if device == "mps" else True,
+            stop_at_eos=False if model.cfg.device == "mps" else True,
             prepend_bos=sae.cfg.metadata.prepend_bos,
         )
 
@@ -153,7 +153,6 @@ def run_multiturn_conversation_generic(
             # Re-tokenize full prompt; pass prepend_bos for first generation only
             input_for_gen = model.to_tokens(prompt_text, prepend_bos=effective_prepend_bos)
 
-        # Choose generation call:
         if steering_feature is not None:
             # Use your SAE steering helper that expects (model, sae, prompt_text, ..)
             # generate_with_steering in your notebook uses sae.cfg.metadata.prepend_bos internally,
