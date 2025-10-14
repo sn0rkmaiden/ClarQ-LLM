@@ -3,7 +3,7 @@ from agents.provider_agent import helpers as general_provider
 from agents.multi_info_provider_agent import helpers_m as multi_info_provider
 from ALL_KEYS import *
 from utils.data_loader import *
-from utils.llm import ChatGPT,QianFan,LLAMA,AWSBedrockLLAMA, CustomLLM
+from utils.llm import ChatGPT, QianFan, LLAMA, AWSBedrockLLAMA, CustomLLM, HookedGEMMA
 import argparse
 from dotenv import load_dotenv
 
@@ -134,10 +134,16 @@ if __name__ == "__main__":
     elif args.seeker_agent_llm == 'deepseek':
         player_llm = CustomLLM(args.seeker_agent_llm, f'log/llm_player_cache_deepseek.pkl')
         output_path = "results/l2l_deepseek.{}.{}.json".format(mode,language)
+    elif args.seeker_agent_llm == 'gemma':
+        player_llm = HookedGEMMA(model_name="gemma-2b-it",
+                        sae_release="gemma-2b-it-res-jb",
+                        sae_id="blocks.12.hook_resid_post",
+                        device="cuda")
+        output_path = "results/l2l_gemma.{}.{}.json".format(mode, language)
     else:
         player_llm = ChatGPT("gpt-3.5-turbo-0125", 'log/gpt3_plyaer_cache.pkl')
         output_path = "results/l2l_gpt3.5.{}.{}.json".format(mode,language)
 
-    evaluate_player(task_data_path, output_path, player_llm, player_chat_mode,provider_agent_constructor,args.provider_agent_llm)
+    evaluate_player(task_data_path, output_path, player_llm, player_chat_mode, provider_agent_constructor, args.provider_agent_llm)
 
 

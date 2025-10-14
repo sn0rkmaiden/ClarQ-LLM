@@ -1,7 +1,7 @@
 import copy
 from ALL_KEYS import *
 from utils.data_loader import *
-from utils.llm import ChatGPT, AWSBedrockLLAMA, CustomLLM
+from utils.llm import ChatGPT, AWSBedrockLLAMA, CustomLLM, HookedGEMMA
 from agents.simple_provider_agent import helper
 
 
@@ -13,6 +13,11 @@ class helpers(helper):
             self.llm = AWSBedrockLLAMA("llama3.1-405B", 'log/llm_helpers_cache_llama3.1-405B.pkl')
         elif llm == 'deepseek':
             self.llm = CustomLLM(llm, f'log/llm_helpers_cache_{llm}.pkl')
+        elif llm == 'gemma':
+            self.llm = HookedGEMMA(model_name="gemma-2b-it",
+                        sae_release="gemma-2b-it-res-jb",
+                        sae_id="blocks.12.hook_resid_post",
+                        device="cuda")
         else:
             self.llm = ChatGPT("gpt-4o-2024-05-13", 'log/llm_helpers_cache.pkl')
         self.strict = True
