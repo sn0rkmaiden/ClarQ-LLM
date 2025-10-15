@@ -102,11 +102,13 @@ if __name__ == "__main__":
     parser.add_argument('--player_chat_mode', action='store_true', help='Enable player chat mode')
     parser.add_argument('--multi_info_provider_agent', action='store_true', help='Use a multiple info provider agent instead of a general provider agent.')
     parser.add_argument('--play_around', action='store_true')
-    
+    parser.add_argument('--hftoken', type=str, help='Huggingface token if deepseek model is used')
+
     args = parser.parse_args()
     
     player_chat_mode = args.player_chat_mode
     task_data_path = args.task_data_path
+    hftoken = args.hftoken
 
     provider_agent_constructor = multi_info_provider if args.multi_info_provider_agent else general_provider
     language = 'En' if task_data_path == 'data/English' else 'Ch'
@@ -132,7 +134,7 @@ if __name__ == "__main__":
         player_llm = AWSBedrockLLAMA("llama3.1-405B", 'log/llm_player_cache_llama3.1-405B.pkl')
         output_path = "results/l2l_llama3.1-405B.{}.{}.json".format(mode,language)
     elif args.seeker_agent_llm == 'deepseek':
-        player_llm = CustomLLM(args.seeker_agent_llm, f'log/llm_player_cache_deepseek.pkl')
+        player_llm = CustomLLM(args.seeker_agent_llm, f'log/llm_player_cache_deepseek.pkl', api_key=hftoken)
         output_path = "results/l2l_deepseek.{}.{}.json".format(mode,language)
     elif args.seeker_agent_llm == 'gemma':
         player_llm = HookedGEMMA(model_name="gemma-2b-it",
