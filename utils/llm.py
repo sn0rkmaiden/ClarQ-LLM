@@ -4,6 +4,9 @@ from openai import OpenAI
 import os, re, json, copy
 from utils.log import llm_log
 import time
+import torch
+from transformer_lens import HookedTransformer
+from sae_lens import SAE
 
 import pickle
 from collections import OrderedDict
@@ -379,9 +382,6 @@ class HookedGEMMA(LLM):
         device: str | None = None,
         max_new_tokens: int = 100,
     ) -> None:
-        import torch
-        from transformer_lens import HookedTransformer
-        from sae_lens import SAE
 
         super().__init__(cache)
         self.model_name = model_name
