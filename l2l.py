@@ -109,6 +109,7 @@ if __name__ == "__main__":
     player_chat_mode = args.player_chat_mode
     task_data_path = args.task_data_path
     hftoken = args.hftoken
+    print(f"got value for token from function {hftoken}")
 
     provider_agent_constructor = multi_info_provider if args.multi_info_provider_agent else general_provider
     language = 'En' if task_data_path == 'data/English' else 'Ch'

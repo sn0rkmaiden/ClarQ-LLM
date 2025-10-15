@@ -596,7 +596,7 @@ class CustomLLM(LLM):
             self.api_key = os.getenv("HF_TOKEN")
         else: 
             self.api_key = api_key
-        print(f"init custom LLM, api key is {api_key}")
+        print(f"init custom LLM, api key is {self.api_key}")
         self.client = OpenAI(
             base_url="https://router.huggingface.co/v1",
             api_key=self.api_key,
