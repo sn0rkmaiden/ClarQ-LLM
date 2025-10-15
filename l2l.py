@@ -22,10 +22,8 @@ def evaluate_player(task_data_path, output_path, player_llm, player_chat_mode, p
             print("{0}.{1}".format(i+1,j))
             evaluate_results[i].append([])
 
-            gold_r = conv['all_response'].strip().split('\n')
-            print("before provider")
-            h = provider_constructor(gold_r, conv['background_splitted'], conv['gold_structure'], conv, provider_llm, api_key=hftoken)
-            print("before player")
+            gold_r = conv['all_response'].strip().split('\n')            
+            h = provider_constructor(gold_r, conv['background_splitted'], conv['gold_structure'], conv, provider_llm, api_key=hftoken)            
             p = player(conv['background_splitted'], player_llm, player_chat_mode)
             l2l_conv = []
             while True:
