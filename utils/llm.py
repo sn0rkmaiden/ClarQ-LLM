@@ -377,7 +377,7 @@ class HookedGEMMA(LLM):
         sae=None,
         cache: str | None = None,
         device: str | None = None,
-        max_new_tokens: int = 150,
+        max_new_tokens: int = 50,
     ) -> None:
         import torch
         from transformer_lens import HookedTransformer
