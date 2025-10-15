@@ -8,7 +8,7 @@ import argparse
 from dotenv import load_dotenv
 
 
-def evaluate_player(task_data_path, output_path, player_llm, player_chat_mode, provider_constructor, provider_llm):
+def evaluate_player(task_data_path, output_path, player_llm, player_chat_mode, provider_constructor, provider_llm, hftoken):
     all_conv = data_combination(read_path(task_data_path))
     evaluation_set = [i for i in range(26)]
     evaluate_results = []
@@ -23,7 +23,7 @@ def evaluate_player(task_data_path, output_path, player_llm, player_chat_mode, p
             evaluate_results[i].append([])
 
             gold_r = conv['all_response'].strip().split('\n')
-            h = provider_constructor(gold_r, conv['background_splitted'], conv['gold_structure'], conv, provider_llm)
+            h = provider_constructor(gold_r, conv['background_splitted'], conv['gold_structure'], conv, provider_llm, api_key=hftoken)
             p = player(conv['background_splitted'], player_llm, player_chat_mode)
             l2l_conv = []
             while True:
@@ -134,7 +134,7 @@ if __name__ == "__main__":
         player_llm = AWSBedrockLLAMA("llama3.1-405B", 'log/llm_player_cache_llama3.1-405B.pkl')
         output_path = "results/l2l_llama3.1-405B.{}.{}.json".format(mode,language)
     elif args.seeker_agent_llm == 'deepseek':
-        player_llm = CustomLLM(args.seeker_agent_llm, f'log/llm_player_cache_deepseek.pkl', api_key=hftoken)
+        player_llm = CustomLLM(args.seeker_agent_llm, api_key=hftoken, cache=f'log/llm_player_cache_deepseek.pkl')
         output_path = "results/l2l_deepseek.{}.{}.json".format(mode,language)
     elif args.seeker_agent_llm == 'gemma':
         player_llm = HookedGEMMA(model_name="gemma-2b-it",
@@ -146,6 +146,6 @@ if __name__ == "__main__":
         player_llm = ChatGPT("gpt-3.5-turbo-0125", 'log/gpt3_plyaer_cache.pkl')
         output_path = "results/l2l_gpt3.5.{}.{}.json".format(mode,language)
 
-    evaluate_player(task_data_path, output_path, player_llm, player_chat_mode, provider_agent_constructor, args.provider_agent_llm)
+    evaluate_player(task_data_path, output_path, player_llm, player_chat_mode, provider_agent_constructor, args.provider_agent_llm, hftoken)
 
 

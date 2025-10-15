@@ -7,12 +7,12 @@ from agents.simple_provider_agent import helper
 
 
 class helpers(helper):
-    def __init__(self, gold, task_data, gold_structure, all_task_data, llm='gpt4o') -> None:
+    def __init__(self, gold, task_data, gold_structure, all_task_data, llm='gpt4o', api_key = None) -> None:
         super().__init__(gold, task_data, gold_structure, all_task_data)
         if llm == 'llama3.1-405B':
             self.llm = AWSBedrockLLAMA("llama3.1-405B", 'log/llm_helpers_cache_llama3.1-405B.pkl')
         elif llm == 'deepseek':
-            self.llm = CustomLLM(llm, f'log/llm_helpers_cache_{llm}.pkl')
+            self.llm = CustomLLM(llm, api_key=api_key, cache=f'log/llm_helpers_cache_{llm}.pkl')
         elif llm == 'gemma':
             self.llm = HookedGEMMA(model_name="gemma-2b-it",
                         sae_release="gemma-2b-it-res-jb",
