@@ -377,7 +377,7 @@ class HookedGEMMA(LLM):
         sae=None,
         cache: str | None = None,
         device: str | None = None,
-        max_new_tokens: int = 50,
+        max_new_tokens: int = 100,
     ) -> None:
         import torch
         from transformer_lens import HookedTransformer
@@ -429,7 +429,6 @@ class HookedGEMMA(LLM):
         Accepts prompt (string or list of chat messages if you prefer).
         Returns (output_text, message) where message is a list of dicts matching repo expectation.
         """
-        import torch
 
         # Build message structure similar to other LLM classes in repo
         message = [{"role": "user", "content": prompt}]
