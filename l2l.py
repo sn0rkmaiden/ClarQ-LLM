@@ -132,7 +132,7 @@ if __name__ == "__main__":
         if player_chat_mode:
             player_llm = LLAMA("[your-llama-model-path] max_new_tokens:150", 'log/llama2_plyaer_cache.pkl')
         else:
-            player_llm = LLAMA("[your-llama-model-path] max_new_tokens:150", 'log/llama2_plyaer_cache.pkl')
+            player_llm = LLAMA("[gemma-2b-it] max_new_tokens:150", 'log/llama2_plyaer_cache.pkl')
         output_path = "results/l2l_llama.{}.{}.json".format(mode,language)
     elif args.seeker_agent_llm  == 'llama3.1-405B':
         player_llm = AWSBedrockLLAMA("llama3.1-405B", 'log/llm_player_cache_llama3.1-405B.pkl')
