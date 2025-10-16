@@ -645,3 +645,83 @@ class CustomLLM(LLM):
         message.append({"role": "assistant", "content": completion.choices[0].message.content})
         
         return completion.choices[0].message.content, message
+    
+
+
+class HuggingFaceLLM(LLM):
+    def __init__(self, name, cache=None):
+        import torch
+        from transformers import AutoModelForCausalLM, AutoTokenizer, AutoConfig
+
+        # Set deterministic behavior
+        torch.manual_seed(8848)
+        torch.cuda.manual_seed_all(8848)
+
+        super().__init__(cache)
+
+        # --- Parse model name and config args ---
+        model_id = name
+        self.max_new_tokens = 150  # default
+        self.is_chat_version = "-chat" in model_id.lower()
+
+        # --- Load model config to infer type ---
+        config = AutoConfig.from_pretrained(model_id)
+        self.model_name = config.model_type
+
+        # --- Load model & tokenizer dynamically ---
+        self.model = AutoModelForCausalLM.from_pretrained(
+            model_id,
+            torch_dtype=torch.bfloat16,
+            device_map="auto",
+            low_cpu_mem_usage=True,
+            return_dict=True,
+        )
+        self.model.eval()
+
+        self.tokenizer = AutoTokenizer.from_pretrained(model_id)
+        if self.tokenizer.pad_token is None:
+            self.tokenizer.pad_token = self.tokenizer.eos_token
+
+    def request(self, prompt, stop=None, **kwargs):
+        import torch
+
+        # --- Handle chat vs normal text ---
+        if self.is_chat_version:
+            if 'previous_message' in kwargs:
+                messages = kwargs['previous_message'] + [{"role": "user", "content": prompt}]
+            else:
+                messages = [{"role": "user", "content": prompt}]
+        else:
+            messages = [{"role": "user", "content": prompt}]
+
+        cached = self.from_cache(messages)
+        if cached:
+            messages.append({"role": "assistant", "content": cached})
+            return cached, messages
+
+        # --- Tokenize & move to GPU ---
+        inputs = self.tokenizer(prompt, return_tensors="pt", truncation=True)
+        inputs = {k: v.to("cuda") for k, v in inputs.items()}
+
+        # --- Generate text ---
+        with torch.no_grad():
+            outputs = self.model.generate(
+                **inputs,
+                max_new_tokens=self.max_new_tokens,
+                temperature=0.8,
+                top_p=0.95,
+                top_k=50,
+                do_sample=True,
+                use_cache=True,
+                repetition_penalty=1.05,
+            )
+
+        # Decode only the newly generated part
+        output_text = self.tokenizer.decode(outputs[0][inputs["input_ids"].shape[-1]:], skip_special_tokens=True)
+
+        # --- Log + cache ---
+        super().log(prompt, output_text, model=self.model_name)
+        self.save_to_cache(messages, output_text)
+        messages.append({"role": "assistant", "content": output_text})
+
+        return output_text, messages

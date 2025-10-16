@@ -3,7 +3,7 @@ from agents.provider_agent import helpers as general_provider
 from agents.multi_info_provider_agent import helpers_m as multi_info_provider
 from ALL_KEYS import *
 from utils.data_loader import *
-from utils.llm import ChatGPT, QianFan, LLAMA, AWSBedrockLLAMA, CustomLLM, HookedGEMMA
+from utils.llm import ChatGPT, QianFan, LLAMA, AWSBedrockLLAMA, CustomLLM, HookedGEMMA, HuggingFaceLLM
 import argparse
 import torch
 from dotenv import load_dotenv
@@ -132,7 +132,7 @@ if __name__ == "__main__":
         if player_chat_mode:
             player_llm = LLAMA("[your-llama-model-path] max_new_tokens:150", 'log/llama2_plyaer_cache.pkl')
         else:
-            player_llm = LLAMA("[gemma-2b-it] max_new_tokens:150", 'log/llama2_plyaer_cache.pkl')
+            player_llm = LLAMA("[google/gemma-2b-it] max_new_tokens:150", 'log/llama2_plyaer_cache.pkl')
         output_path = "results/l2l_llama.{}.{}.json".format(mode,language)
     elif args.seeker_agent_llm  == 'llama3.1-405B':
         player_llm = AWSBedrockLLAMA("llama3.1-405B", 'log/llm_player_cache_llama3.1-405B.pkl')
@@ -147,8 +147,8 @@ if __name__ == "__main__":
                         device="cuda")
         output_path = "results/l2l_gemma.{}.{}.json".format(mode, language)
     else:
-        player_llm = ChatGPT("gpt-3.5-turbo-0125", 'log/gpt3_plyaer_cache.pkl')
-        output_path = "results/l2l_gpt3.5.{}.{}.json".format(mode,language)
+        player_llm = HuggingFaceLLM(args.seeker_agent_llm, f'log/{args.seeker_agent_llm}_plyaer_cache.pkl')
+        output_path = "results/l2l_{}.{}.{}.json".format(args.seeker_agent_llm, mode, language)
 
     evaluate_player(task_data_path, output_path, player_llm, player_chat_mode, provider_agent_constructor, args.provider_agent_llm, hftoken)
 

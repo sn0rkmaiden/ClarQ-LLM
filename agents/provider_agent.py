@@ -1,7 +1,7 @@
 import copy
 from ALL_KEYS import *
 from utils.data_loader import *
-from utils.llm import ChatGPT, AWSBedrockLLAMA, CustomLLM, HookedGEMMA
+from utils.llm import ChatGPT, AWSBedrockLLAMA, CustomLLM, HookedGEMMA, HuggingFaceLLM
 from agents.simple_provider_agent import helper
 
 
@@ -19,7 +19,7 @@ class helpers(helper):
                         sae_id="blocks.12.hook_resid_post",
                         device="cuda")
         else:
-            self.llm = ChatGPT("gpt-4o-2024-05-13", 'log/llm_helpers_cache.pkl')
+            self.llm = HuggingFaceLLM(llm, 'log/llm_helpers_cache.pkl')
         self.strict = True
 
 
