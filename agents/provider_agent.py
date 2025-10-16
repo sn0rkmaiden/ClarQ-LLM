@@ -126,8 +126,8 @@ class helpers(helper):
         return final_response
 
     def prompt_pure(self, prompt):
-        json_format = False if self.llm == 'deepseek' or self.llm == 'gemma' else True
-        response,_ =  self.llm.request(prompt, None, json_format=json_format)
+        # json_format = False if self.llm == 'deepseek' or self.llm == 'gemma' else True
+        response,_ =  self.llm.request(prompt, None, json_format=False)
         return json.loads(response)
 
 
