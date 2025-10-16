@@ -30,8 +30,8 @@ def evaluate_player(task_data_path, output_path, player_llm, player_chat_mode, p
             p = player(conv['background_splitted'], player_llm, player_chat_mode)
             l2l_conv = []
             while True:
-                l2l_conv.append(h.generate_reponse(l2l_conv))
-                l2l_conv.append(p.generate_reponse(l2l_conv))
+                l2l_conv.append(h.generate_response(l2l_conv))
+                l2l_conv.append(p.generate_response(l2l_conv))
                 if h.is_conv_end(l2l_conv) or len(l2l_conv) > 22:
                     break
             for c in l2l_conv:
@@ -45,8 +45,6 @@ def evaluate_player(task_data_path, output_path, player_llm, player_chat_mode, p
             break
     with open(output_path, "w") as json_file:
         json.dump(all_conv, json_file, ensure_ascii=False, indent=2)
-
-    
 
 
 def test_helper(task_data_path, provider_constructor, provider_llm):

@@ -29,8 +29,6 @@ class LLM:
                 self.cache = OrderedDict()
 
 
-
-
     def extract_json_string(self, input_string):
         def process_colons_string(input_string, colon_positions):
             def find_string_bounds(s, start_pos, next_pos=None):
@@ -170,7 +168,6 @@ class LLM:
         pass
 
 
-
 class ChatGPT(LLM):
     def __init__(self, name, cache = None) -> None:
         super().__init__(cache)
@@ -231,7 +228,6 @@ class ChatGPT(LLM):
         return completion.choices[0].message.content, message
 
 
-
 class QianFan(LLM):
     def __init__(self, name, cache = None) -> None:
         import qianfan
@@ -265,8 +261,6 @@ class QianFan(LLM):
         message.append({"role": "assistant", "content": completion.body['result']})
 
         return completion.body['result'], message
-
-
 
 
 class LLAMA(LLM):
@@ -639,12 +633,36 @@ class CustomLLM(LLM):
                 **({"response_format": {"type": "json_object"}} if json_format else {})
             )
             time.sleep(0.5)
-        super().log(message, completion.choices[0].message.content, model=completion.model, system_fingerprint = completion.system_fingerprint, usage = [completion.usage.prompt_tokens, completion.usage.completion_tokens, completion.usage.total_tokens])
-        self.save_to_cache(message, completion.choices[0].message.content)
-        
-        message.append({"role": "assistant", "content": completion.choices[0].message.content})
-        
-        return completion.choices[0].message.content, message
+
+        output_text = completion.choices[0].message.content
+
+        # ✅ NEW: if router ignored response_format, extract JSON manually
+        import re
+        if json_format:
+            match = re.search(r"\{[\s\S]*\}", output_text)
+            if match:
+                json_str = match.group(0)
+                try:
+                    json.loads(json_str)  # Validate
+                    output_text = json_str
+                except json.JSONDecodeError:
+                    pass  # Keep original text if broken
+    
+        super().log(
+            message,
+            output_text,
+            model=getattr(completion, "model", self.model_name),
+            system_fingerprint=getattr(completion, "system_fingerprint", None),
+            usage=[
+                getattr(completion, "usage", {}).get("prompt_tokens", None),
+                getattr(completion, "usage", {}).get("completion_tokens", None),
+                getattr(completion, "usage", {}).get("total_tokens", None),
+            ],
+        )
+
+        self.save_to_cache(message, output_text)
+        message.append({"role": "assistant", "content": output_text})
+        return output_text, message
     
 
 

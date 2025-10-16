@@ -67,7 +67,7 @@ class helpers(helper):
         return response, g_r
 
 
-    def generate_reponse(self, previous_content):
+    def generate_response(self, previous_content):
         previous_content = copy.deepcopy(previous_content)
         if not previous_content:
             if self.chinese:
@@ -126,8 +126,8 @@ class helpers(helper):
         return final_response
 
     def prompt_pure(self, prompt):
-        resonse,_ =  self.llm.request(prompt, None, json_format=True)
-        return json.loads(resonse)
+        response,_ =  self.llm.request(prompt, None, json_format=True)
+        return json.loads(response)
 
 
     def data2prompt_0(self, previous_content):
