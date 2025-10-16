@@ -681,7 +681,7 @@ class HuggingFaceLLM(LLM):
 
         model_id = name
         print(f"Huggingface model {model_id} init!")
-        self.max_new_tokens = 150
+        self.max_new_tokens = 100
         self.is_chat_version = "-chat" in model_id.lower()
 
         config = AutoConfig.from_pretrained(model_id)
@@ -734,8 +734,6 @@ class HuggingFaceLLM(LLM):
                 repetition_penalty=1.0,
                 length_penalty=1,
             )
-
-            print(f"outputs are \n{outputs}")
 
             # Decode only the newly generated part
             output_text = self.tokenizer.decode(outputs[0][inputs["input_ids"].shape[-1]:], skip_special_tokens=True)

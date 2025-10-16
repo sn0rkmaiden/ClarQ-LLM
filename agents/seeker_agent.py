@@ -69,9 +69,6 @@ class player:
             resonse = resonse[5:]
         return resonse
 
-
-
-    
         
 
     def data2prompt(self, content):
