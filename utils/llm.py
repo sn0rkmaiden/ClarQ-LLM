@@ -648,21 +648,26 @@ class CustomLLM(LLM):
                 except json.JSONDecodeError:
                     pass  # Keep original text if broken
     
+        usage = getattr(completion, "usage", None)
+        if usage:
+            prompt_tokens = getattr(usage, "prompt_tokens", None)
+            completion_tokens = getattr(usage, "completion_tokens", None)
+            total_tokens = getattr(usage, "total_tokens", None)
+        else:
+            prompt_tokens = completion_tokens = total_tokens = None
+
         super().log(
             message,
             output_text,
             model=getattr(completion, "model", self.model_name),
             system_fingerprint=getattr(completion, "system_fingerprint", None),
-            usage=[
-                getattr(completion, "usage", {}).get("prompt_tokens", None),
-                getattr(completion, "usage", {}).get("completion_tokens", None),
-                getattr(completion, "usage", {}).get("total_tokens", None),
-            ],
+            usage=[prompt_tokens, completion_tokens, total_tokens],
         )
 
         self.save_to_cache(message, output_text)
         message.append({"role": "assistant", "content": output_text})
         return output_text, message
+
     
 
 
