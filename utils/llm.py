@@ -671,7 +671,6 @@ class CustomLLM(LLM):
 
 class HuggingFaceLLM(LLM):
     def __init__(self, name, cache=None):
-        import torch
         from transformers import AutoModelForCausalLM, AutoTokenizer, AutoConfig
 
         # Set deterministic behavior
@@ -701,10 +700,9 @@ class HuggingFaceLLM(LLM):
         if self.tokenizer.pad_token is None:
             self.tokenizer.pad_token = self.tokenizer.eos_token
 
-    def request(self, prompt, stop=None, **kwargs):
+    def request(self, prompt, **kwargs):
         import torch
 
-        # --- Handle chat vs normal text ---
         if self.is_chat_version:
             if 'previous_message' in kwargs:
                 messages = kwargs['previous_message'] + [{"role": "user", "content": prompt}]
@@ -727,13 +725,17 @@ class HuggingFaceLLM(LLM):
             outputs = self.model.generate(
                 **inputs,
                 max_new_tokens=self.max_new_tokens,
-                temperature=0.8,
-                top_p=0.95,
-                top_k=50,
                 do_sample=True,
+                top_p=1.0,
+                temperature=1.0,
+                min_length=None,
                 use_cache=True,
-                repetition_penalty=1.05,
+                top_k=50,
+                repetition_penalty=1.0,
+                length_penalty=1,
             )
+
+            print(f"outputs are \n{outputs}")
 
             # Decode only the newly generated part
             output_text = self.tokenizer.decode(outputs[0][inputs["input_ids"].shape[-1]:], skip_special_tokens=True)
