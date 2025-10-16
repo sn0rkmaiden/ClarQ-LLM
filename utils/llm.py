@@ -675,8 +675,8 @@ class HuggingFaceLLM(LLM):
         from transformers import AutoModelForCausalLM, AutoTokenizer, AutoConfig
 
         # Set deterministic behavior
-        torch.manual_seed(8848)
-        torch.cuda.manual_seed_all(8848)
+        # torch.manual_seed(8848)
+        # torch.cuda.manual_seed_all(8848)
 
         super().__init__(cache)
 
