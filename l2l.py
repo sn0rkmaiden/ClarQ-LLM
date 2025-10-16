@@ -147,8 +147,8 @@ if __name__ == "__main__":
                         device="cuda")
         output_path = "results/l2l_gemma.{}.{}.json".format(mode, language)
     else:
-        player_llm = HuggingFaceLLM(args.seeker_agent_llm, f'log/{args.seeker_agent_llm}_plyaer_cache.pkl')
-        output_path = "results/l2l_{}.{}.{}.json".format(args.seeker_agent_llm, mode, language)
+        player_llm = HuggingFaceLLM(args.seeker_agent_llm, f'log/{args.seeker_agent_llm.split('/')[-1]}_plyaer_cache.pkl')
+        output_path = "results/l2l_{}.{}.{}.json".format(args.seeker_agent_llm.split('/')[-1], mode, language)
 
     evaluate_player(task_data_path, output_path, player_llm, player_chat_mode, provider_agent_constructor, args.provider_agent_llm, hftoken)
 
