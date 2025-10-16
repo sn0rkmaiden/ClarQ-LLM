@@ -355,7 +355,6 @@ class LLAMA(LLM):
         return output_text, message
     
 
-
 class HookedGEMMA(LLM):
     """
     HookedTransformer + SAE wrapper for gemma-2b-it that follows the repository LLM interface.
@@ -584,7 +583,7 @@ class CustomLLM(LLM):
     def __init__(self, name, api_key, cache = None) -> None:
         super().__init__(cache)   
         if name == 'deepseek':     
-            self.model_name = "deepseek-ai/DeepSeek-V3:novita"
+            self.model_name = "deepseek-ai/DeepSeek-V3:nebius"
         else:
             self.model_name = name
         if api_key is None:
@@ -636,17 +635,16 @@ class CustomLLM(LLM):
 
         output_text = completion.choices[0].message.content
 
-        # ✅ NEW: if router ignored response_format, extract JSON manually
-        import re
-        if json_format:
-            match = re.search(r"\{[\s\S]*\}", output_text)
-            if match:
-                json_str = match.group(0)
-                try:
-                    json.loads(json_str)  # Validate
-                    output_text = json_str
-                except json.JSONDecodeError:
-                    pass  # Keep original text if broken
+        # import re
+        # if json_format:
+        #     match = re.search(r"\{[\s\S]*\}", output_text)
+        #     if match:
+        #         json_str = match.group(0)
+        #         try:
+        #             json.loads(json_str)  # Validate
+        #             output_text = json_str
+        #         except json.JSONDecodeError:
+        #             pass  # Keep original text if broken
     
         usage = getattr(completion, "usage", None)
         if usage:
