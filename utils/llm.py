@@ -693,7 +693,7 @@ class HuggingFaceLLM(LLM):
         # --- Load model & tokenizer dynamically ---
         self.model = AutoModelForCausalLM.from_pretrained(
             model_id,
-            torch_dtype=torch.bfloat16,
+            # torch_dtype=torch.bfloat16,
             device_map="auto",
             low_cpu_mem_usage=True,
             return_dict=True,
