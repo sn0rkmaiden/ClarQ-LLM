@@ -380,7 +380,7 @@ class HookedGEMMA(LLM):
         sae=None,
         cache: str | None = None,
         device: str | None = None,
-        max_new_tokens: int = 100,
+        max_new_tokens: int = 50,
     ) -> None:
 
         super().__init__(cache)
