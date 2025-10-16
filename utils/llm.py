@@ -590,7 +590,7 @@ class CustomLLM(LLM):
     def __init__(self, name, api_key, cache = None) -> None:
         super().__init__(cache)   
         if name == 'deepseek':     
-            self.model_name = "deepseek-ai/DeepSeek-V3:nebius"
+            self.model_name = "deepseek-ai/DeepSeek-V3:novita"
         else:
             self.model_name = name
         if api_key is None:
@@ -661,6 +661,7 @@ class HuggingFaceLLM(LLM):
 
         # --- Parse model name and config args ---
         model_id = name
+        print(f"Huggingface model {model_id} init!")
         self.max_new_tokens = 150  # default
         self.is_chat_version = "-chat" in model_id.lower()
 
