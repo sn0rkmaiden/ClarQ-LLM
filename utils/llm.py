@@ -700,7 +700,7 @@ class HuggingFaceLLM(LLM):
         if self.tokenizer.pad_token is None:
             self.tokenizer.pad_token = self.tokenizer.eos_token
 
-    def request(self, prompt, stop, **kwargs):
+    def request(self, prompt, stop=None, **kwargs):
         import torch
 
         if self.is_chat_version:
