@@ -74,7 +74,7 @@ def test_helper(task_data_path, provider_constructor, provider_llm):
 
             l2l_conv = []
             while True:
-                l2l_conv.append(h.generate_reponse(l2l_conv))
+                l2l_conv.append(h.generate_response(l2l_conv))
                 for c in l2l_conv:
                     print(c)
                     print()

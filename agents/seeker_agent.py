@@ -10,7 +10,7 @@ class player:
         self.chat_mode = chat_mode
         self.chinese = True if detect_language(task_data[0]) == "Chinese" else False
 
-    def generate_reponse(self, previous_content):
+    def generate_response(self, previous_content):
         background = self.data2prompt(self.task_data)
         if self.chat_mode:
             return self.prompt_chat(background, previous_content[:-1], previous_content[-1])
