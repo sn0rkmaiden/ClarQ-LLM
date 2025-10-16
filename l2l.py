@@ -5,6 +5,7 @@ from ALL_KEYS import *
 from utils.data_loader import *
 from utils.llm import ChatGPT, QianFan, LLAMA, AWSBedrockLLAMA, CustomLLM, HookedGEMMA
 import argparse
+import torch
 from dotenv import load_dotenv
 
 
@@ -21,6 +22,8 @@ def evaluate_player(task_data_path, output_path, player_llm, player_chat_mode, p
 
             print("{0}.{1}".format(i+1,j))
             evaluate_results[i].append([])
+
+            torch.cuda.empty_cache()
 
             gold_r = conv['all_response'].strip().split('\n')            
             h = provider_constructor(gold_r, conv['background_splitted'], conv['gold_structure'], conv, provider_llm, api_key=hftoken)            
