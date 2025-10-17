@@ -584,8 +584,6 @@ class CustomLLM(LLM):
         super().__init__(cache)   
         if name == 'deepseek':     
             self.model_name = "deepseek-ai/DeepSeek-V3:nebius"
-        if name == "deepseek_free":
-            self.model_name = "deepseek/deepseek-chat-v3.1:free"
         else:
             self.model_name = name
         if api_key is None:

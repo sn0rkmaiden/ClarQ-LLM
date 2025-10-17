@@ -11,7 +11,7 @@ class helpers(helper):
         super().__init__(gold, task_data, gold_structure, all_task_data)
         if llm == 'llama3.1-405B':
             self.llm = AWSBedrockLLAMA("llama3.1-405B", 'log/llm_helpers_cache_llama3.1-405B.pkl')
-        elif llm == 'deepseek' or llm == 'deepseek_free':
+        elif llm == 'deepseek':
             self.llm = CustomLLM(llm, api_key=api_key, cache=f'log/llm_helpers_cache_{llm}.pkl')
         elif llm == 'gemma':
             self.llm = HookedGEMMA(model_name="gemma-2b-it",

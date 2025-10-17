@@ -135,7 +135,7 @@ if __name__ == "__main__":
     elif args.seeker_agent_llm  == 'llama3.1-405B':
         player_llm = AWSBedrockLLAMA("llama3.1-405B", 'log/llm_player_cache_llama3.1-405B.pkl')
         output_path = "results/l2l_llama3.1-405B.{}.{}.json".format(mode,language)
-    elif args.seeker_agent_llm == 'deepseek' or args.seeker_agent_llm == 'deepseek_free':
+    elif args.seeker_agent_llm == 'deepseek':
         player_llm = CustomLLM(args.seeker_agent_llm, api_key=hftoken, cache=f'log/llm_player_cache_deepseek.pkl')
         output_path = "results/l2l_deepseek.{}.{}.json".format(mode,language)
     elif args.seeker_agent_llm == 'gemma':
