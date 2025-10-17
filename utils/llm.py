@@ -582,10 +582,11 @@ class AWSBedrockLLAMA(LLM):
 class CustomLLM(LLM):
     def __init__(self, name, api_key, cache = None) -> None:
         super().__init__(cache)   
-        if name == 'deepseek':     
-            self.model_name = "deepseek-ai/DeepSeek-V3:nebius"
-        else:
-            self.model_name = name
+
+        # if name == 'deepseek':     
+        self.model_name = "deepseek-ai/DeepSeek-V3:nebius"
+        # else:
+            # self.model_name = name
         if api_key is None:
             self.api_key = os.getenv("HF_TOKEN")
         else: 
