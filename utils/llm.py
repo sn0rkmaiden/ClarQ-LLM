@@ -592,7 +592,8 @@ class CustomLLM(LLM):
             self.api_key = api_key
         print(f"CustomLLM init!")
         self.client = OpenAI(
-            base_url="https://router.huggingface.co/v1",
+            # base_url="https://router.huggingface.co/v1",
+            base_url = "https://openrouter.ai/api/v1",
             api_key=self.api_key,
         )
         
