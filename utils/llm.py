@@ -583,13 +583,14 @@ class CustomLLM(LLM):
     def __init__(self, name, api_key, cache = None) -> None:
         super().__init__(cache)   
         name = name.strip()
+        print(f"api_key is {api_key} and {self.api_key} name is {name}")
 
         if api_key is None:
             self.api_key = os.getenv("HF_TOKEN")
         else: 
             self.api_key = api_key
 
-        print(f"api_key is {api_key} and {self.api_key}")
+        
 
         if name == 'deepseek':     
             self.model_name = "deepseek-ai/DeepSeek-V3:nebius"
