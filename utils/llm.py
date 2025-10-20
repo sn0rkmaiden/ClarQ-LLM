@@ -583,7 +583,7 @@ import os
 import time
 import json
 
-class CustomLLM(LLM):
+class CustomLLM0(LLM):
     def __init__(self, name, api_key=None, cache=None) -> None:
         super().__init__(cache)
 
@@ -680,6 +680,125 @@ class CustomLLM(LLM):
         message.append({"role": "assistant", "content": output_text})
         return output_text, message    
 
+import os
+import time
+import json
+from langchain_nebius import ChatNebius
+from openai import OpenAI  # or whichever OpenAI‐wrapper you use
+
+class CustomLLM(LLM):
+    def __init__(self, name, api_key=None, cache=None) -> None:
+        super().__init__(cache)
+        name = name.strip().lower()
+        # set api_key early
+        self.api_key = api_key if api_key is not None else os.getenv("HF_TOKEN")
+        print(f"api_key is {self.api_key}, model name is {name}")
+
+        # route depending on name
+        if name == "deepseek":
+            self.model_name = "deepseek-ai/DeepSeek-V3:nebius"
+            # Use OpenAI client (via base_url) for this provider
+            self.client_type = "openai"
+            self.client = OpenAI(
+                base_url="https://router.huggingface.co/v1",
+                api_key=self.api_key
+            )
+
+        elif name == "qwen":
+            self.model_name = "Qwen/Qwen3-235B-A22B-Instruct-2507"
+            # Choose to use ChatNebius for this provider
+            self.client_type = "nebius"
+            self.client = ChatNebius(
+                model=self.model_name,
+                temperature=0.0,      # or whatever default you like
+                api_key=self.api_key,
+                base_url="https://api.studio.nebius.com/v1/"
+            )
+
+        else:
+            raise ValueError(f"Unknown model name: {name}")
+
+        print(f"CustomLLM {self.model_name} init! (client_type={self.client_type})")
+
+    def request(self, prompt, stop=None, **kwargs):
+        # build message list
+        message = [{"role": "user", "content": prompt}]
+
+        prev = kwargs.get("previous_message")
+        if prev:
+            message = list(prev) + message
+
+        json_format = bool(kwargs.get("json_format", False))
+
+        # caching check (assuming your base class implements from_cache)
+        response = self.from_cache(message)
+        if response:
+            message.append({"role": "assistant", "content": response})
+            return response, message
+
+        # depending on client type, call differently
+        if self.client_type == "openai":
+            # original path
+            try:
+                completion = self.client.chat.completions.create(
+                    model=self.model_name,
+                    temperature=0,
+                    messages=message,
+                    stop=stop,
+                    **({"response_format": {"type": "json_object"}} if json_format else {})
+                )
+                time.sleep(0.5)
+            except Exception as e:
+                time.sleep(5)
+                completion = self.client.chat.completions.create(
+                    model=self.model_name,
+                    temperature=0,
+                    messages=message,
+                    stop=stop,
+                    **({"response_format": {"type": "json_object"}} if json_format else {})
+                )
+                time.sleep(0.5)
+
+            output_text = completion.choices[0].message.content
+            usage = getattr(completion, "usage", None)
+
+        elif self.client_type == "nebius":
+            # ChatNebius path
+            try:
+                response_obj = self.client.invoke(message)  # doc: ChatNebius.invoke returns an object with .content
+                output_text = response_obj.content
+                usage = getattr(response_obj, "usage", None)  # if available
+            except Exception as e:
+                # maybe retry once
+                time.sleep(5)
+                response_obj = self.client.invoke(message)
+                output_text = response_obj.content
+                usage = getattr(response_obj, "usage", None)
+
+        else:
+            raise RuntimeError(f"Unknown client_type: {self.client_type}")
+
+        # parse usage metrics if present
+        if usage:
+            prompt_tokens = getattr(usage, "prompt_tokens", None)
+            completion_tokens = getattr(usage, "completion_tokens", None)
+            total_tokens = getattr(usage, "total_tokens", None)
+        else:
+            prompt_tokens = completion_tokens = total_tokens = None
+
+        # logging (assuming base class log method)
+        super().log(
+            message,
+            output_text,
+            model=self.model_name,
+            system_fingerprint=getattr(usage, "system_fingerprint", None),
+            usage=[prompt_tokens, completion_tokens, total_tokens]
+        )
+
+        # caching
+        self.save_to_cache(message, output_text)
+        message.append({"role": "assistant", "content": output_text})
+        return output_text, message
 
 class HuggingFaceLLM(LLM):
     def __init__(self, name, cache=None):
