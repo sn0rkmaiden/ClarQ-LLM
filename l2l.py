@@ -9,17 +9,17 @@ import torch
 from dotenv import load_dotenv
 
 
-def evaluate_player(task_data_path, output_path, player_llm, player_chat_mode, provider_constructor, provider_llm, hftoken):
+def evaluate_player(task_data_path, output_path, player_llm, player_chat_mode, provider_constructor, provider_llm, hftoken, evaluation_set):
     all_conv = data_combination(read_path(task_data_path))
     # evaluation_set = [i for i in range(26)]
-    evaluation_set = [0, 1, 2]
+    # evaluation_set = [0, 1, 2]
     evaluate_results = []
 
     for i,one_type in enumerate(all_conv):
         if i not in evaluation_set:
             continue
         evaluate_results.append([])
-        for j,conv in enumerate(one_type):
+        for j, conv in enumerate(one_type):
 
             print("{0}.{1}".format(i+1,j))
             evaluate_results[i].append([])
@@ -105,8 +105,22 @@ if __name__ == "__main__":
     parser.add_argument('--multi_info_provider_agent', action='store_true', help='Use a multiple info provider agent instead of a general provider agent.')
     parser.add_argument('--play_around', action='store_true')
     parser.add_argument('--hftoken', type=str, help='Huggingface token if deepseek model is used')
+    parser.add_argument('--evaluation_set', type=str, default='0-25',   
+                    help='Files to evaluate. Format: "0-25" for range, "0,5,10" for specific files')
 
     args = parser.parse_args()
+
+    # Parse evaluation_set argument  
+    if ',' in args.evaluation_set:  
+        # Comma-separated: "0,5,10"  
+        evaluation_set = [int(x.strip()) for x in args.evaluation_set.split(',')]  
+    elif '-' in args.evaluation_set:  
+        # Range: "0-25"  
+        start, end = args.evaluation_set.split('-')  
+        evaluation_set = [i for i in range(int(start), int(end) + 1)]  
+    else:  
+        # Single file: "5"  
+        evaluation_set = [int(args.evaluation_set)]
     
     player_chat_mode = args.player_chat_mode
     task_data_path = args.task_data_path
@@ -149,6 +163,6 @@ if __name__ == "__main__":
         player_llm = HuggingFaceLLM(args.seeker_agent_llm, f'log/{args.seeker_agent_llm.split("/")[-1]}_plyaer_cache.pkl')
         output_path = "results/l2l_{}.{}.{}.json".format(args.seeker_agent_llm.split("/")[-1], mode, language)
 
-    evaluate_player(task_data_path, output_path, player_llm, player_chat_mode, provider_agent_constructor, args.provider_agent_llm, hftoken)
+    evaluate_player(task_data_path, output_path, player_llm, player_chat_mode, provider_agent_constructor, args.provider_agent_llm, hftoken, evaluation_set)
 
 
