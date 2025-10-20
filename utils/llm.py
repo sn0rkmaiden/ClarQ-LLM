@@ -589,6 +589,8 @@ class CustomLLM(LLM):
         else: 
             self.api_key = api_key
 
+        print(f"api_key is {api_key} and {self.api_key}")
+
         if name == 'deepseek':     
             self.model_name = "deepseek-ai/DeepSeek-V3:nebius"
             self.client = OpenAI(
