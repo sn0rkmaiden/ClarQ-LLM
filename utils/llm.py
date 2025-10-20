@@ -692,7 +692,7 @@ class CustomLLM(LLM):
         name = name.strip().lower()
         # set api_key early
         self.api_key = api_key if api_key is not None else os.getenv("HF_TOKEN")
-        print(f"api_key is {self.api_key}, model name is {name}")
+        # print(f"api_key is {self.api_key}, model name is {name}")
 
         # route depending on name
         if name == "deepseek":
@@ -729,6 +729,15 @@ class CustomLLM(LLM):
             message = list(prev) + message
 
         json_format = bool(kwargs.get("json_format", False))
+
+        # if nebius + json_format => prepend JSON instruction to prompt
+        if self.client_type == "nebius" and json_format:
+            instruction = (
+                "Please respond with **only valid JSON**. "
+                "The JSON must follow this schema: {\"key\": \"value\", \"another_key\": 123}. "
+                "No additional text."
+            )
+            message[0]["content"] = instruction + "\n" + message[0]["content"]
 
         # caching check (assuming your base class implements from_cache)
         response = self.from_cache(message)
