@@ -580,17 +580,15 @@ class AWSBedrockLLAMA(LLM):
         return (self.extract_json_string(response_text), message) if 'json_format' in kwargs and kwargs['json_format'] else (response_text, message)
 
 class CustomLLM(LLM):
-    def __init__(self, name, api_key, cache = None) -> None:
+    def __init__(self, name, apikey, cache = None) -> None:
         super().__init__(cache)   
         name = name.strip()
-        print(f"api_key is {api_key} and {self.api_key} name is {name}")
+        print(f"api_key is {apikey} and {self.api_key} name is {name}")
 
-        if api_key is None:
+        if apikey is None:
             self.api_key = os.getenv("HF_TOKEN")
         else: 
-            self.api_key = api_key
-
-        
+            self.api_key = apikey
 
         if name == 'deepseek':     
             self.model_name = "deepseek-ai/DeepSeek-V3:nebius"
