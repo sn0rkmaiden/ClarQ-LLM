@@ -582,6 +582,7 @@ class AWSBedrockLLAMA(LLM):
 class CustomLLM(LLM):
     def __init__(self, name, api_key, cache = None) -> None:
         super().__init__(cache)   
+        name = name.strip()
 
         if name == 'deepseek':     
             self.model_name = "deepseek-ai/DeepSeek-V3:nebius"
@@ -686,7 +687,7 @@ class HuggingFaceLLM(LLM):
 
         super().__init__(cache)
 
-        model_id = name
+        model_id = name.strip()
         print(f"Huggingface model {model_id} init!")
         self.max_new_tokens = 100
         self.is_chat_version = "-chat" in model_id.lower()

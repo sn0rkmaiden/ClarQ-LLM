@@ -9,6 +9,7 @@ from agents.simple_provider_agent import helper
 class helpers(helper):
     def __init__(self, gold, task_data, gold_structure, all_task_data, llm='gpt4o', api_key = None) -> None:
         super().__init__(gold, task_data, gold_structure, all_task_data)
+        llm = llm.strip()
         if llm == 'llama3.1-405B':
             self.llm = AWSBedrockLLAMA("llama3.1-405B", 'log/llm_helpers_cache_llama3.1-405B.pkl')
         elif llm == 'deepseek' or llm == 'qwen':
