@@ -733,9 +733,7 @@ class CustomLLM(LLM):
         # if nebius + json_format => prepend JSON instruction to prompt
         if self.client_type == "nebius" and json_format:
             instruction = (
-                "Please respond with **only valid JSON**. "
-                "The JSON must follow this schema: {\"key\": \"value\", \"another_key\": 123}. "
-                "No additional text."
+                "\nReturn **only** a valid JSON object without any extra text."
             )
             message[0]["content"] = instruction + "\n" + message[0]["content"]
 
