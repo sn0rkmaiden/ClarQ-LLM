@@ -584,6 +584,11 @@ class CustomLLM(LLM):
         super().__init__(cache)   
         name = name.strip()
 
+        if api_key is None:
+            self.api_key = os.getenv("HF_TOKEN")
+        else: 
+            self.api_key = api_key
+
         if name == 'deepseek':     
             self.model_name = "deepseek-ai/DeepSeek-V3:nebius"
             self.client = OpenAI(
@@ -598,10 +603,7 @@ class CustomLLM(LLM):
             )
         else:
             raise ValueError('Unknown model.')
-        if api_key is None:
-            self.api_key = os.getenv("HF_TOKEN")
-        else: 
-            self.api_key = api_key
+        
         print(f"CustomLLM {self.model_name} init!")
         
     def request(self, prompt, stop, **kwargs):
