@@ -11,7 +11,8 @@ from dotenv import load_dotenv
 
 def evaluate_player(task_data_path, output_path, player_llm, player_chat_mode, provider_constructor, provider_llm, hftoken):
     all_conv = data_combination(read_path(task_data_path))
-    evaluation_set = [i for i in range(26)]
+    # evaluation_set = [i for i in range(26)]
+    evaluation_set = [0, 1, 2]
     evaluate_results = []
 
     for i,one_type in enumerate(all_conv):
