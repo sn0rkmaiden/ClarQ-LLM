@@ -579,84 +579,87 @@ class AWSBedrockLLAMA(LLM):
         
         return (self.extract_json_string(response_text), message) if 'json_format' in kwargs and kwargs['json_format'] else (response_text, message)
 
+import os
+import time
+import json
+
 class CustomLLM(LLM):
-    def __init__(self, name, apikey, cache = None) -> None:
-        super().__init__(cache)   
+    def __init__(self, name, api_key=None, cache=None) -> None:
+        super().__init__(cache)
+
         name = name.strip()
-        print(f"api_key is {apikey} and {self.api_key} name is {name}")
+        # set the attribute before referencing it
+        self.api_key = api_key if api_key is not None else os.getenv("HF_TOKEN")
+        print(f"api_key is {self.api_key} name is {name}")
 
-        if apikey is None:
-            self.api_key = os.getenv("HF_TOKEN")
-        else: 
-            self.api_key = apikey
-
-        if name == 'deepseek':     
+        if name == "deepseek":
             self.model_name = "deepseek-ai/DeepSeek-V3:nebius"
             self.client = OpenAI(
                 base_url="https://router.huggingface.co/v1",
                 api_key=self.api_key,
             )
-        elif name == 'qwen':
+        elif name == "qwen":
             self.model_name = "Qwen/Qwen3-235B-A22B-Instruct-2507"
             self.client = OpenAI(
                 base_url="https://api.studio.nebius.com/v1/",
-                api_key = self.api_key,
+                api_key=self.api_key,
             )
         else:
-            raise ValueError('Unknown model.')
-        
+            raise ValueError("Unknown model.")
         print(f"CustomLLM {self.model_name} init!")
-        
-    def request(self, prompt, stop, **kwargs):
-        message = [{
-                    "role": "user",
-                    "content": prompt
-                }]
-        if 'previous_message' in kwargs and kwargs['previous_message']:
-            message = kwargs['previous_message'].extend(message)
-            message = kwargs['previous_message']
-        json_format = True if 'json_format' in kwargs and kwargs['json_format'] else False
 
+    def request(self, prompt, stop=None, **kwargs):
+        # build a fresh message list
+        user_msg = {"role": "user", "content": prompt}
+        message = [user_msg]
+
+        # safer handling of previous_message: don't assign extend() result (it returns None)
+        prev = kwargs.get("previous_message")
+        if prev:
+            # create a new combined list (don't mutate caller unless you want to)
+            message = list(prev) + message
+
+        json_format = bool(kwargs.get("json_format", False))
+
+        # try cache (depends on your LLM base class implementation)
         response = self.from_cache(message)
         if response:
             message.append({"role": "assistant", "content": response})
             return response, message
-        
+
+        # attempt request (catch Exception explicitly)
         try:
             completion = self.client.chat.completions.create(
                 model=self.model_name,
                 temperature=0,
                 messages=message,
-                stop = stop,
-                # seed = 8848,
-                **({"response_format": {"type": "json_object"}} if json_format else {})
+                stop=stop,
+                **({"response_format": {"type": "json_object"}} if json_format else {}),
             )
             time.sleep(0.5)
-        except:
+        except Exception as e:
+            # log/print e if helpful
             time.sleep(5)
             completion = self.client.chat.completions.create(
                 model=self.model_name,
                 temperature=0,
                 messages=message,
-                stop = stop,
-                # seed = 8848,
-                **({"response_format": {"type": "json_object"}} if json_format else {})
+                stop=stop,
+                **({"response_format": {"type": "json_object"}} if json_format else {}),
             )
             time.sleep(0.5)
 
-        output_text = completion.choices[0].message.content
+        # guard in case shape differs
+        output_text = None
+        try:
+            output_text = completion.choices[0].message.content
+        except Exception:
+            # fallback to stringifying completion
+            output_text = str(completion)
 
-        # import re
-        # if json_format:
-        #     match = re.search(r"\{[\s\S]*\}", output_text)
-        #     if match:
-        #         json_str = match.group(0)
-        #         try:
-        #             json.loads(json_str)  # Validate
-        #             output_text = json_str
-        #         except json.JSONDecodeError:
-        #             pass  # Keep original text if broken
-    
+        # optional: parse trimmed JSON if json_format is True (your commented code)
+        # ... (keep your json extraction logic if needed)
+
         usage = getattr(completion, "usage", None)
         if usage:
             prompt_tokens = getattr(usage, "prompt_tokens", None)
@@ -675,9 +678,7 @@ class CustomLLM(LLM):
 
         self.save_to_cache(message, output_text)
         message.append({"role": "assistant", "content": output_text})
-        return output_text, message
-
-    
+        return output_text, message    
 
 
 class HuggingFaceLLM(LLM):
