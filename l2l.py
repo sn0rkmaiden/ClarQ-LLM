@@ -13,19 +13,17 @@ def evaluate_player(task_data_path, output_path, player_llm, player_chat_mode, p
     all_conv = data_combination(read_path(task_data_path)) # len(all_conv) = 31
     # evaluation_set = [i for i in range(26)]
     # evaluation_set = [0, 1, 2]
-    print(all_conv)
-    return
-    evaluate_results = []
+    # evaluate_results = []
     result_idx = 0
 
-    for i,one_type in enumerate(all_conv):
+    for i, one_type in enumerate(all_conv):
         if i not in evaluation_set:
             continue
-        evaluate_results.append([])
+        # evaluate_results.append([])
         for j, conv in enumerate(one_type):
 
             print("{0}.{1}".format(i+1,j))
-            evaluate_results[result_idx].append([])
+            # evaluate_results[result_idx].append([])
 
             torch.cuda.empty_cache()
 
@@ -46,9 +44,7 @@ def evaluate_player(task_data_path, output_path, player_llm, player_chat_mode, p
             print()
             print()
 
-            print()
-
-        result_idx += 1
+        # result_idx += 1
         if i == 26 - 1:
             break
     with open(output_path, "w") as json_file:

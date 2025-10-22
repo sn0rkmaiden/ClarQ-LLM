@@ -154,7 +154,7 @@ def evaluate_l2l_doc():
                     continue
                 helper_response = []
                 seeker_reponse = []
-                for k,sent in enumerate(h2l[1:]):
+                for k, sent in enumerate(h2l[1:]):
                     if k % 2 == 1 and k != 1:
                         helper_response.append(sent)
                     elif k % 2 == 0:# and k != 0 and k!=len(h2l[1:])-1:
