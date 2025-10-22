@@ -858,8 +858,8 @@ class HuggingFaceLLM(LLM):
         inputs = self.tokenizer(prompt, return_tensors="pt", truncation=True)
         inputs = {k: v.to("cuda") for k, v in inputs.items()}
 
-        print(f"[LLM REQUEST] Prompt length: {len(prompt)}")  
-        print(f"[LLM REQUEST] Last 200 chars of prompt: {prompt[-200:]}") 
+        # print(f"[LLM REQUEST] Prompt length: {len(prompt)}")  
+        # print(f"[LLM REQUEST] Last 200 chars of prompt: {prompt[-200:]}") 
 
         # --- Generate text ---
         with torch.no_grad():
@@ -879,7 +879,7 @@ class HuggingFaceLLM(LLM):
             # Decode only the newly generated part
             output_text = self.tokenizer.decode(outputs[0][inputs["input_ids"].shape[-1]:], skip_special_tokens=True)
 
-        print(f"[LLM RESPONSE] Response: {output_text}")  
+        # print(f"[LLM RESPONSE] Response: {output_text}")  
 
         # --- Log + cache ---
         super().log(prompt, output_text, model=self.model_name)
