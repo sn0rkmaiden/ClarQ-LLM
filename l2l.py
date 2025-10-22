@@ -10,10 +10,11 @@ from dotenv import load_dotenv
 
 
 def evaluate_player(task_data_path, output_path, player_llm, player_chat_mode, provider_constructor, provider_llm, hftoken, evaluation_set):
-    all_conv = data_combination(read_path(task_data_path))
-    print(len(all_conv))
+    all_conv = data_combination(read_path(task_data_path)) # len(all_conv) = 31
     # evaluation_set = [i for i in range(26)]
     # evaluation_set = [0, 1, 2]
+    print(all_conv)
+    return
     evaluate_results = []
     result_idx = 0
 
@@ -41,14 +42,15 @@ def evaluate_player(task_data_path, output_path, player_llm, player_chat_mode, p
                 print(c)
                 print()
             conv['l2l'][0] = l2l_conv
-            print(f"len l2l_conv {len(l2l_conv)}")
             print()
             print()
             print()
+
+            print()
+
         result_idx += 1
         if i == 26 - 1:
             break
-    print(f"len all_conv {len(all_conv)} and first element: {all_conv[0] if len(all_conv) > 0 else 'empty list'}")
     with open(output_path, "w") as json_file:
         json.dump(all_conv, json_file, ensure_ascii=False, indent=2)
 
