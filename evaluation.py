@@ -1,6 +1,6 @@
 from ALL_KEYS import *
 from utils.data_loader import *
-from utils.llm import ChatGPT, AWSBedrockLLAMA
+from utils.llm import ChatGPT, AWSBedrockLLAMA, CustomLLM
 from utils.utils import detect_language
 import sys
 
@@ -104,19 +104,37 @@ def evaluate_one_multi(gold, gold_explain, predict, llm):
 def evaluate_l2l_doc():
     llm_name = sys.argv[1]
     json_file = sys.argv[2]
+    api_key = sys.argv[3]
+    raw_evaluation_set = sys.argv[4]
+
+     # Parse evaluation_set argument  
+    if ',' in raw_evaluation_set:  
+        # Comma-separated: "0,5,10"  
+        evaluation_set = [int(x.strip()) for x in raw_evaluation_set.split(',')]  
+    elif '-' in raw_evaluation_set:  
+        # Range: "0-25"  
+        start, end = raw_evaluation_set.split('-')  
+        evaluation_set = [i for i in range(int(start), int(end) + 1)]  
+    else:  
+        # Single file: "5"  
+        evaluation_set = [int(raw_evaluation_set)]
 
     if llm_name == 'llama3.1-405b':
         llm = AWSBedrockLLAMA("llama3.1-405b", 'log/llama3.1_evaluator_cache.pkl')
+    elif llm_name == 'qwen':
+        llm = CustomLLM(llm, api_key=api_key, cache=f'log/llm_helpers_cache_{llm}.pkl')
     else:
         llm = ChatGPT("gpt-4o-2024-05-13", 'log/llm_evaluator_cache.pkl')
 
     with open(json_file, 'r') as f:
         all_conv = json.load(f)
 
-    evaluation_set = [i for i in range(26)]
+    # evaluation_set = [i for i in range(26)]
     evaluate_results = []
     AQD_evaluation_results = []
     ARL_evaluation_results = []
+
+    result_idx = 0
 
     for i,one_type in enumerate(all_conv):
         if i not in evaluation_set:
@@ -126,9 +144,9 @@ def evaluate_l2l_doc():
         ARL_evaluation_results.append([])
 
         for j,conv in enumerate(one_type):
-            evaluate_results[i].append([])
-            AQD_evaluation_results[i].append([])
-            ARL_evaluation_results[i].append([])
+            evaluate_results[result_idx].append([])
+            AQD_evaluation_results[result_idx].append([])
+            ARL_evaluation_results[result_idx].append([])
 
             gold_r = conv['all_response'].strip().split('\n')
             for h2l in conv['l2l']:
@@ -147,6 +165,8 @@ def evaluate_l2l_doc():
                     ARL_evaluation_results[i][j].append(sum([s.count(' ') for s in seeker_reponse])/len(seeker_reponse))
                 else:
                     ARL_evaluation_results[i][j].append(sum([len(s) for s in seeker_reponse])/len(seeker_reponse))
+
+        result_idx += 1
 
         print(evaluate_results[-1])
     sum_arrays = sum(sum(sum(inner) for inner in outer) for outer in evaluate_results)
