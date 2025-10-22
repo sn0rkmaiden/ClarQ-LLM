@@ -164,7 +164,7 @@ class helper:
             if 'Goodbye' == conv[-1]  or 'Goodbye!' in conv[-1] or 'Goodbye.' in conv[-1] or 'Goodbye,' in conv[-1] or 'Goodbye Jax' in conv[-1] or ', Goodbye' in conv[-1] or '. Goodbye' in conv[-1] or '.Goodbye' in conv[-1] or ',Goodbye' in conv[-1] or ' Goodbye' in conv[-1] or 'Goodbye ' in conv[-1] or '\nGoodbye' in conv[-1] or 'Goodbye\n' in conv[-1]:
                 return True
             last_msg = conv[-1].lower() 
-            if 'thank you' in last_msg and 'help' in last_msg:  
+            if 'thank you' in last_msg and 'help' in last_msg or "I'm ready to" in conv[-1]:  
                 return True 
         return False
 
