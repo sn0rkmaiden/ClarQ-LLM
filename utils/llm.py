@@ -730,9 +730,6 @@ class CustomLLM(LLM):
 
         json_format = bool(kwargs.get("json_format", False))
 
-        print(f"[LLM REQUEST] Prompt length: {len(prompt)}")  
-        print(f"[LLM REQUEST] Last 200 chars of prompt: {prompt[-200:]}") 
-
         # if nebius + json_format => prepend JSON instruction to prompt
         if self.client_type == "nebius" and json_format:
             instruction = (
@@ -787,9 +784,6 @@ class CustomLLM(LLM):
 
         else:
             raise RuntimeError(f"Unknown client_type: {self.client_type}")
-        
-    
-        print(f"[LLM RESPONSE] Response: {output_text}")  
 
         # parse usage metrics if present
         if usage:
@@ -864,6 +858,9 @@ class HuggingFaceLLM(LLM):
         inputs = self.tokenizer(prompt, return_tensors="pt", truncation=True)
         inputs = {k: v.to("cuda") for k, v in inputs.items()}
 
+        print(f"[LLM REQUEST] Prompt length: {len(prompt)}")  
+        print(f"[LLM REQUEST] Last 200 chars of prompt: {prompt[-200:]}") 
+
         # --- Generate text ---
         with torch.no_grad():
             outputs = self.model.generate(
@@ -881,6 +878,8 @@ class HuggingFaceLLM(LLM):
 
             # Decode only the newly generated part
             output_text = self.tokenizer.decode(outputs[0][inputs["input_ids"].shape[-1]:], skip_special_tokens=True)
+
+        print(f"[LLM RESPONSE] Response: {output_text}")  
 
         # --- Log + cache ---
         super().log(prompt, output_text, model=self.model_name)

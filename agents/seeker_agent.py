@@ -12,7 +12,6 @@ class player:
 
     def generate_response(self, previous_content):
         background = self.data2prompt(self.task_data)
-        print(f"[SEEKER CHAT] --------------- START OF BACKGROUND MESSAGE \n{background}\n --------------- END OF BACKGROUND MESSAGE")
         if self.chat_mode:
             return self.prompt_chat(background, previous_content[:-1], previous_content[-1])
         else:
@@ -29,9 +28,6 @@ class player:
                     previous_message.append({"role": "assistant","content": previous_content[i]}) 
                 else:
                     previous_message.append({"role": "user","content": previous_content[i]})   
-
-            print(f"[SEEKER CHAT] System message: {previous_message[0]['content'][-200:]}")    
-            print(f"[SEEKER CHAT] Number of previous messages: {len(previous_message)}")  
 
             resonse,_ =  self.llm.request(manual_pesponse, None, previous_message=previous_message)
         else:
