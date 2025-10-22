@@ -48,7 +48,7 @@ def evaluate_player(task_data_path, output_path, player_llm, player_chat_mode, p
         result_idx += 1
         if i == 26 - 1:
             break
-    print(f"len all_conv {len(all_conv)} and first element: {all_conv[0] if len(all_conv) > 0 else "empty list"}")
+    print(f"len all_conv {len(all_conv)} and first element: {all_conv[0] if len(all_conv) > 0 else 'empty list'}")
     with open(output_path, "w") as json_file:
         json.dump(all_conv, json_file, ensure_ascii=False, indent=2)
 
