@@ -730,6 +730,9 @@ class CustomLLM(LLM):
 
         json_format = bool(kwargs.get("json_format", False))
 
+        print(f"[LLM REQUEST] Prompt length: {len(prompt)}")  
+        print(f"[LLM REQUEST] Last 200 chars of prompt: {prompt[-200:]}") 
+
         # if nebius + json_format => prepend JSON instruction to prompt
         if self.client_type == "nebius" and json_format:
             instruction = (
@@ -784,6 +787,9 @@ class CustomLLM(LLM):
 
         else:
             raise RuntimeError(f"Unknown client_type: {self.client_type}")
+        
+    
+        print(f"[LLM RESPONSE] Response: {output_text}")  
 
         # parse usage metrics if present
         if usage:
