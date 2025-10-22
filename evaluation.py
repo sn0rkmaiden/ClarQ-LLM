@@ -122,7 +122,7 @@ def evaluate_l2l_doc():
     if llm_name == 'llama3.1-405b':
         llm = AWSBedrockLLAMA("llama3.1-405b", 'log/llama3.1_evaluator_cache.pkl')
     elif llm_name == 'qwen':
-        llm = CustomLLM(llm, api_key=api_key, cache=f'log/llm_helpers_cache_{llm}.pkl')
+        llm = CustomLLM(llm_name, api_key=api_key, cache=f'log/llm_helpers_cache_{llm}.pkl')
     else:
         llm = ChatGPT("gpt-4o-2024-05-13", 'log/llm_evaluator_cache.pkl')
 
