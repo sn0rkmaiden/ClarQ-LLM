@@ -128,10 +128,17 @@ class helpers(helper):
 
     def prompt_pure(self, prompt):
         prompt += "\nReturn **only** a valid JSON object without any extra text."
-        print(f"----- [PROMPT] is \n{prompt}")
+        # print(f"----- [PROMPT] is \n{prompt}")
         response,_ =  self.llm.request(prompt, None, json_format=True)
-        print(f"----- [MODEL RESPONSE] is \n{response}")
-        return json.loads(response)
+        # print(f"----- [MODEL RESPONSE] is \n{response}")
+        # return json.loads(response)
+        try:
+            return json.loads(response)
+        except json.JSONDecodeError as e:
+            print("JSON decode error:", e)
+            print("Prompt was:\n", prompt)
+            print("Model response was:\n", response)
+            raise
 
 
     def data2prompt_0(self, previous_content):
