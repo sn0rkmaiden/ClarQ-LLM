@@ -710,7 +710,7 @@ class CustomLLM(LLM):
             self.client_type = "nebius"
             self.client = ChatNebius(
                 model=self.model_name,
-                temperature=0.0,      # or whatever default you like
+                temperature=0.00001,      # or whatever default you like
                 api_key=self.api_key,
                 base_url="https://api.studio.nebius.com/v1/"
             )

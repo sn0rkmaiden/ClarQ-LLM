@@ -3,7 +3,7 @@ from ALL_KEYS import *
 from utils.data_loader import *
 from utils.llm import ChatGPT, AWSBedrockLLAMA, CustomLLM, HookedGEMMA, HuggingFaceLLM
 from agents.simple_provider_agent import helper
-
+import ast
 
 
 class helpers(helper):
@@ -134,11 +134,15 @@ class helpers(helper):
         # return json.loads(response)
         try:
             return json.loads(response)
-        except json.JSONDecodeError as e:
-            print("JSON decode error:", e)
-            print("Prompt was:\n", prompt)
-            print("Model response was:\n", response)
-            raise
+        except json.JSONDecodeError:
+            try:
+                obj = ast.literal_eval(response)
+                return obj
+            except Exception as e:
+                print("JSON decode error:", e)
+                print("Prompt was:\n", prompt)
+                print("Raw response (repr):\n", repr(response))
+                raise
 
 
     def data2prompt_0(self, previous_content):
