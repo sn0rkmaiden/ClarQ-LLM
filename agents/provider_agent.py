@@ -128,9 +128,9 @@ class helpers(helper):
 
     def prompt_pure(self, prompt):
         prompt += "\nReturn **only** a valid JSON object without any extra text."
-        # print(f"prompt is \n{prompt}")
+        print(f"----- [PROMPT] is \n{prompt}")
         response,_ =  self.llm.request(prompt, None, json_format=True)
-        # print(f"model response is \n{response}")
+        print(f"----- [MODEL RESPONSE] is \n{response}")
         return json.loads(response)
 
 
