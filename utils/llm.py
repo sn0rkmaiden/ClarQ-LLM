@@ -7,6 +7,7 @@ import time
 import torch
 from transformer_lens import HookedTransformer
 from sae_lens import SAE
+from utils.gemma_adapter import generate_with_steering
 
 import pickle
 from collections import OrderedDict
@@ -374,7 +375,13 @@ class HookedGEMMA(LLM):
         cache: str | None = None,
         device: str | None = None,
         max_new_tokens: int = 50,
+        # steering (optional, defaults = no steering)
+        steering_feature: int | None = None,
+        steering_strength: float = 1.0,
+        max_act: float | None = None,
+        compute_max_per_turn: bool = False,
     ) -> None:
+
 
         super().__init__(cache)
         self.model_name = model_name
@@ -382,6 +389,13 @@ class HookedGEMMA(LLM):
         self.max_new_tokens = max_new_tokens
         
         print("HookedGEMMA init!")
+
+        # steering config
+        self.steering_feature = steering_feature
+        self.steering_strength = float(steering_strength)
+        self.max_act = max_act
+        self.compute_max_per_turn = bool(compute_max_per_turn)
+
 
         # device selection
         if device is None:
@@ -404,6 +418,32 @@ class HookedGEMMA(LLM):
 
         # The HookedTransformer exposes tokenization helpers (to_tokens, to_string)
         # If you have a separate tokenizer object available in your environment, you can attach it as self.tokenizer.
+
+
+    def _estimate_feature_max_for_prompt(self, prompt_text: str, feature_idx: int) -> float:
+        """
+        Compute a per-prompt max activation for `feature_idx` by running the model
+        up to the SAE hook and encoding into feature space.
+        """
+        hook_name = self.sae.cfg.metadata.hook_name
+        try:
+            prepend_bos = bool(getattr(self.sae.cfg.metadata, "prepend_bos", False))
+        except Exception:
+            prepend_bos = False
+
+        toks = self.model.to_tokens(prompt_text, prepend_bos=prepend_bos)
+        with torch.no_grad():
+            # run_with_cache to capture activations at the SAE hook
+            _, cache = self.model.run_with_cache(toks, names_filter=[hook_name])
+            sae_in = cache[hook_name]             # [batch, seq, d_model] at hook
+            feats = self.sae.encode(sae_in)       # -> [batch, seq, n_features]
+            feats = feats.reshape(-1, feats.shape[-1])  # flatten batch+seq
+            max_val = feats[:, feature_idx].max().item()
+
+        # simple safety fallback
+        if max_val <= 0 or max_val == float("inf"):
+            return 1.0
+        return float(max_val)
 
     def _extract_assistant_answer(self, text: str) -> str:
         # Remove an echoed prompt and special tokens, returning the assistant reply.
@@ -433,60 +473,101 @@ class HookedGEMMA(LLM):
                 if isinstance(pm, list):
                     message = pm + message
                 else:
-                    # preserve previous_message if it's some other structure
-                    message = kwargs["previous_message"]
+                    message = [{"role": "user", "content": str(pm)}] + message
             except Exception:
-                message = kwargs["previous_message"]
+                pass
 
-        # Check cache
+        # try cache using message as key
         cached = self.from_cache(message)
         if cached:
-            message.append({"role": "assistant", "content": cached})
             return cached, message
 
         # prompt could be a list (chat) or a string; keep it as string for HookedTransformer
         prompt_text = prompt
         if isinstance(prompt, list):
-            # If user passed chat-structured list, join into text (simple join - adapt if you have template)
+            # If user passed chat-structured list, join into text (simple join - ClarQ keeps its own formatting)
             prompt_text = "\n".join([f"{m['role'].capitalize()}: {m['content']}" for m in prompt])
 
         # Decide whether to prepend BOS (respect sae metadata)
-        prepend_bos = bool(getattr(self.sae.cfg.metadata, "prepend_bos", False))
-
-        # Tokenize / prepare input tokens for HookedTransformer
-        # model.to_tokens accepts prepend_bos flag in your setup
         try:
-            input_ids = self.model.to_tokens(prompt_text, prepend_bos=prepend_bos)
+            prepend_bos = bool(getattr(self.sae.cfg.metadata, "prepend_bos", False))
         except Exception:
-            # fallback: try to call tokenizer if attached (rare for HookedTransformer)
-            if hasattr(self, "tokenizer"):
-                input_ids = self.tokenizer(prompt_text, return_tensors="pt").to(self.device)["input_ids"]
-            else:
-                raise
+            prepend_bos = False
 
-        # Generate (no-steering path)
-        with torch.no_grad():
-            gen_out = self.model.generate(input_ids, max_new_tokens=self.max_new_tokens)
-            # Convert tokens -> string. HookedTransformer usually provides to_string()
-            if hasattr(self.model, "to_string"):
-                decoded = self.model.to_string(gen_out)
-            elif hasattr(self.model, "to_str_tokens"):
-                decoded = self.model.to_str_tokens(gen_out)
-            else:
-                # Best-effort fallback
-                decoded = str(gen_out)
+        # ---------------- steering vs non-steering ----------------
+        do_steer = self.steering_feature is not None
+
+        if do_steer:
+            # choose max_act: fixed or per-prompt
+            turn_max = self.max_act
+            if self.compute_max_per_turn or turn_max is None:
+                try:
+                    turn_max = self._estimate_feature_max_for_prompt(
+                        prompt_text, int(self.steering_feature)
+                    )
+                except Exception:
+                    turn_max = 1.0
+
+            # temporarily sync SAE's BOS policy with what we're using here
+            try:
+                original_prepend = getattr(self.sae.cfg.metadata, "prepend_bos", False)
+            except Exception:
+                original_prepend = prepend_bos
+
+            try:
+                self.sae.cfg.metadata.prepend_bos = prepend_bos
+
+                decoded = generate_with_steering(
+                    model=self.model,
+                    sae=self.sae,
+                    prompt=prompt_text,
+                    steering_feature=int(self.steering_feature),
+                    max_act=float(turn_max),
+                    steering_strength=float(self.steering_strength),
+                    max_new_tokens=self.max_new_tokens,
+                )
+            finally:
+                # restore original SAE BOS setting
+                try:
+                    self.sae.cfg.metadata.prepend_bos = original_prepend
+                except Exception:
+                    pass
+
+        else:
+            # ---------------- unsteered path ----------------
+            # Tokenize / prepare input tokens for HookedTransformer
+            try:
+                input_ids = self.model.to_tokens(prompt_text, prepend_bos=prepend_bos)
+            except Exception:
+                # fallback: try to call tokenizer if attached
+                if hasattr(self, "tokenizer"):
+                    input_ids = self.tokenizer(prompt_text, return_tensors="pt").to(self.device)["input_ids"]
+                else:
+                    raise
+
+            with torch.no_grad():
+                gen_out = self.model.generate(input_ids, max_new_tokens=self.max_new_tokens)
+                # Convert tokens -> string. HookedTransformer usually provides to_string()
+                if hasattr(self.model, "to_string"):
+                    decoded = self.model.to_string(gen_out)
+                elif hasattr(self.model, "to_str_tokens"):
+                    decoded = self.model.to_str_tokens(gen_out)
+                else:
+                    # Best-effort fallback
+                    decoded = str(gen_out)
 
         # decoded may be full text including prompt echo; extract assistant answer
         if isinstance(decoded, (list, tuple)):
             decoded = decoded[0]
         assistant_text = self._extract_assistant_answer(decoded)
 
-        # log and cache
-        super().log(prompt_text, assistant_text, model=self.model_name)
+        # log and save in cache, then append to the message history
+        self.log(prompt_text, assistant_text, model=self.model_name)
         self.save_to_cache(message, assistant_text)
-
         message.append({"role": "assistant", "content": assistant_text})
+
         return assistant_text, message
+
 
 
 class AWSBedrockLLAMA(LLM):
@@ -578,10 +659,6 @@ class AWSBedrockLLAMA(LLM):
         message.append({"role": "assistant", "content": [{"text": response_text}]})
         
         return (self.extract_json_string(response_text), message) if 'json_format' in kwargs and kwargs['json_format'] else (response_text, message)
-
-import os
-import time
-import json
 
 class CustomLLM0(LLM):
     def __init__(self, name, api_key=None, cache=None) -> None:
