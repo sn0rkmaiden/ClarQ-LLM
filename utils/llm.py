@@ -432,6 +432,11 @@ class HookedGEMMA(LLM):
             prepend_bos = False
 
         toks = self.model.to_tokens(prompt_text, prepend_bos=prepend_bos)
+
+        max_context_tokens = 1024  
+        if toks.shape[1] > max_context_tokens:
+            toks = toks[:, -max_context_tokens:]
+
         with torch.no_grad():
             # run_with_cache to capture activations at the SAE hook
             _, cache = self.model.run_with_cache(toks, names_filter=[hook_name])
@@ -544,9 +549,14 @@ class HookedGEMMA(LLM):
                     input_ids = self.tokenizer(prompt_text, return_tensors="pt").to(self.device)["input_ids"]
                 else:
                     raise
+            # truncate long prompts to avoid memory blowup    
+            max_context_tokens = 1024  
+            if input_ids.shape[1] > max_context_tokens:
+                input_ids = input_ids[:, -max_context_tokens:]
 
             with torch.no_grad():
                 gen_out = self.model.generate(input_ids, max_new_tokens=self.max_new_tokens)
+
                 # Convert tokens -> string. HookedTransformer usually provides to_string()
                 if hasattr(self.model, "to_string"):
                     decoded = self.model.to_string(gen_out)

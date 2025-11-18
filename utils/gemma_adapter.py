@@ -51,6 +51,10 @@ def generate_with_steering(
 ):
     input_ids = model.to_tokens(prompt, prepend_bos=sae.cfg.metadata.prepend_bos)
 
+    max_context_tokens = 1024 
+    if input_ids.shape[1] > max_context_tokens:
+        input_ids = input_ids[:, -max_context_tokens:]
+
     steering_vector = sae.W_dec[steering_feature].to(model.cfg.device)
 
     steering_hook = partial(
