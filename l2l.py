@@ -37,7 +37,7 @@ def evaluate_player(task_data_path, output_path, player_llm, player_chat_mode, p
                 if h.is_conv_end(l2l_conv) or len(l2l_conv) > 22:
                     break
             for c in l2l_conv:
-                print(c)
+                print(">>> Next message:\n", c)
                 print()
             conv['l2l'][0] = l2l_conv
             print()
