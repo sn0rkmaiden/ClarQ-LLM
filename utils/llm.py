@@ -550,7 +550,7 @@ class HookedGEMMA(LLM):
                 else:
                     raise
             # truncate long prompts to avoid memory blowup    
-            max_context_tokens = 1024  
+            max_context_tokens = 512  
             if input_ids.shape[1] > max_context_tokens:
                 input_ids = input_ids[:, -max_context_tokens:]
 
