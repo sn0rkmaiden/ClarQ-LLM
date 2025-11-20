@@ -557,14 +557,18 @@ class HookedGEMMA(LLM):
             with torch.no_grad():
                 gen_out = self.model.generate(input_ids, max_new_tokens=self.max_new_tokens)
 
+                # ---- only keep continuation tokens, drop prompt echo ----
+                # gen_out shape: [batch, prompt_len + new_len]
+                continuation = gen_out[:, input_ids.shape[1]:]
+
                 # Convert tokens -> string. HookedTransformer usually provides to_string()
                 if hasattr(self.model, "to_string"):
-                    decoded = self.model.to_string(gen_out)
+                    decoded = self.model.to_string(continuation)
                 elif hasattr(self.model, "to_str_tokens"):
-                    decoded = self.model.to_str_tokens(gen_out)
+                    decoded = self.model.to_str_tokens(continuation)
                 else:
                     # Best-effort fallback
-                    decoded = str(gen_out)
+                    decoded = str(continuation)
 
         # decoded may be full text including prompt echo; extract assistant answer
         if isinstance(decoded, (list, tuple)):

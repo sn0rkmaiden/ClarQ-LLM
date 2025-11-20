@@ -75,7 +75,10 @@ def generate_with_steering(
             prepend_bos=sae.cfg.metadata.prepend_bos,
         )
 
-    return model.tokenizer.decode(output[0])
+    # ---- only decode continuation, not prompt ----
+    continuation = output[:, input_ids.shape[1]:]
+
+    return model.tokenizer.decode(continuation, skip_special_tokens=True)
 
 def run_multiturn_conversation_generic(
     model,
