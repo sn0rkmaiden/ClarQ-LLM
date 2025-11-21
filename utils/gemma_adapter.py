@@ -77,8 +77,9 @@ def generate_with_steering(
 
     # ---- only decode continuation, not prompt ----
     continuation = output[:, input_ids.shape[1]:]
+    continuation_ids = continuation[0].tolist()
 
-    return model.tokenizer.decode(continuation, skip_special_tokens=True)
+    return model.tokenizer.decode(continuation_ids, skip_special_tokens=True)
 
 def run_multiturn_conversation_generic(
     model,
