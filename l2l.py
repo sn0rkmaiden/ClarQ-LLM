@@ -111,13 +111,13 @@ if __name__ == "__main__":
     parser.add_argument('--evaluation_set', type=str, default='0-25',   
                     help='Files to evaluate. Format: "0-25" for range, "0,5,10" for specific files')
     # steering arguments
-    parser.add_argument("--gemma_steering_feature", type=int, default=None,
+    parser.add_argument("--steering_feature", type=int, default=None,
                     help="SAE feature index to steer on (None = no steering)")
-    parser.add_argument("--gemma_steering_strength", type=float, default=1.0,
+    parser.add_argument("--steering_strength", type=float, default=1.0,
                         help="Steering strength multiplier")
-    parser.add_argument("--gemma_max_act", type=float, default=None,
+    parser.add_argument("--steering_max_act", type=float, default=None,
                         help="Optional fixed max activation for the feature")
-    parser.add_argument("--gemma_compute_max_per_turn", action="store_true",
+    parser.add_argument("--compute_max_per_turn", action="store_true",
                         help="If set, estimate max_act per prompt instead of using a fixed value")
 
 
@@ -143,6 +143,14 @@ if __name__ == "__main__":
     provider_agent_constructor = multi_info_provider if args.multi_info_provider_agent else general_provider
     language = 'En' if task_data_path == 'data/English' else 'Ch'
     mode = 'Chat' if player_chat_mode else 'Comp'
+
+    # Steering metadata (used only for Gemma / HookedGEMMA)
+    steering_meta = {
+        "steering_feature": getattr(args, "steering_feature", None),
+        "steering_strength": getattr(args, "steering_strength", 1.0),
+        "steering_max_act": getattr(args, "steering_max_act", 3.0),
+    }
+
 
     if args.play_around:
         test_helper(task_data_path, provider_agent_constructor, args.provider_agent_llm)
@@ -172,13 +180,24 @@ if __name__ == "__main__":
             sae_release="gemma-2b-it-res-jb",
             sae_id="blocks.12.hook_resid_post",
             device="cuda",
-            steering_feature=args.gemma_steering_feature,
-            steering_strength=args.gemma_steering_strength,
-            max_act=args.gemma_max_act,
-            compute_max_per_turn=args.gemma_compute_max_per_turn,
+            steering_feature=args.steering_feature,
+            steering_strength=args.steering_strength,
+            max_act=args.steering_max_act,
+            compute_max_per_turn=args.compute_max_per_turn,
         )
 
-        output_path = "results/l2l_gemma.{}.{}.json".format(mode, language)
+        # Suffix for output file
+        if steering_meta["steering_feature"] is not None:
+            suffix = "steering_f{}_s{}_m{}".format(
+                steering_meta["steering_feature"],
+                steering_meta["steering_strength"],
+                steering_meta["steering_max_act"],
+            )
+        else:
+            suffix = "nosteering"
+
+        output_path = "results/l2l_gemma.{}.{}.{}.json".format(mode, language, suffix)
+
     else:
         player_llm = HuggingFaceLLM(args.seeker_agent_llm, f'log/{args.seeker_agent_llm.split("/")[-1]}_plyaer_cache.pkl')
         output_path = "results/l2l_{}.{}.{}.json".format(args.seeker_agent_llm.split("/")[-1], mode, language)
