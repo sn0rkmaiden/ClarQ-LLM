@@ -282,4 +282,15 @@ def evaluate_files(
         rows.append(metrics)
 
     df = pd.DataFrame(rows)
+
+    def infer_run_type(fname: str) -> str:
+        fname = fname.lower()
+        if "nosteering" in fname:
+            return "nosteering"
+        if "steering" in fname:
+            return "steering"
+        return "unknown"
+
+    df["run_type"] = df["file"].apply(infer_run_type)
+    
     return df
