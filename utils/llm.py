@@ -803,7 +803,8 @@ class CustomLLM(LLM):
                 model=self.model_name,
                 temperature=0.00001,      # or whatever default you like
                 api_key=self.api_key,
-                base_url="https://api.studio.nebius.com/v1/"
+                # base_url="https://api.studio.nebius.com/v1/"
+                base_url="https://api.tokenfactory.nebius.com/v1/"
             )
 
         else:
