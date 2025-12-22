@@ -9,7 +9,7 @@ import torch
 from dotenv import load_dotenv
 
 
-def evaluate_player(task_data_path, output_path, player_llm, player_chat_mode, provider_constructor, provider_llm, hftoken, evaluation_set):
+def evaluate_player(task_data_path, output_path, player_llm, player_chat_mode, provider_constructor, provider_llm, hftoken, evaluation_set, run_meta):
     all_conv = data_combination(read_path(task_data_path)) # len(all_conv) = 31
     # evaluation_set = [i for i in range(26)]
     # evaluation_set = [0, 1, 2]
@@ -47,8 +47,13 @@ def evaluate_player(task_data_path, output_path, player_llm, player_chat_mode, p
         # result_idx += 1
         if i == 26 - 1:
             break
-    with open(output_path, "w") as json_file:
-        json.dump(all_conv, json_file, ensure_ascii=False, indent=2)
+        with open(output_path, "w") as json_file:
+            payload = {
+                "meta": run_meta,
+                "data": all_conv,
+            }
+            json.dump(payload, json_file, ensure_ascii=False, indent=2)
+
 
 
 def test_helper(task_data_path, provider_constructor, provider_llm):
@@ -204,6 +209,41 @@ if __name__ == "__main__":
         player_llm = HuggingFaceLLM(args.seeker_agent_llm, f'log/{args.seeker_agent_llm.split("/")[-1]}_plyaer_cache.pkl')
         output_path = "results/l2l_{}.{}.{}.{}.json".format(args.seeker_agent_llm.split("/")[-1], mode, language, eval_tag)
 
-    evaluate_player(task_data_path, output_path, player_llm, player_chat_mode, provider_agent_constructor, args.provider_agent_llm, hftoken, evaluation_set)
+    # ---- Build meta (do NOT store secrets like hftoken) ----
+    run_meta = {
+        "task_data_path": task_data_path,
+        "language": language,
+        "mode": mode,
+        "output_path": output_path,
+        "evaluation_set_arg": args.evaluation_set,   # e.g. "0-25"
+        "evaluation_indices": evaluation_set,        # explicit list[int]
+        "eval_tag": eval_tag,
+        "seeker_agent_llm": args.seeker_agent_llm,
+        "provider_agent_llm": args.provider_agent_llm,
+        "player_chat_mode": bool(args.player_chat_mode),
+        "multi_info_provider_agent": bool(args.multi_info_provider_agent),
+        "provider_agent_constructor": (
+            "multi_info_provider" if args.multi_info_provider_agent else "general_provider"
+        ),
+        "steering": {
+            "feature": args.steering_feature,
+            "strength": args.steering_strength,
+            "max_act": args.steering_max_act,
+            "compute_max_per_turn": bool(args.compute_max_per_turn),
+        } if args.seeker_agent_llm == "gemma" else None,
+    }
+
+    evaluate_player(
+        task_data_path,
+        output_path,
+        player_llm,
+        player_chat_mode,
+        provider_agent_constructor,
+        args.provider_agent_llm,
+        hftoken,
+        evaluation_set,
+        run_meta,
+    )
+
 
 

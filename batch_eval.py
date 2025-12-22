@@ -140,7 +140,13 @@ def compute_metrics_for_file(json_file: str,
                              evaluation_set: List[int]) -> Dict[str, Any]:
 
     with open(json_file, "r", encoding="utf-8") as f:
-        all_conv = json.load(f)
+        payload = json.load(f)
+    meta = {}
+    all_conv = payload
+    if isinstance(payload, dict) and "data" in payload:
+        meta = payload.get("meta", {}) or {}
+        all_conv = payload["data"]
+
 
     success_sum = aqd_sum = arl_sum = step_sum = 0.0
     cq_count_sum = cq_rate_sum = cq_depth_sum = goodbye_sum = 0.0
@@ -231,6 +237,14 @@ def compute_metrics_for_file(json_file: str,
 
     return {
         "file": os.path.basename(json_file),
+        "seeker_agent_llm": meta.get("seeker_agent_llm"),
+        "provider_agent_llm": meta.get("provider_agent_llm"),
+        "mode": meta.get("mode"),
+        "language": meta.get("language"),
+        "evaluation_set": meta.get("evaluation_set_arg") or meta.get("evaluation_set"),
+        "steering_feature": (meta.get("steering") or {}).get("feature"),
+        "steering_strength": (meta.get("steering") or {}).get("strength"),
+        "steering_max_act": (meta.get("steering") or {}).get("max_act"),
         "success_rate": success_sum / denom,
         "AQD": aqd_sum / denom,
         "ARL": arl_sum / denom,

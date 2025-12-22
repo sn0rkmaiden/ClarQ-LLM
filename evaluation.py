@@ -219,6 +219,11 @@ def evaluate_l2l_doc():
     with open(json_file, 'r', encoding='utf-8') as f:
         all_conv = json.load(f)
 
+    meta = {}
+    if isinstance(all_conv, dict) and "data" in all_conv:
+        meta = all_conv.get("meta", {}) or {}
+        all_conv = all_conv["data"]
+
     # Containers
     evaluate_results = []
     AQD_evaluation_results = []
