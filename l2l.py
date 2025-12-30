@@ -108,6 +108,10 @@ if __name__ == "__main__":
     parser.add_argument('--seeker_agent_llm', type=str, default='gpt4o')
     parser.add_argument('--provider_agent_llm', type=str, default='gpt4o')
     parser.add_argument('--task_data_path', type=str, default='data/English', help='Path to task data')
+
+    parser.add_argument("--gemma_model_name", type=str, default="gemma-2b-it")
+    parser.add_argument("--sae_release", type=str, default="gemma-2b-it-res-jb")
+    parser.add_argument("--sae_id", type=str, default="blocks.12.hook_resid_post")
     
     parser.add_argument('--player_chat_mode', action='store_true', help='Enable player chat mode')
     parser.add_argument('--multi_info_provider_agent', action='store_true', help='Use a multiple info provider agent instead of a general provider agent.')
@@ -183,9 +187,9 @@ if __name__ == "__main__":
         output_path = "results/l2l_deepseek.{}.{}.{}.json".format(mode,language, eval_tag)
     elif args.seeker_agent_llm == 'gemma':
         player_llm = HookedGEMMA(
-            model_name="gemma-2b-it",
-            sae_release="gemma-2b-it-res-jb",
-            sae_id="blocks.12.hook_resid_post",
+            model_name=args.gemma_model_name,
+            sae_release=args.sae_release,
+            sae_id=args.sae_id,
             device="cuda",
             steering_feature=args.steering_feature,
             steering_strength=args.steering_strength,

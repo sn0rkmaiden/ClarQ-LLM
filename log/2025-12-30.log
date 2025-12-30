@@ -1,0 +1,73 @@
+2025-12-30 20:24:09,492 - INFO - PyTorch version 2.9.1 available.
+2025-12-30 20:24:19,629 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.serialization.serializable.Serializable'>
+2025-12-30 20:24:19,630 - DEBUG - parents: [<class 'simple_parsing.helpers.serialization.serializable.SerializableMixin'>]
+2025-12-30 20:24:19,631 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.serialization.serializable.FrozenSerializable'>
+2025-12-30 20:24:19,632 - DEBUG - parents: [<class 'simple_parsing.helpers.serialization.serializable.SerializableMixin'>]
+2025-12-30 20:24:19,634 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.serialization.serializable.SimpleSerializable'>
+2025-12-30 20:24:19,636 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.serialization.yaml_serialization.YamlSerializable'>
+2025-12-30 20:24:19,637 - DEBUG - parents: [<class 'simple_parsing.helpers.serialization.serializable.Serializable'>, <class 'simple_parsing.helpers.serialization.serializable.SerializableMixin'>]
+2025-12-30 20:24:19,638 - DEBUG - Parent class <class 'simple_parsing.helpers.serialization.serializable.Serializable'> has decode_into_subclasses = False
+2025-12-30 20:24:19,639 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.hparams.hyperparameters.BoundInfo'>
+2025-12-30 20:24:19,639 - DEBUG - parents: [<class 'simple_parsing.helpers.serialization.serializable.Serializable'>, <class 'simple_parsing.helpers.serialization.serializable.SerializableMixin'>]
+2025-12-30 20:24:19,639 - DEBUG - Parent class <class 'simple_parsing.helpers.serialization.serializable.Serializable'> has decode_into_subclasses = False
+2025-12-30 20:24:19,641 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.hparams.hyperparameters.HyperParameters'>
+2025-12-30 20:25:24,675 - INFO - PyTorch version 2.9.1 available.
+2025-12-30 20:25:31,304 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.serialization.serializable.Serializable'>
+2025-12-30 20:25:31,305 - DEBUG - parents: [<class 'simple_parsing.helpers.serialization.serializable.SerializableMixin'>]
+2025-12-30 20:25:31,306 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.serialization.serializable.FrozenSerializable'>
+2025-12-30 20:25:31,307 - DEBUG - parents: [<class 'simple_parsing.helpers.serialization.serializable.SerializableMixin'>]
+2025-12-30 20:25:31,308 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.serialization.serializable.SimpleSerializable'>
+2025-12-30 20:25:31,310 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.serialization.yaml_serialization.YamlSerializable'>
+2025-12-30 20:25:31,310 - DEBUG - parents: [<class 'simple_parsing.helpers.serialization.serializable.Serializable'>, <class 'simple_parsing.helpers.serialization.serializable.SerializableMixin'>]
+2025-12-30 20:25:31,311 - DEBUG - Parent class <class 'simple_parsing.helpers.serialization.serializable.Serializable'> has decode_into_subclasses = False
+2025-12-30 20:25:31,312 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.hparams.hyperparameters.BoundInfo'>
+2025-12-30 20:25:31,312 - DEBUG - parents: [<class 'simple_parsing.helpers.serialization.serializable.Serializable'>, <class 'simple_parsing.helpers.serialization.serializable.SerializableMixin'>]
+2025-12-30 20:25:31,313 - DEBUG - Parent class <class 'simple_parsing.helpers.serialization.serializable.Serializable'> has decode_into_subclasses = False
+2025-12-30 20:25:31,314 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.hparams.hyperparameters.HyperParameters'>
+2025-12-30 20:32:45,406 - INFO - PyTorch version 2.9.1 available.
+2025-12-30 20:32:54,317 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.serialization.serializable.Serializable'>
+2025-12-30 20:32:54,318 - DEBUG - parents: [<class 'simple_parsing.helpers.serialization.serializable.SerializableMixin'>]
+2025-12-30 20:32:54,319 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.serialization.serializable.FrozenSerializable'>
+2025-12-30 20:32:54,320 - DEBUG - parents: [<class 'simple_parsing.helpers.serialization.serializable.SerializableMixin'>]
+2025-12-30 20:32:54,321 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.serialization.serializable.SimpleSerializable'>
+2025-12-30 20:32:54,323 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.serialization.yaml_serialization.YamlSerializable'>
+2025-12-30 20:32:54,324 - DEBUG - parents: [<class 'simple_parsing.helpers.serialization.serializable.Serializable'>, <class 'simple_parsing.helpers.serialization.serializable.SerializableMixin'>]
+2025-12-30 20:32:54,324 - DEBUG - Parent class <class 'simple_parsing.helpers.serialization.serializable.Serializable'> has decode_into_subclasses = False
+2025-12-30 20:32:54,325 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.hparams.hyperparameters.BoundInfo'>
+2025-12-30 20:32:54,326 - DEBUG - parents: [<class 'simple_parsing.helpers.serialization.serializable.Serializable'>, <class 'simple_parsing.helpers.serialization.serializable.SerializableMixin'>]
+2025-12-30 20:32:54,326 - DEBUG - Parent class <class 'simple_parsing.helpers.serialization.serializable.Serializable'> has decode_into_subclasses = False
+2025-12-30 20:32:54,328 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.hparams.hyperparameters.HyperParameters'>
+2025-12-30 20:32:58,072 - DEBUG - Request options: {'method': 'post', 'url': '/chat/completions', 'headers': {'X-Stainless-Raw-Response': 'true'}, 'files': None, 'idempotency_key': 'stainless-python-retry-9decd166-8cca-4b4f-bffe-2b3bab3baf1b', 'json_data': {'messages': [{'content': "\nReturn **only** a valid JSON object without any extra text.\nYou are Jax, an information discernment expert, and you know that the solution to the preparing for a goblin attack task is: 'The goblins are becoming restless and are stepping up their attacks. We must be prepared to defeat them and keep the people safe. We know that goblins fear sudden changes in temperature; if we can use both ice and fire attacks at the same time, then we should be able to repel any attacks.'. You need to determine whether what adventurer is saying to you is inquiring about information related to the preparing for a goblin attack task?\n\nThis is the previous conversation betweem you and adventurer:\nJax: what can help you?\n\nIt is known that the solution to the preparing for a goblin attack task is: The goblins are becoming restless and are stepping up their attacks. We must be prepared to defeat them and keep the people safe. We know that goblins fear sudden changes in temperature; if we can use both ice and fire attacks at the same time, then we should be able to repel any attacks.. You need to determine whether what adventurer is saying to you is inquiring about information related to the preparing for a goblin attack task? Return a JSON object containing a 'related' key: the value (boolean type) of the 'related' key indicates whether adventurer has inquired about content related to the task. The format should be as follows: { 'related': True or False }.\nReturn **only** a valid JSON object without any extra text.", 'role': 'user'}], 'model': 'Qwen/Qwen3-235B-A22B-Instruct-2507', 'stream': False, 'temperature': 1e-05}}
+2025-12-30 20:32:58,087 - DEBUG - Sending HTTP Request: POST https://api.tokenfactory.nebius.com/v1/chat/completions
+2025-12-30 20:32:58,088 - DEBUG - connect_tcp.started host='api.tokenfactory.nebius.com' port=443 local_address=None timeout=None socket_options=None
+2025-12-30 20:32:58,270 - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x7d2eff931350>
+2025-12-30 20:32:58,271 - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x7d2eff7ed400> server_hostname='api.tokenfactory.nebius.com' timeout=None
+2025-12-30 20:32:58,367 - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x7d2effa43750>
+2025-12-30 20:32:58,368 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2025-12-30 20:32:58,369 - DEBUG - send_request_headers.complete
+2025-12-30 20:32:58,369 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2025-12-30 20:32:58,370 - DEBUG - send_request_body.complete
+2025-12-30 20:32:58,371 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2025-12-30 20:32:58,786 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Tue, 30 Dec 2025 17:32:58 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'Vary', b'Accept-Encoding'), (b'x-ratelimit-limit-requests', b'600'), (b'x-ratelimit-limit-tokens', b'400000'), (b'x-ratelimit-remaining-requests', b'599'), (b'x-ratelimit-remaining-tokens', b'399109'), (b'x-ratelimit-reset-requests', b'1s'), (b'x-ratelimit-reset-tokens', b'1s'), (b'x-ratelimit-dynamic-scale-requests', b'1.00'), (b'x-ratelimit-dynamic-scale-tokens', b'1.00'), (b'x-ratelimit-dynamic-period-remaining', b'819s'), (b'x-ratelimit-dynamic-period-usage-requests', b'0%'), (b'x-ratelimit-dynamic-period-usage-tokens', b'0%'), (b'x-inference-id', b'chatcmpl-714d9c9210504437929bdcf2e531e0d7'), (b'access-control-allow-origin', b'*'), (b'vary', b'Origin'), (b'access-control-allow-credentials', b'true'), (b'x-request-id', b'ba750fe00b22001ecaea4468ac434c93'), (b'Strict-Transport-Security', b'max-age=31536000; includeSubDomains'), (b'Content-Encoding', b'gzip')])
+2025-12-30 20:32:58,788 - INFO - HTTP Request: POST https://api.tokenfactory.nebius.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-30 20:32:58,788 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2025-12-30 20:32:58,789 - DEBUG - receive_response_body.complete
+2025-12-30 20:32:58,790 - DEBUG - response_closed.started
+2025-12-30 20:32:58,790 - DEBUG - response_closed.complete
+2025-12-30 20:32:58,791 - DEBUG - HTTP Response: POST https://api.tokenfactory.nebius.com/v1/chat/completions "200 OK" Headers([('date', 'Tue, 30 Dec 2025 17:32:58 GMT'), ('content-type', 'application/json'), ('transfer-encoding', 'chunked'), ('connection', 'keep-alive'), ('vary', 'Accept-Encoding'), ('x-ratelimit-limit-requests', '600'), ('x-ratelimit-limit-tokens', '400000'), ('x-ratelimit-remaining-requests', '599'), ('x-ratelimit-remaining-tokens', '399109'), ('x-ratelimit-reset-requests', '1s'), ('x-ratelimit-reset-tokens', '1s'), ('x-ratelimit-dynamic-scale-requests', '1.00'), ('x-ratelimit-dynamic-scale-tokens', '1.00'), ('x-ratelimit-dynamic-period-remaining', '819s'), ('x-ratelimit-dynamic-period-usage-requests', '0%'), ('x-ratelimit-dynamic-period-usage-tokens', '0%'), ('x-inference-id', 'chatcmpl-714d9c9210504437929bdcf2e531e0d7'), ('access-control-allow-origin', '*'), ('vary', 'Origin'), ('access-control-allow-credentials', 'true'), ('x-request-id', 'ba750fe00b22001ecaea4468ac434c93'), ('strict-transport-security', 'max-age=31536000; includeSubDomains'), ('content-encoding', 'gzip')])
+2025-12-30 20:32:58,792 - DEBUG - request_id: ba750fe00b22001ecaea4468ac434c93
+2025-12-30 20:32:59,123 - DEBUG - close.started
+2025-12-30 20:32:59,128 - DEBUG - close.complete
+2025-12-30 20:33:33,193 - INFO - PyTorch version 2.9.1 available.
+2025-12-30 20:33:39,302 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.serialization.serializable.Serializable'>
+2025-12-30 20:33:39,303 - DEBUG - parents: [<class 'simple_parsing.helpers.serialization.serializable.SerializableMixin'>]
+2025-12-30 20:33:39,304 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.serialization.serializable.FrozenSerializable'>
+2025-12-30 20:33:39,305 - DEBUG - parents: [<class 'simple_parsing.helpers.serialization.serializable.SerializableMixin'>]
+2025-12-30 20:33:39,306 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.serialization.serializable.SimpleSerializable'>
+2025-12-30 20:33:39,308 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.serialization.yaml_serialization.YamlSerializable'>
+2025-12-30 20:33:39,308 - DEBUG - parents: [<class 'simple_parsing.helpers.serialization.serializable.Serializable'>, <class 'simple_parsing.helpers.serialization.serializable.SerializableMixin'>]
+2025-12-30 20:33:39,309 - DEBUG - Parent class <class 'simple_parsing.helpers.serialization.serializable.Serializable'> has decode_into_subclasses = False
+2025-12-30 20:33:39,310 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.hparams.hyperparameters.BoundInfo'>
+2025-12-30 20:33:39,310 - DEBUG - parents: [<class 'simple_parsing.helpers.serialization.serializable.Serializable'>, <class 'simple_parsing.helpers.serialization.serializable.SerializableMixin'>]
+2025-12-30 20:33:39,311 - DEBUG - Parent class <class 'simple_parsing.helpers.serialization.serializable.Serializable'> has decode_into_subclasses = False
+2025-12-30 20:33:39,312 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.hparams.hyperparameters.HyperParameters'>
