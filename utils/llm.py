@@ -414,7 +414,7 @@ class HookedGEMMA(LLM):
         else:
             # load HookedTransformer model
             # note: pass device through to from_pretrained
-            self.model = HookedTransformer.from_pretrained(model_name, device=device)
+            self.model = HookedTransformer.from_pretrained(model_name, device=device, dtype=torch.float16)
 
         # The HookedTransformer exposes tokenization helpers (to_tokens, to_string)
         # If you have a separate tokenizer object available in your environment, you can attach it as self.tokenizer.
