@@ -1,0 +1,715 @@
+========================
+========================
+========================
+		LLM input:
+user:
+
+Return **only** a valid JSON object without any extra text.
+You are Jax, an information discernment expert, and you know that the solution to the preparing for a goblin attack task is: 'The goblins are becoming restless and are stepping up their attacks. We must be prepared to defeat them and keep the people safe. We know that goblins fear sudden changes in temperature; if we can use both ice and fire attacks at the same time, then we should be able to repel any attacks.'. You need to determine whether what adventurer is saying to you is inquiring about information related to the preparing for a goblin attack task?
+
+This is the previous conversation betweem you and adventurer:
+Jax: what can help you?
+adventurer: Jax, we are preparing for a goblin attack. Can you tell me what I can do with my items and skills to help prepare for the attack?
+
+It is known that the solution to the preparing for a goblin attack task is: The goblins are becoming restless and are stepping up their attacks. We must be prepared to defeat them and keep the people safe. We know that goblins fear sudden changes in temperature; if we can use both ice and fire attacks at the same time, then we should be able to repel any attacks.. You need to determine whether what adventurer is saying to you is inquiring about information related to the preparing for a goblin attack task? Return a JSON object containing a 'related' key: the value (boolean type) of the 'related' key indicates whether adventurer has inquired about content related to the task. The format should be as follows: { 'related': True or False }.
+Return **only** a valid JSON object without any extra text.
+
+
+		LLM output:
+{ "related": true }
+
+		LLM Model:	Qwen/Qwen3-235B-A22B-Instruct-2507
+
+		System Fingerprint:	None
+
+		Usage(Prompt, Completion, Total Tokens):	[None, None, None]
+========================
+========================
+========================
+
+
+========================
+========================
+========================
+		LLM input:
+user:
+
+Return **only** a valid JSON object without any extra text.
+You are Jax, an information discernment expert, and you know that the solution to the preparing for a goblin attack task is: 'The goblins are becoming restless and are stepping up their attacks. We must be prepared to defeat them and keep the people safe. We know that goblins fear sudden changes in temperature; if we can use both ice and fire attacks at the same time, then we should be able to repel any attacks.'. You need to determine whether what adventurer is saying to you is inquiring about information related to the preparing for a goblin attack task?
+
+This is the previous conversation betweem you and adventurer:
+Jax: what can help you?
+adventurer: What can I do to help prepare for the goblin attack?
+
+
+Now, I will tell you what they will say to you.
+Now, I will tell you what they will say to you.
+Please don't tell me what they will say.
+
+
+You are now ready to ask your questions to Jax.
+
+
+You are now ready to ask your questions to Jax.
+
+
+You are now ready to answer.
+
+
+You are now ready to ask your questions to Jax.
+
+
+You are now ready to ask your questions to Jax.
+
+
+You are now ready to ask your questions to your
+
+##
+
+You are now ready to
+
+It is known that the solution to the preparing for a goblin attack task is: The goblins are becoming restless and are stepping up their attacks. We must be prepared to defeat them and keep the people safe. We know that goblins fear sudden changes in temperature; if we can use both ice and fire attacks at the same time, then we should be able to repel any attacks.. You need to determine whether what adventurer is saying to you is inquiring about information related to the preparing for a goblin attack task? Return a JSON object containing a 'related' key: the value (boolean type) of the 'related' key indicates whether adventurer has inquired about content related to the task. The format should be as follows: { 'related': True or False }.
+Return **only** a valid JSON object without any extra text.
+
+
+		LLM output:
+{ "related": true }
+
+		LLM Model:	Qwen/Qwen3-235B-A22B-Instruct-2507
+
+		System Fingerprint:	None
+
+		Usage(Prompt, Completion, Total Tokens):	[None, None, None]
+========================
+========================
+========================
+
+
+========================
+========================
+========================
+		LLM input:
+user:
+
+Return **only** a valid JSON object without any extra text.
+You are Jax, an information discernment expert, and you know that the solution to the preparing for a goblin attack task is: 'The goblins are becoming restless and are stepping up their attacks. We must be prepared to defeat them and keep the people safe. We know that goblins fear sudden changes in temperature; if we can use both ice and fire attacks at the same time, then we should be able to repel any attacks.'. You need to determine whether what adventurer is saying to you is inquiring about information related to the preparing for a goblin attack task?
+
+This is the previous conversation betweem you and adventurer:
+Jax: what can help you?
+adventurer: 
+
+It is known that the solution to the preparing for a goblin attack task is: The goblins are becoming restless and are stepping up their attacks. We must be prepared to defeat them and keep the people safe. We know that goblins fear sudden changes in temperature; if we can use both ice and fire attacks at the same time, then we should be able to repel any attacks.. You need to determine whether what adventurer is saying to you is inquiring about information related to the preparing for a goblin attack task? Return a JSON object containing a 'related' key: the value (boolean type) of the 'related' key indicates whether adventurer has inquired about content related to the task. The format should be as follows: { 'related': True or False }.
+Return **only** a valid JSON object without any extra text.
+
+
+		LLM output:
+{ "related": false }
+
+		LLM Model:	Qwen/Qwen3-235B-A22B-Instruct-2507
+
+		System Fingerprint:	None
+
+		Usage(Prompt, Completion, Total Tokens):	[None, None, None]
+========================
+========================
+========================
+
+
+========================
+========================
+========================
+		LLM input:
+user:
+
+Return **only** a valid JSON object without any extra text.
+You are Jax, an information discernment expert, and you know that the solution to the preparing for a goblin attack task is: 'The goblins are becoming restless and are stepping up their attacks. We must be prepared to defeat them and keep the people safe. We know that goblins fear sudden changes in temperature; if we can use both ice and fire attacks at the same time, then we should be able to repel any attacks.'. You need to determine whether what adventurer is saying to you is inquiring about information related to the preparing for a goblin attack task?
+
+This is the previous conversation betweem you and adventurer:
+Jax: what can help you?
+adventurer: > We need to prepare for a goblin attack. What can we do?
+
+It is known that the solution to the preparing for a goblin attack task is: The goblins are becoming restless and are stepping up their attacks. We must be prepared to defeat them and keep the people safe. We know that goblins fear sudden changes in temperature; if we can use both ice and fire attacks at the same time, then we should be able to repel any attacks.. You need to determine whether what adventurer is saying to you is inquiring about information related to the preparing for a goblin attack task? Return a JSON object containing a 'related' key: the value (boolean type) of the 'related' key indicates whether adventurer has inquired about content related to the task. The format should be as follows: { 'related': True or False }.
+Return **only** a valid JSON object without any extra text.
+
+
+		LLM output:
+{ "related": true }
+
+		LLM Model:	Qwen/Qwen3-235B-A22B-Instruct-2507
+
+		System Fingerprint:	None
+
+		Usage(Prompt, Completion, Total Tokens):	[None, None, None]
+========================
+========================
+========================
+
+
+========================
+========================
+========================
+		LLM input:
+user:
+
+Return **only** a valid JSON object without any extra text.
+You are Jax, an information discernment expert, and you know that the solution to the preparing for a goblin attack task is: 'The goblins are becoming restless and are stepping up their attacks. We must be prepared to defeat them and keep the people safe. We know that goblins fear sudden changes in temperature; if we can use both ice and fire attacks at the same time, then we should be able to repel any attacks.'. You need to determine whether what adventurer is saying to you is inquiring about information related to the preparing for a goblin attack task?
+
+This is the previous conversation betweem you and adventurer:
+Jax: what can help you?
+adventurer: Jax, I need to prepare for a goblin attack. Can you tell me how to best use my items and skills to defend myself?
+
+It is known that the solution to the preparing for a goblin attack task is: The goblins are becoming restless and are stepping up their attacks. We must be prepared to defeat them and keep the people safe. We know that goblins fear sudden changes in temperature; if we can use both ice and fire attacks at the same time, then we should be able to repel any attacks.. You need to determine whether what adventurer is saying to you is inquiring about information related to the preparing for a goblin attack task? Return a JSON object containing a 'related' key: the value (boolean type) of the 'related' key indicates whether adventurer has inquired about content related to the task. The format should be as follows: { 'related': True or False }.
+Return **only** a valid JSON object without any extra text.
+
+
+		LLM output:
+{ "related": true }
+
+		LLM Model:	Qwen/Qwen3-235B-A22B-Instruct-2507
+
+		System Fingerprint:	None
+
+		Usage(Prompt, Completion, Total Tokens):	[None, None, None]
+========================
+========================
+========================
+
+
+========================
+========================
+========================
+		LLM input:
+user:
+
+Return **only** a valid JSON object without any extra text.
+You are Jax, an information discernment expert, and you know that the solution to the preparing for a goblin attack task is: 'The goblins are becoming restless and are stepping up their attacks. We must be prepared to defeat them and keep the people safe. We know that goblins fear sudden changes in temperature; if we can use both ice and fire attacks at the same time, then we should be able to repel any attacks.'. You need to determine whether what adventurer is saying to you is inquiring about information related to the preparing for a goblin attack task?
+
+This is the previous conversation betweem you and adventurer:
+Jax: what can help you?
+adventurer: ```
+Jax, I need to prepare for a goblin attack. What can I do with my items and skills to be ready?
+```
+
+It is known that the solution to the preparing for a goblin attack task is: The goblins are becoming restless and are stepping up their attacks. We must be prepared to defeat them and keep the people safe. We know that goblins fear sudden changes in temperature; if we can use both ice and fire attacks at the same time, then we should be able to repel any attacks.. You need to determine whether what adventurer is saying to you is inquiring about information related to the preparing for a goblin attack task? Return a JSON object containing a 'related' key: the value (boolean type) of the 'related' key indicates whether adventurer has inquired about content related to the task. The format should be as follows: { 'related': True or False }.
+Return **only** a valid JSON object without any extra text.
+
+
+		LLM output:
+{ "related": true }
+
+		LLM Model:	Qwen/Qwen3-235B-A22B-Instruct-2507
+
+		System Fingerprint:	None
+
+		Usage(Prompt, Completion, Total Tokens):	[None, None, None]
+========================
+========================
+========================
+
+
+========================
+========================
+========================
+		LLM input:
+user:
+
+Return **only** a valid JSON object without any extra text.
+You are Jax, an information discernment expert, and you know that the solution to the preparing for a goblin attack task is: 'The goblins are becoming restless and are stepping up their attacks. We must be prepared to defeat them and keep the people safe. We know that goblins fear sudden changes in temperature; if we can use both ice and fire attacks at the same time, then we should be able to repel any attacks.'. You need to determine whether what adventurer is saying to you is inquiring about information related to the preparing for a goblin attack task?
+
+This is the previous conversation betweem you and adventurer:
+Jax: what can help you?
+adventurer: Jax, I'm preparing for a goblin attack and I need your advice. What are the best ways to defend myself and my supplies using the items I have and the skills I can use?
+
+It is known that the solution to the preparing for a goblin attack task is: The goblins are becoming restless and are stepping up their attacks. We must be prepared to defeat them and keep the people safe. We know that goblins fear sudden changes in temperature; if we can use both ice and fire attacks at the same time, then we should be able to repel any attacks.. You need to determine whether what adventurer is saying to you is inquiring about information related to the preparing for a goblin attack task? Return a JSON object containing a 'related' key: the value (boolean type) of the 'related' key indicates whether adventurer has inquired about content related to the task. The format should be as follows: { 'related': True or False }.
+Return **only** a valid JSON object without any extra text.
+
+
+		LLM output:
+{ "related": true }
+
+		LLM Model:	Qwen/Qwen3-235B-A22B-Instruct-2507
+
+		System Fingerprint:	None
+
+		Usage(Prompt, Completion, Total Tokens):	[None, None, None]
+========================
+========================
+========================
+
+
+========================
+========================
+========================
+		LLM input:
+user:
+
+Return **only** a valid JSON object without any extra text.
+You are Jax, an information discernment expert, and you know that the solution to the preparing for a goblin attack task is: 'The goblins are becoming restless and are stepping up their attacks. We must be prepared to defeat them and keep the people safe. We know that goblins fear sudden changes in temperature; if we can use both ice and fire attacks at the same time, then we should be able to repel any attacks.'. You need to determine whether what adventurer is saying to you is inquiring about information related to the preparing for a goblin attack task?
+
+This is the previous conversation betweem you and adventurer:
+Jax: what can help you?
+adventurer: Jax, I need to prepare for a goblin attack. What can I do to help?
+
+It is known that the solution to the preparing for a goblin attack task is: The goblins are becoming restless and are stepping up their attacks. We must be prepared to defeat them and keep the people safe. We know that goblins fear sudden changes in temperature; if we can use both ice and fire attacks at the same time, then we should be able to repel any attacks.. You need to determine whether what adventurer is saying to you is inquiring about information related to the preparing for a goblin attack task? Return a JSON object containing a 'related' key: the value (boolean type) of the 'related' key indicates whether adventurer has inquired about content related to the task. The format should be as follows: { 'related': True or False }.
+Return **only** a valid JSON object without any extra text.
+
+
+		LLM output:
+{ "related": true }
+
+		LLM Model:	Qwen/Qwen3-235B-A22B-Instruct-2507
+
+		System Fingerprint:	None
+
+		Usage(Prompt, Completion, Total Tokens):	[None, None, None]
+========================
+========================
+========================
+
+
+========================
+========================
+========================
+		LLM input:
+user:
+
+Return **only** a valid JSON object without any extra text.
+You are Jax, an information discernment expert, and you know that the solution to the preparing for a goblin attack task is: 'The goblins are becoming restless and are stepping up their attacks. We must be prepared to defeat them and keep the people safe. We know that goblins fear sudden changes in temperature; if we can use both ice and fire attacks at the same time, then we should be able to repel any attacks.'. You need to determine whether what adventurer is saying to you is inquiring about information related to the preparing for a goblin attack task?
+
+This is the previous conversation betweem you and adventurer:
+Jax: what can help you?
+adventurer: Jax, I need to prepare for a goblin attack. Can you tell me how to do that based on my current items and skills?
+
+It is known that the solution to the preparing for a goblin attack task is: The goblins are becoming restless and are stepping up their attacks. We must be prepared to defeat them and keep the people safe. We know that goblins fear sudden changes in temperature; if we can use both ice and fire attacks at the same time, then we should be able to repel any attacks.. You need to determine whether what adventurer is saying to you is inquiring about information related to the preparing for a goblin attack task? Return a JSON object containing a 'related' key: the value (boolean type) of the 'related' key indicates whether adventurer has inquired about content related to the task. The format should be as follows: { 'related': True or False }.
+Return **only** a valid JSON object without any extra text.
+
+
+		LLM output:
+{ "related": true }
+
+		LLM Model:	Qwen/Qwen3-235B-A22B-Instruct-2507
+
+		System Fingerprint:	None
+
+		Usage(Prompt, Completion, Total Tokens):	[None, None, None]
+========================
+========================
+========================
+
+
+========================
+========================
+========================
+		LLM input:
+user:
+
+Return **only** a valid JSON object without any extra text.
+You are Jax, an information discernment expert, and you know that the solution to the preparing for a goblin attack task is: 'The goblins are becoming restless and are stepping up their attacks. We must be prepared to defeat them and keep the people safe. We know that goblins fear sudden changes in temperature; if we can use both ice and fire attacks at the same time, then we should be able to repel any attacks.'. You need to determine whether what adventurer is saying to you is inquiring about information related to the preparing for a goblin attack task?
+
+This is the previous conversation betweem you and adventurer:
+Jax: what can help you?
+adventurer: Jax, I'm preparing for a goblin attack. Can you advise me on how to best utilize my current resources to prepare?
+
+It is known that the solution to the preparing for a goblin attack task is: The goblins are becoming restless and are stepping up their attacks. We must be prepared to defeat them and keep the people safe. We know that goblins fear sudden changes in temperature; if we can use both ice and fire attacks at the same time, then we should be able to repel any attacks.. You need to determine whether what adventurer is saying to you is inquiring about information related to the preparing for a goblin attack task? Return a JSON object containing a 'related' key: the value (boolean type) of the 'related' key indicates whether adventurer has inquired about content related to the task. The format should be as follows: { 'related': True or False }.
+Return **only** a valid JSON object without any extra text.
+
+
+		LLM output:
+{ "related": true }
+
+		LLM Model:	Qwen/Qwen3-235B-A22B-Instruct-2507
+
+		System Fingerprint:	None
+
+		Usage(Prompt, Completion, Total Tokens):	[None, None, None]
+========================
+========================
+========================
+
+
+========================
+========================
+========================
+		LLM input:
+user:
+
+Return **only** a valid JSON object without any extra text.
+You are Jax, an information discernment expert, and you know that the solution to the preparing for a goblin attack task is: 'The goblins are becoming restless and are stepping up their attacks. We must be prepared to defeat them and keep the people safe. We know that goblins fear sudden changes in temperature; if we can use both ice and fire attacks at the same time, then we should be able to repel any attacks.'. You need to determine whether what adventurer is saying to you is inquiring about information related to the preparing for a goblin attack task?
+
+This is the previous conversation betweem you and adventurer:
+Jax: what can help you?
+adventurer: Jax, I need help preparing for a goblin attack. What can I do with these items and skills to be ready?
+
+It is known that the solution to the preparing for a goblin attack task is: The goblins are becoming restless and are stepping up their attacks. We must be prepared to defeat them and keep the people safe. We know that goblins fear sudden changes in temperature; if we can use both ice and fire attacks at the same time, then we should be able to repel any attacks.. You need to determine whether what adventurer is saying to you is inquiring about information related to the preparing for a goblin attack task? Return a JSON object containing a 'related' key: the value (boolean type) of the 'related' key indicates whether adventurer has inquired about content related to the task. The format should be as follows: { 'related': True or False }.
+Return **only** a valid JSON object without any extra text.
+
+
+		LLM output:
+{ "related": true }
+
+		LLM Model:	Qwen/Qwen3-235B-A22B-Instruct-2507
+
+		System Fingerprint:	None
+
+		Usage(Prompt, Completion, Total Tokens):	[None, None, None]
+========================
+========================
+========================
+
+
+========================
+========================
+========================
+		LLM input:
+user:
+
+Return **only** a valid JSON object without any extra text.
+You are Jax, an information discernment expert, and you know that the solution to the preparing for a goblin attack task is: 'The goblins are becoming restless and are stepping up their attacks. We must be prepared to defeat them and keep the people safe. We know that goblins fear sudden changes in temperature; if we can use both ice and fire attacks at the same time, then we should be able to repel any attacks.'. You need to determine whether what adventurer is saying to you is inquiring about information related to the preparing for a goblin attack task?
+
+This is the previous conversation betweem you and adventurer:
+Jax: what can help you?
+adventurer: Jax: what can help you?
+
+What should you say to Jax?
+
+It is known that the solution to the preparing for a goblin attack task is: The goblins are becoming restless and are stepping up their attacks. We must be prepared to defeat them and keep the people safe. We know that goblins fear sudden changes in temperature; if we can use both ice and fire attacks at the same time, then we should be able to repel any attacks.. You need to determine whether what adventurer is saying to you is inquiring about information related to the preparing for a goblin attack task? Return a JSON object containing a 'related' key: the value (boolean type) of the 'related' key indicates whether adventurer has inquired about content related to the task. The format should be as follows: { 'related': True or False }.
+Return **only** a valid JSON object without any extra text.
+
+
+		LLM output:
+{ "related": false }
+
+		LLM Model:	Qwen/Qwen3-235B-A22B-Instruct-2507
+
+		System Fingerprint:	None
+
+		Usage(Prompt, Completion, Total Tokens):	[None, None, None]
+========================
+========================
+========================
+
+
+========================
+========================
+========================
+		LLM input:
+user:
+
+Return **only** a valid JSON object without any extra text.
+You are Jax, an information discernment expert, and you know that the solution to the preparing for a goblin attack task is: 'The goblins are becoming restless and are stepping up their attacks. We must be prepared to defeat them and keep the people safe. We know that goblins fear sudden changes in temperature; if we can use both ice and fire attacks at the same time, then we should be able to repel any attacks.'. You need to determine whether what adventurer is saying to you is inquiring about information related to the preparing for a goblin attack task?
+
+This is the previous conversation betweem you and adventurer:
+Jax: what can help you?
+adventurer: Jax, I need to prepare for a goblin attack. What can I do with my current items and skills to help defend against them?
+
+It is known that the solution to the preparing for a goblin attack task is: The goblins are becoming restless and are stepping up their attacks. We must be prepared to defeat them and keep the people safe. We know that goblins fear sudden changes in temperature; if we can use both ice and fire attacks at the same time, then we should be able to repel any attacks.. You need to determine whether what adventurer is saying to you is inquiring about information related to the preparing for a goblin attack task? Return a JSON object containing a 'related' key: the value (boolean type) of the 'related' key indicates whether adventurer has inquired about content related to the task. The format should be as follows: { 'related': True or False }.
+Return **only** a valid JSON object without any extra text.
+
+
+		LLM output:
+{ "related": true }
+
+		LLM Model:	Qwen/Qwen3-235B-A22B-Instruct-2507
+
+		System Fingerprint:	None
+
+		Usage(Prompt, Completion, Total Tokens):	[None, None, None]
+========================
+========================
+========================
+
+
+========================
+========================
+========================
+		LLM input:
+user:
+
+Return **only** a valid JSON object without any extra text.
+You are Jax, an information discernment expert, and you know that the solution to the preparing for a goblin attack task is: 'The goblins are becoming restless and are stepping up their attacks. We must be prepared to defeat them and keep the people safe. We know that goblins fear sudden changes in temperature; if we can use both ice and fire attacks at the same time, then we should be able to repel any attacks.'. You need to determine whether what adventurer is saying to you is inquiring about information related to the preparing for a goblin attack task?
+
+This is the previous conversation betweem you and adventurer:
+Jax: what can help you?
+adventurer: Jax, I need to prepare for a goblin attack. What can I do with my items and skills to help defend against them?
+
+It is known that the solution to the preparing for a goblin attack task is: The goblins are becoming restless and are stepping up their attacks. We must be prepared to defeat them and keep the people safe. We know that goblins fear sudden changes in temperature; if we can use both ice and fire attacks at the same time, then we should be able to repel any attacks.. You need to determine whether what adventurer is saying to you is inquiring about information related to the preparing for a goblin attack task? Return a JSON object containing a 'related' key: the value (boolean type) of the 'related' key indicates whether adventurer has inquired about content related to the task. The format should be as follows: { 'related': True or False }.
+Return **only** a valid JSON object without any extra text.
+
+
+		LLM output:
+{ "related": true }
+
+		LLM Model:	Qwen/Qwen3-235B-A22B-Instruct-2507
+
+		System Fingerprint:	None
+
+		Usage(Prompt, Completion, Total Tokens):	[None, None, None]
+========================
+========================
+========================
+
+
+========================
+========================
+========================
+		LLM input:
+user:
+
+Return **only** a valid JSON object without any extra text.
+You are Jax, an information discernment expert, and you know that the solution to the preparing for a goblin attack task is: 'The goblins are becoming restless and are stepping up their attacks. We must be prepared to defeat them and keep the people safe. We know that goblins fear sudden changes in temperature; if we can use both ice and fire attacks at the same time, then we should be able to repel any attacks.'. You need to determine whether what adventurer is saying to you is inquiring about information related to the preparing for a goblin attack task?
+
+This is the previous conversation betweem you and adventurer:
+Jax: what can help you?
+adventurer: Jax, I need to prepare for a goblin attack. Do you have any advice on how I can best use my existing items and skills to defend myself?
+
+It is known that the solution to the preparing for a goblin attack task is: The goblins are becoming restless and are stepping up their attacks. We must be prepared to defeat them and keep the people safe. We know that goblins fear sudden changes in temperature; if we can use both ice and fire attacks at the same time, then we should be able to repel any attacks.. You need to determine whether what adventurer is saying to you is inquiring about information related to the preparing for a goblin attack task? Return a JSON object containing a 'related' key: the value (boolean type) of the 'related' key indicates whether adventurer has inquired about content related to the task. The format should be as follows: { 'related': True or False }.
+Return **only** a valid JSON object without any extra text.
+
+
+		LLM output:
+{ "related": true }
+
+		LLM Model:	Qwen/Qwen3-235B-A22B-Instruct-2507
+
+		System Fingerprint:	None
+
+		Usage(Prompt, Completion, Total Tokens):	[None, None, None]
+========================
+========================
+========================
+
+
+========================
+========================
+========================
+		LLM input:
+user:
+
+Return **only** a valid JSON object without any extra text.
+You are Jax, an information discernment expert, and you know that the solution to the preparing for a goblin attack task is: 'The goblins are becoming restless and are stepping up their attacks. We must be prepared to defeat them and keep the people safe. We know that goblins fear sudden changes in temperature; if we can use both ice and fire attacks at the same time, then we should be able to repel any attacks.'. You need to determine whether what adventurer is saying to you is inquiring about information related to the preparing for a goblin attack task?
+
+This is the previous conversation betweem you and adventurer:
+Jax: what can help you?
+adventurer: Jax, I need to prepare for a goblin attack. Can you tell me how to do that based on what I have?
+
+It is known that the solution to the preparing for a goblin attack task is: The goblins are becoming restless and are stepping up their attacks. We must be prepared to defeat them and keep the people safe. We know that goblins fear sudden changes in temperature; if we can use both ice and fire attacks at the same time, then we should be able to repel any attacks.. You need to determine whether what adventurer is saying to you is inquiring about information related to the preparing for a goblin attack task? Return a JSON object containing a 'related' key: the value (boolean type) of the 'related' key indicates whether adventurer has inquired about content related to the task. The format should be as follows: { 'related': True or False }.
+Return **only** a valid JSON object without any extra text.
+
+
+		LLM output:
+{ "related": true }
+
+		LLM Model:	Qwen/Qwen3-235B-A22B-Instruct-2507
+
+		System Fingerprint:	None
+
+		Usage(Prompt, Completion, Total Tokens):	[None, None, None]
+========================
+========================
+========================
+
+
+========================
+========================
+========================
+		LLM input:
+user:
+
+Return **only** a valid JSON object without any extra text.
+You are Jax, an information discernment expert, and you know that the solution to the preparing for a goblin attack task is: 'The goblins are becoming restless and are stepping up their attacks. We must be prepared to defeat them and keep the people safe. We know that goblins fear sudden changes in temperature; if we can use both ice and fire attacks at the same time, then we should be able to repel any attacks.'. You need to determine whether what adventurer is saying to you is inquiring about information related to the preparing for a goblin attack task?
+
+This is the previous conversation betweem you and adventurer:
+Jax: what can help you?
+adventurer: Jax, I need your help preparing for a goblin attack. What can I do with my current items and skills to best defend myself?
+
+It is known that the solution to the preparing for a goblin attack task is: The goblins are becoming restless and are stepping up their attacks. We must be prepared to defeat them and keep the people safe. We know that goblins fear sudden changes in temperature; if we can use both ice and fire attacks at the same time, then we should be able to repel any attacks.. You need to determine whether what adventurer is saying to you is inquiring about information related to the preparing for a goblin attack task? Return a JSON object containing a 'related' key: the value (boolean type) of the 'related' key indicates whether adventurer has inquired about content related to the task. The format should be as follows: { 'related': True or False }.
+Return **only** a valid JSON object without any extra text.
+
+
+		LLM output:
+{ "related": true }
+
+		LLM Model:	Qwen/Qwen3-235B-A22B-Instruct-2507
+
+		System Fingerprint:	None
+
+		Usage(Prompt, Completion, Total Tokens):	[None, None, None]
+========================
+========================
+========================
+
+
+========================
+========================
+========================
+		LLM input:
+user:
+
+Return **only** a valid JSON object without any extra text.
+You are Jax, an information discernment expert, and you know that the solution to the preparing for a goblin attack task is: 'The goblins are becoming restless and are stepping up their attacks. We must be prepared to defeat them and keep the people safe. We know that goblins fear sudden changes in temperature; if we can use both ice and fire attacks at the same time, then we should be able to repel any attacks.'. You need to determine whether what adventurer is saying to you is inquiring about information related to the preparing for a goblin attack task?
+
+This is the previous conversation betweem you and adventurer:
+Jax: what can help you?
+adventurer: Jax, I need your help preparing for a goblin attack. I have some items and skills, can you tell me how to use them to best defend against the goblins?
+
+It is known that the solution to the preparing for a goblin attack task is: The goblins are becoming restless and are stepping up their attacks. We must be prepared to defeat them and keep the people safe. We know that goblins fear sudden changes in temperature; if we can use both ice and fire attacks at the same time, then we should be able to repel any attacks.. You need to determine whether what adventurer is saying to you is inquiring about information related to the preparing for a goblin attack task? Return a JSON object containing a 'related' key: the value (boolean type) of the 'related' key indicates whether adventurer has inquired about content related to the task. The format should be as follows: { 'related': True or False }.
+Return **only** a valid JSON object without any extra text.
+
+
+		LLM output:
+{ "related": true }
+
+		LLM Model:	Qwen/Qwen3-235B-A22B-Instruct-2507
+
+		System Fingerprint:	None
+
+		Usage(Prompt, Completion, Total Tokens):	[None, None, None]
+========================
+========================
+========================
+
+
+========================
+========================
+========================
+		LLM input:
+user:
+
+Return **only** a valid JSON object without any extra text.
+You are Jax, an information discernment expert, and you know that the solution to the preparing for a goblin attack task is: 'The goblins are becoming restless and are stepping up their attacks. We must be prepared to defeat them and keep the people safe. We know that goblins fear sudden changes in temperature; if we can use both ice and fire attacks at the same time, then we should be able to repel any attacks.'. You need to determine whether what adventurer is saying to you is inquiring about information related to the preparing for a goblin attack task?
+
+This is the previous conversation betweem you and adventurer:
+Jax: what can help you?
+adventurer: Jax, I need to prepare for a goblin attack. What can I do with my items and skills to help me?
+
+It is known that the solution to the preparing for a goblin attack task is: The goblins are becoming restless and are stepping up their attacks. We must be prepared to defeat them and keep the people safe. We know that goblins fear sudden changes in temperature; if we can use both ice and fire attacks at the same time, then we should be able to repel any attacks.. You need to determine whether what adventurer is saying to you is inquiring about information related to the preparing for a goblin attack task? Return a JSON object containing a 'related' key: the value (boolean type) of the 'related' key indicates whether adventurer has inquired about content related to the task. The format should be as follows: { 'related': True or False }.
+Return **only** a valid JSON object without any extra text.
+
+
+		LLM output:
+{ "related": true }
+
+		LLM Model:	Qwen/Qwen3-235B-A22B-Instruct-2507
+
+		System Fingerprint:	None
+
+		Usage(Prompt, Completion, Total Tokens):	[None, None, None]
+========================
+========================
+========================
+
+
+========================
+========================
+========================
+		LLM input:
+user:
+
+Return **only** a valid JSON object without any extra text.
+You are Jax, an information discernment expert, and you know that the solution to the preparing for a goblin attack task is: 'The goblins are becoming restless and are stepping up their attacks. We must be prepared to defeat them and keep the people safe. We know that goblins fear sudden changes in temperature; if we can use both ice and fire attacks at the same time, then we should be able to repel any attacks.'. You need to determine whether what adventurer is saying to you is inquiring about information related to the preparing for a goblin attack task?
+
+This is the previous conversation betweem you and adventurer:
+Jax: what can help you?
+adventurer: ................................................................................................................................
+
+It is known that the solution to the preparing for a goblin attack task is: The goblins are becoming restless and are stepping up their attacks. We must be prepared to defeat them and keep the people safe. We know that goblins fear sudden changes in temperature; if we can use both ice and fire attacks at the same time, then we should be able to repel any attacks.. You need to determine whether what adventurer is saying to you is inquiring about information related to the preparing for a goblin attack task? Return a JSON object containing a 'related' key: the value (boolean type) of the 'related' key indicates whether adventurer has inquired about content related to the task. The format should be as follows: { 'related': True or False }.
+Return **only** a valid JSON object without any extra text.
+
+
+		LLM output:
+{ "related": false }
+
+		LLM Model:	Qwen/Qwen3-235B-A22B-Instruct-2507
+
+		System Fingerprint:	None
+
+		Usage(Prompt, Completion, Total Tokens):	[None, None, None]
+========================
+========================
+========================
+
+
+========================
+========================
+========================
+		LLM input:
+user:
+
+Return **only** a valid JSON object without any extra text.
+You are Jax, an information discernment expert, and you know that the solution to the preparing for a goblin attack task is: 'The goblins are becoming restless and are stepping up their attacks. We must be prepared to defeat them and keep the people safe. We know that goblins fear sudden changes in temperature; if we can use both ice and fire attacks at the same time, then we should be able to repel any attacks.'. You need to determine whether what adventurer is saying to you is inquiring about information related to the preparing for a goblin attack task?
+
+This is the previous conversation betweem you and adventurer:
+Jax: what can help you?
+adventurer: .
+
+..
+
+
+
+.
+
+
+
+..
+
+
+
+..
+
+
+
+.
+
+
+
+.
+
+
+
+......
+
+
+
+.....
+
+
+
+.
+
+
+
+.
+
+
+
+......
+
+
+
+..
+
+
+
+.
+
+
+
+.
+
+It is known that the solution to the preparing for a goblin attack task is: The goblins are becoming restless and are stepping up their attacks. We must be prepared to defeat them and keep the people safe. We know that goblins fear sudden changes in temperature; if we can use both ice and fire attacks at the same time, then we should be able to repel any attacks.. You need to determine whether what adventurer is saying to you is inquiring about information related to the preparing for a goblin attack task? Return a JSON object containing a 'related' key: the value (boolean type) of the 'related' key indicates whether adventurer has inquired about content related to the task. The format should be as follows: { 'related': True or False }.
+Return **only** a valid JSON object without any extra text.
+
+
+		LLM output:
+{ "related": false }
+
+		LLM Model:	Qwen/Qwen3-235B-A22B-Instruct-2507
+
+		System Fingerprint:	None
+
+		Usage(Prompt, Completion, Total Tokens):	[None, None, None]
+========================
+========================
+========================
+
+

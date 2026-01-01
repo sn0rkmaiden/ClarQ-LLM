@@ -28,6 +28,25 @@ def get_gold_obj(h):
     raise AttributeError("Provider helper has no gold object (expected h.gold or h.gold_responses).")
 
 
+def is_real_branch_file(p: Path) -> bool:
+    """
+    Real branch files look like: f{feature}_s{strength}.json
+    Provider-state files look like: f{feature}_s{strength}.provider_state.json
+    We must exclude the latter, otherwise you double-process and create chained provider_state files.
+    """
+    name = p.name
+    return name.endswith(".json") and (".provider_state" not in name)
+
+
+def provider_state_path_for(branch_path: Path) -> Path:
+    """
+    Make provider state filename stable:
+      f344_s1.0.json -> f344_s1.0.provider_state.json
+    Never chains suffixes.
+    """
+    return branch_path.parent / f"{branch_path.stem}.provider_state.json"
+
+
 def main():
     load_dotenv()
 
@@ -42,8 +61,12 @@ def main():
     ap.add_argument("--hftoken", type=str, default=None)
     ap.add_argument("--multi_info_provider_agent", action="store_true")
 
-    ap.add_argument("--max_turns_cap", type=int, default=22,
-                    help="hard cap on conversation length for safety")
+    ap.add_argument(
+        "--max_turns_cap",
+        type=int,
+        default=22,
+        help="hard cap on conversation length for safety",
+    )
 
     args = ap.parse_args()
 
@@ -57,10 +80,12 @@ def main():
     if not base.exists():
         raise FileNotFoundError(f"Branch directory not found: {base}")
 
-    # Loop through all branches
-    branch_files = sorted(base.glob("f*_s*.json"))
+    # ONLY real branch files (exclude *.provider_state.json)
+    branch_files = sorted(p for p in base.glob("f*_s*.json") if is_real_branch_file(p))
     if len(branch_files) == 0:
-        raise FileNotFoundError(f"No branch state files found in {base} (expected f*_s*.json)")
+        raise FileNotFoundError(
+            f"No branch state files found in {base} (expected f*_s*.json, excluding provider_state)"
+        )
 
     progressed = 0
     skipped_done = 0
@@ -73,6 +98,7 @@ def main():
 
         l2l_conv = state.get("l2l_conv", [])
 
+        # IMPORTANT: avoid mutating shared gold_structure across branches
         conv_local = copy.deepcopy(conv)
 
         gold_r = conv_local["all_response"].strip().split("\n")
@@ -84,11 +110,10 @@ def main():
             args.provider_agent_llm,
             api_key=args.hftoken,
         )
-
         gold = get_gold_obj(h)
 
         # Restore provider logical state (local-only file)
-        provider_state_path = state_path.with_suffix(".provider_state.json")
+        provider_state_path = provider_state_path_for(state_path)
         if provider_state_path.exists():
             ps = json.loads(provider_state_path.read_text(encoding="utf-8"))
             if hasattr(h, "count") and ps.get("count", None) is not None:
@@ -113,7 +138,9 @@ def main():
             "count": getattr(h, "count", None),
             "current_levels": sorted(list(gold.current_levels)),
         }
-        provider_state_path.write_text(json.dumps(ps_out, ensure_ascii=False, indent=2), encoding="utf-8")
+        provider_state_path.write_text(
+            json.dumps(ps_out, ensure_ascii=False, indent=2), encoding="utf-8"
+        )
 
         progressed += 1
         pretty = msg[:120].replace("\n", " ")

@@ -28,6 +28,15 @@ def parse_float_list(s: str):
     return [float(x.strip()) for x in s.split(",") if x.strip()]
 
 
+def is_real_branch_file(p: Path) -> bool:
+    """
+    Real branch files: f{feature}_s{strength}.json
+    Exclude anything like: f{feature}_s{strength}.provider_state.json
+    """
+    name = p.name
+    return name.endswith(".json") and (".provider_state" not in name)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--task_data_path", type=str, default="data/English")
@@ -35,7 +44,7 @@ def main():
     ap.add_argument("--j", type=int, required=True)
 
     ap.add_argument("--state_dir", type=str, default="turn_states")
-    ap.add_argument("--tag", type=str, default="", help="optional extra suffix")
+    ap.add_argument("--tag", type=str, default="", help="optional extra suffix for filenames")
 
     ap.add_argument("--features", type=str, required=True,
                     help="comma-separated feature ids, e.g. 771,1023,5001")
@@ -73,8 +82,8 @@ def main():
         sae_release=args.sae_release,
         sae_id=args.sae_id,
         device="cuda",
-        steering_feature=None,  # set per branch
-        steering_strength=1.0,  # set per branch
+        steering_feature=None,   # set per branch
+        steering_strength=1.0,   # set per branch
         max_act=args.steering_max_act,
         compute_max_per_turn=args.compute_max_per_turn,
         max_new_tokens=args.max_new_tokens,
@@ -89,6 +98,7 @@ def main():
     progressed = 0
     skipped_empty = 0
     skipped_done = 0
+    missing_files = 0
 
     for f in features:
         for s in strengths:
@@ -96,6 +106,11 @@ def main():
             if args.tag:
                 fname += f"_{args.tag}"
             state_path = base / f"{fname}.json"
+
+            if not state_path.exists():
+                # If you didn't pre-create branches, don't accidentally create them here.
+                missing_files += 1
+                continue
 
             state = load_state(state_path)
             if state.get("done", False):
@@ -123,10 +138,12 @@ def main():
 
             progressed += 1
             pretty = msg[:120].replace("\n", " ")
-            print(f"... {pretty}")
+            print(f"[seeker] {state_path.name} (f={f}, s={s}): {pretty}")
 
-
-    print(f"\nDone. progressed={progressed}, skipped_empty={skipped_empty}, skipped_done={skipped_done}")
+    print(
+        f"\nDone. progressed={progressed}, skipped_empty={skipped_empty}, "
+        f"skipped_done={skipped_done}, missing_files={missing_files}"
+    )
 
 
 if __name__ == "__main__":
