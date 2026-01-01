@@ -1,6 +1,9 @@
 {
   "l2l_conv": [
-    "Jax: what can help you?"
+    "Jax: what can help you?",
+    "Jax, I need your help preparing for the goblin attack. What can I do with my current items and skills to be ready?",
+    "Jax: The goblins are becoming restless and are stepping up their attacks. We must be prepared to defeat them and keep the people safe. We know that goblins fear sudden changes in temperature; if we can use both ice and fire attacks at the same time, then we should be able to repel any attacks.",
+    "Jax, I understand goblins fear sudden changes in temperature.  I can create oil fire cans with my kerosene and jars.  What can I use to create the ice attacks?  Is there anything at the magic schools that can help?"
   ],
   "done": false
 }

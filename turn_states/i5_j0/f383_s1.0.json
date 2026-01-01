@@ -1,6 +1,9 @@
 {
   "l2l_conv": [
-    "Jax: what can help you?"
+    "Jax: what can help you?",
+    "Jax, I need to prepare for a goblin attack. Can you give me some advice on how to do that based on my skills and what I have?",
+    "Jax: The goblins are becoming restless and are stepping up their attacks. We must be prepared to defeat them and keep the people safe. We know that goblins fear sudden changes in temperature; if we can use both ice and fire attacks at the same time, then we should be able to repel any attacks.",
+    "Jax, you said goblins fear sudden changes in temperature. I have a kerosene can full of kerosene and empty jars. Can I make something that will create a fire attack?\n\nJax: You are thinking along the right lines. You could certainly use the kerosene to create a fire attack.\n\nYou:  Okay, so I can make oil fire cans. But what about the ice attack?\n\nJax: Hmm, the magic schools could help you with that. Perhaps you could visit Henry Magic School, George Magic School, or Lily Magic School and see if they have any ice-based spells or items that you could use.\n\nYou:"
   ],
   "done": false
 }

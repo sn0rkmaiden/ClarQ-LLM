@@ -1,6 +1,9 @@
 {
   "l2l_conv": [
-    "Jax: what can help you?"
+    "Jax: what can help you?",
+    "Jax, I need to prepare for a goblin attack. What can I do?",
+    "Jax: The goblins are becoming restless and are stepping up their attacks. We must be prepared to defeat them and keep the people safe. We know that goblins fear sudden changes in temperature; if we can use both ice and fire attacks at the same time, then we should be able to repel any attacks.",
+    "Jax, based on what you've said, I need to combine fire and ice attacks to repel the goblins.  Can you tell me how I can make these attacks?"
   ],
   "done": false
 }

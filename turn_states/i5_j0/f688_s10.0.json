@@ -1,6 +1,9 @@
 {
   "l2l_conv": [
-    "Jax: what can help you?"
+    "Jax: what can help you?",
+    "Jax, I need to prepare for a goblin attack. What can I do with these items and skills to help?\n\n```\nA ceramic jar (empty)\nA Wooden jar (empty)\nAn iron jar (empty)\nA kerosene can (full)\nPour kerosene into an empty jar to make an oil fire can\n```",
+    "Jax: The goblins are becoming restless and are stepping up their attacks. We must be prepared to defeat them and keep the people safe. We know that goblins fear sudden changes in temperature; if we can use both ice and fire attacks at the same time, then we should be able to repel any attacks.",
+    "```\nJax, how can I use these items and skills to create both ice and fire attacks?\n```"
   ],
   "done": false
 }
