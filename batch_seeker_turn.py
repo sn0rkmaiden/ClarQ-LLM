@@ -122,7 +122,9 @@ def main():
             save_state(state_path, state)
 
             progressed += 1
-            print(f"[seeker] f={f} s={s}: {msg[:120].replace('\\n',' ')}")
+            pretty = msg[:120].replace("\n", " ")
+            print(f"... {pretty}")
+
 
     print(f"\nDone. progressed={progressed}, skipped_empty={skipped_empty}, skipped_done={skipped_done}")
 
