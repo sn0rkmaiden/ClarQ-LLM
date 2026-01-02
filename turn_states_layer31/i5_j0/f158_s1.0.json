@@ -1,6 +1,7 @@
 {
   "l2l_conv": [
-    "Jax: what can help you?"
+    "Jax: what can help you?",
+    "Jax, I'm preparing for a goblin attack. Can you tell me what I can do to prepare based on what I have?"
   ],
   "done": false
 }

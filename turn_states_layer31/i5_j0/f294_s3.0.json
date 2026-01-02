@@ -1,6 +1,8 @@
 {
   "l2l_conv": [
-    "Jax: what can help you?"
+    "Jax: what can help you?",
+    "Jax, I need your help preparing for the goblin attack. What can I do with my current items and skills to be ready?",
+    "Jax, I have a ceramic jar, a wooden jar, an iron jar, and a kerosene can.  I can make an oil fire can by pouring kerosene into an empty jar. What do you suggest I make?"
   ],
   "done": false
 }

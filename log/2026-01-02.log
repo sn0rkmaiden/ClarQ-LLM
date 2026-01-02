@@ -24,3 +24,57 @@
 2026-01-02 16:32:35,828 - DEBUG - parents: [<class 'simple_parsing.helpers.serialization.serializable.Serializable'>, <class 'simple_parsing.helpers.serialization.serializable.SerializableMixin'>]
 2026-01-02 16:32:35,829 - DEBUG - Parent class <class 'simple_parsing.helpers.serialization.serializable.Serializable'> has decode_into_subclasses = False
 2026-01-02 16:32:35,830 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.hparams.hyperparameters.HyperParameters'>
+2026-01-02 16:37:50,352 - INFO - PyTorch version 2.6.0 available.
+2026-01-02 16:37:52,638 - DEBUG - Popen(['git', 'version'], cwd=/home/petrova_am/ClarQ-LLM, stdin=None, shell=False, universal_newlines=False)
+2026-01-02 16:37:52,640 - DEBUG - Popen(['git', 'version'], cwd=/home/petrova_am/ClarQ-LLM, stdin=None, shell=False, universal_newlines=False)
+2026-01-02 16:37:52,647 - DEBUG - Trying paths: ['/home/petrova_am/.docker/config.json', '/home/petrova_am/.dockercfg']
+2026-01-02 16:37:52,647 - DEBUG - No config file found
+2026-01-02 16:37:53,018 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.serialization.serializable.Serializable'>
+2026-01-02 16:37:53,018 - DEBUG - parents: [<class 'simple_parsing.helpers.serialization.serializable.SerializableMixin'>]
+2026-01-02 16:37:53,019 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.serialization.serializable.FrozenSerializable'>
+2026-01-02 16:37:53,019 - DEBUG - parents: [<class 'simple_parsing.helpers.serialization.serializable.SerializableMixin'>]
+2026-01-02 16:37:53,019 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.serialization.serializable.SimpleSerializable'>
+2026-01-02 16:37:53,019 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.serialization.yaml_serialization.YamlSerializable'>
+2026-01-02 16:37:53,020 - DEBUG - parents: [<class 'simple_parsing.helpers.serialization.serializable.Serializable'>, <class 'simple_parsing.helpers.serialization.serializable.SerializableMixin'>]
+2026-01-02 16:37:53,020 - DEBUG - Parent class <class 'simple_parsing.helpers.serialization.serializable.Serializable'> has decode_into_subclasses = False
+2026-01-02 16:37:53,020 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.hparams.hyperparameters.BoundInfo'>
+2026-01-02 16:37:53,020 - DEBUG - parents: [<class 'simple_parsing.helpers.serialization.serializable.Serializable'>, <class 'simple_parsing.helpers.serialization.serializable.SerializableMixin'>]
+2026-01-02 16:37:53,020 - DEBUG - Parent class <class 'simple_parsing.helpers.serialization.serializable.Serializable'> has decode_into_subclasses = False
+2026-01-02 16:37:53,020 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.hparams.hyperparameters.HyperParameters'>
+2026-01-02 16:37:58,447 - DEBUG - Starting new HTTPS connection (1): huggingface.co:443
+2026-01-02 16:37:58,693 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-scope-9b-it-res/resolve/main/layer_31/width_16k/average_l0_76/params.npz HTTP/1.1" 302 0
+2026-01-02 16:38:01,903 - WARNING - You tried to specify center_unembed=True for a model using logit softcap, but this can't be done! Softcapping is not invariant upon adding a constant Setting center_unembed=False instead.
+2026-01-02 16:38:02,057 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/config.json HTTP/1.1" 401 0
+2026-01-02 16:38:06,565 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/generation_config.json HTTP/1.1" 401 0
+2026-01-02 16:38:06,708 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/custom_generate/generate.py HTTP/1.1" 401 0
+2026-01-02 16:38:07,072 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/tokenizer_config.json HTTP/1.1" 401 0
+2026-01-02 16:38:07,226 - DEBUG - https://huggingface.co:443 "GET /api/models/google/gemma-2-9b-it/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2026-01-02 16:38:10,869 - WARNING - With reduced precision, it is advised to use `from_pretrained_no_processing` instead of `from_pretrained`.
+2026-01-02 16:38:21,472 - WARNING - You are not using LayerNorm, so the writing weights can't be centered! Skipping
+2026-01-02 16:46:32,889 - INFO - PyTorch version 2.6.0 available.
+2026-01-02 16:46:35,157 - DEBUG - Popen(['git', 'version'], cwd=/home/petrova_am/ClarQ-LLM, stdin=None, shell=False, universal_newlines=False)
+2026-01-02 16:46:35,159 - DEBUG - Popen(['git', 'version'], cwd=/home/petrova_am/ClarQ-LLM, stdin=None, shell=False, universal_newlines=False)
+2026-01-02 16:46:35,166 - DEBUG - Trying paths: ['/home/petrova_am/.docker/config.json', '/home/petrova_am/.dockercfg']
+2026-01-02 16:46:35,166 - DEBUG - No config file found
+2026-01-02 16:46:35,545 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.serialization.serializable.Serializable'>
+2026-01-02 16:46:35,545 - DEBUG - parents: [<class 'simple_parsing.helpers.serialization.serializable.SerializableMixin'>]
+2026-01-02 16:46:35,545 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.serialization.serializable.FrozenSerializable'>
+2026-01-02 16:46:35,545 - DEBUG - parents: [<class 'simple_parsing.helpers.serialization.serializable.SerializableMixin'>]
+2026-01-02 16:46:35,546 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.serialization.serializable.SimpleSerializable'>
+2026-01-02 16:46:35,546 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.serialization.yaml_serialization.YamlSerializable'>
+2026-01-02 16:46:35,546 - DEBUG - parents: [<class 'simple_parsing.helpers.serialization.serializable.Serializable'>, <class 'simple_parsing.helpers.serialization.serializable.SerializableMixin'>]
+2026-01-02 16:46:35,546 - DEBUG - Parent class <class 'simple_parsing.helpers.serialization.serializable.Serializable'> has decode_into_subclasses = False
+2026-01-02 16:46:35,546 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.hparams.hyperparameters.BoundInfo'>
+2026-01-02 16:46:35,546 - DEBUG - parents: [<class 'simple_parsing.helpers.serialization.serializable.Serializable'>, <class 'simple_parsing.helpers.serialization.serializable.SerializableMixin'>]
+2026-01-02 16:46:35,546 - DEBUG - Parent class <class 'simple_parsing.helpers.serialization.serializable.Serializable'> has decode_into_subclasses = False
+2026-01-02 16:46:35,547 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.hparams.hyperparameters.HyperParameters'>
+2026-01-02 16:46:41,074 - DEBUG - Starting new HTTPS connection (1): huggingface.co:443
+2026-01-02 16:46:41,302 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-scope-9b-it-res/resolve/main/layer_20/width_16k/average_l0_91/params.npz HTTP/1.1" 302 0
+2026-01-02 16:46:43,920 - WARNING - You tried to specify center_unembed=True for a model using logit softcap, but this can't be done! Softcapping is not invariant upon adding a constant Setting center_unembed=False instead.
+2026-01-02 16:46:44,065 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/config.json HTTP/1.1" 401 0
+2026-01-02 16:46:46,971 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/generation_config.json HTTP/1.1" 401 0
+2026-01-02 16:46:47,119 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/custom_generate/generate.py HTTP/1.1" 401 0
+2026-01-02 16:46:47,424 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/tokenizer_config.json HTTP/1.1" 401 0
+2026-01-02 16:46:47,578 - DEBUG - https://huggingface.co:443 "GET /api/models/google/gemma-2-9b-it/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2026-01-02 16:46:50,962 - WARNING - With reduced precision, it is advised to use `from_pretrained_no_processing` instead of `from_pretrained`.
+2026-01-02 16:47:00,271 - WARNING - You are not using LayerNorm, so the writing weights can't be centered! Skipping
