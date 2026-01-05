@@ -1,0 +1,18 @@
+{
+  "l2l_conv": [
+    "Jax: what can help you?",
+    "Jax, I need to prepare for a goblin attack. Can you tell me how to best use my items and skills to defend against them?",
+    "Jax: The goblins are becoming restless and are stepping up their attacks. We must be prepared to defeat them and keep the people safe. We know that goblins fear sudden changes in temperature; if we can use both ice and fire attacks at the same time, then we should be able to repel any attacks.",
+    "Jax, you said goblins fear sudden changes in temperature. I have kerosene and empty jars. Could I create oil fire canisters to create a sudden burst of fire?",
+    "Jax: We can create DIY grenades to launch fire attacks with by pouring the flammable kerosene into empty jars.",
+    "Jax, so you're saying I should fill the empty jars with kerosene to make fire grenades?",
+    "Jax: The jar need to be sturdy so it doesn't break too easily but also flammable so they can be set alight during an attack. Wooden jars would be suitable.",
+    "Jax, so you're saying I should fill the wooden jars with kerosene to make fire grenades? What about the other jars? \n\nWhat about the iron jar? Could I use that to somehow store the kerosene or create a different kind of weapon?",
+    "Jax: If you want to create an ice attack, you can go to the magic school and learn ice magic from Wizard Angela.",
+    "Jax, so you're saying I should fill the wooden jars with kerosene to make fire grenades? What about the other jars? What about the iron jar? Could I use that to somehow store the kerosene or create a different kind of weapon?  \nJax: If you want to create an ice attack, you can go to the magic school and learn ice magic from Wizard Angela. \nYou:  Jax, I'm not sure about magic. Could you explain how I could use the iron jar?",
+    "Jax: You are overthinking it; the task is not that complicated and you do not need to worry about these details.",
+    "Jax, I think I understand. I will focus on creating fire grenades using the wooden jars and kerosene.  I will also look into learning ice magic from Wizard Angela, just in case. Thank you for your guidance.",
+    "Jax: I am sorry, I might not have understood your request, and I am not very clear on matters unrelated to the task. If you want to end the conversation, you can said Goodbye to me."
+  ],
+  "done": true
+}

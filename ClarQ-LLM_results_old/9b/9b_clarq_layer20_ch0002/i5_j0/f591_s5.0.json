@@ -1,0 +1,18 @@
+{
+  "l2l_conv": [
+    "Jax: what can help you?",
+    "Jax, I need to prepare for a goblin attack. What can I do?",
+    "Jax: The goblins are becoming restless and are stepping up their attacks. We must be prepared to defeat them and keep the people safe. We know that goblins fear sudden changes in temperature; if we can use both ice and fire attacks at the same time, then we should be able to repel any attacks.",
+    "Jax, based on what you've said, I need to combine fire and ice attacks to repel the goblins.  Can you tell me how I can make these attacks?",
+    "Jax: We can create DIY grenades to launch fire attacks with by pouring the flammable kerosene into empty jars.",
+    "Jax, can you tell me which jars I should use for these fire grenades?",
+    "Jax: The jar need to be sturdy so it doesn't break too easily but also flammable so they can be set alight during an attack. Wooden jars would be suitable.",
+    "Jax, I understand I need to use wooden jars for my fire grenades.  Can you tell me more about how to make these grenades and use them effectively against the goblins?",
+    "Jax: If you want to create an ice attack, you can go to the magic school and learn ice magic from Wizard Angela.",
+    "Jax, thank you for the information about the wooden jars and ice magic. I need to go to the magic school and learn ice magic from Angela. \n\nGoodbye.",
+    "Jax: Wizard Angela works at Lily Magic School.",
+    "Thank you for telling me about Lily Magic School, Jax. I need to go there and learn ice magic from Angela. Goodbye.",
+    "Jax: I am sorry, I might not have understood your request, and I am not very clear on matters unrelated to the task. If you want to end the conversation, you can said Goodbye to me."
+  ],
+  "done": true
+}

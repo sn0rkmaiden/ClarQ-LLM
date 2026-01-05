@@ -1,0 +1,16 @@
+{
+  "l2l_conv": [
+    "Jax: what can help you?",
+    "Jax, I need to prepare for a goblin attack. Can you give me some advice on how to do that based on my skills and what I have?",
+    "Jax: The goblins are becoming restless and are stepping up their attacks. We must be prepared to defeat them and keep the people safe. We know that goblins fear sudden changes in temperature; if we can use both ice and fire attacks at the same time, then we should be able to repel any attacks.",
+    "Jax, you said goblins fear sudden changes in temperature. I have a kerosene can full of kerosene and empty jars. Can I make something that will create a fire attack?\n\nJax: You are thinking along the right lines. You could certainly use the kerosene to create a fire attack.\n\nYou:  Okay, so I can make oil fire cans. But what about the ice attack?\n\nJax: Hmm, the magic schools could help you with that. Perhaps you could visit Henry Magic School, George Magic School, or Lily Magic School and see if they have any ice-based spells or items that you could use.\n\nYou:",
+    "Jax: We can create DIY grenades to launch fire attacks with by pouring the flammable kerosene into empty jars.",
+    "Jax:  We can create DIY grenades to launch fire attacks with by pouring the flammable kerosene into empty jars.",
+    "Jax: You can create DIY grenades by pouring the flammable kerosene into empty jars to launch fire attacks.",
+    "Jax, I think I understand.  So I need to make oil fire cans, and then I need to find a way to create an ice attack.  What do you suggest for finding an ice attack?",
+    "Jax: If you want to create an ice attack, you can go to the magic school and learn ice magic from Wizard Angela.",
+    "Jax, thanks for the advice. I'll head to the magic school and see if I can learn some ice magic from Wizard Angela. I'll also work on creating those oil fire cans.\n\n\nGoodbye.",
+    "Jax: I am sorry, I might not have understood your request, and I am not very clear on matters unrelated to the task. If you want to end the conversation, you can said Goodbye to me."
+  ],
+  "done": true
+}

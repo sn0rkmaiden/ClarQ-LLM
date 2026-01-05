@@ -1,0 +1,180 @@
+2026-01-05 19:57:38,462 - INFO - PyTorch version 2.9.1 available.
+2026-01-05 19:57:47,904 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.serialization.serializable.Serializable'>
+2026-01-05 19:57:47,905 - DEBUG - parents: [<class 'simple_parsing.helpers.serialization.serializable.SerializableMixin'>]
+2026-01-05 19:57:47,906 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.serialization.serializable.FrozenSerializable'>
+2026-01-05 19:57:47,907 - DEBUG - parents: [<class 'simple_parsing.helpers.serialization.serializable.SerializableMixin'>]
+2026-01-05 19:57:47,908 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.serialization.serializable.SimpleSerializable'>
+2026-01-05 19:57:47,910 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.serialization.yaml_serialization.YamlSerializable'>
+2026-01-05 19:57:47,911 - DEBUG - parents: [<class 'simple_parsing.helpers.serialization.serializable.Serializable'>, <class 'simple_parsing.helpers.serialization.serializable.SerializableMixin'>]
+2026-01-05 19:57:47,912 - DEBUG - Parent class <class 'simple_parsing.helpers.serialization.serializable.Serializable'> has decode_into_subclasses = False
+2026-01-05 19:57:47,912 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.hparams.hyperparameters.BoundInfo'>
+2026-01-05 19:57:47,913 - DEBUG - parents: [<class 'simple_parsing.helpers.serialization.serializable.Serializable'>, <class 'simple_parsing.helpers.serialization.serializable.SerializableMixin'>]
+2026-01-05 19:57:47,913 - DEBUG - Parent class <class 'simple_parsing.helpers.serialization.serializable.Serializable'> has decode_into_subclasses = False
+2026-01-05 19:57:47,915 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.hparams.hyperparameters.HyperParameters'>
+2026-01-05 19:57:50,780 - DEBUG - Request options: {'method': 'post', 'url': '/chat/completions', 'headers': {'X-Stainless-Raw-Response': 'true'}, 'files': None, 'idempotency_key': 'stainless-python-retry-67f9b1a1-4888-4eb4-abd6-65fdafe8045e', 'json_data': {'messages': [{'content': "\nReturn **only** a valid JSON object without any extra text.\nBelow are two passages of text. First: Gold Information and its Purpose, second: Generated Information. Analyze whether the second contains the purpose of the gold information.\n\nGold Information and its Purpose:\n1. wizard angela works at lily magic school.  Purpose: There are multiple magic schools in the game scenario, and the previous response did not specify which school to visit to learn ice magic. This response addresses the question of which magic school to go to, specifying that you should go to Lily Magic School to learn ice magic from Wizard Angela. Note: Use this response only if the other party has noticed that there are multiple magic schools and is unsure which one to go to.\n\nGenerated Information:\n1. your plan looks good, do you have any specific questions.\n2. you are overthinking it; the task is not that complicated and you do not need to worry about these details.\n3. i'm not quite sure either, do you have any specific questions.\n4. i'm not quite sure either, do you have any specific questions.\n5. i'm not quite sure either, do you have any specific questions.\n6. i'm not quite sure either, do you have any specific questions.\n7. i'm not quite sure either, do you have any specific questions.\n\nReturn JSON with fields { 'analysis': '...', 'match': true/false }.", 'role': 'user'}], 'model': 'Qwen/Qwen3-235B-A22B-Instruct-2507', 'stream': False, 'temperature': 1e-05}}
+2026-01-05 19:57:50,789 - DEBUG - Sending HTTP Request: POST https://api.tokenfactory.nebius.com/v1/chat/completions
+2026-01-05 19:57:50,790 - DEBUG - connect_tcp.started host='api.tokenfactory.nebius.com' port=443 local_address=None timeout=None socket_options=None
+2026-01-05 19:57:51,159 - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x7e8f4e5b1b10>
+2026-01-05 19:57:51,160 - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x7e8f4f053c80> server_hostname='api.tokenfactory.nebius.com' timeout=None
+2026-01-05 19:57:51,303 - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x7e8f4e5b1ad0>
+2026-01-05 19:57:51,305 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2026-01-05 19:57:51,310 - DEBUG - send_request_headers.complete
+2026-01-05 19:57:51,311 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2026-01-05 19:57:51,312 - DEBUG - send_request_body.complete
+2026-01-05 19:57:51,312 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2026-01-05 19:58:51,691 - DEBUG - receive_response_headers.failed exception=RemoteProtocolError('Server disconnected without sending a response.')
+2026-01-05 19:58:51,691 - DEBUG - response_closed.started
+2026-01-05 19:58:51,692 - DEBUG - response_closed.complete
+2026-01-05 19:58:51,693 - DEBUG - Encountered Exception
+Traceback (most recent call last):
+  File "/home/alice/miniconda3/envs/clarq/lib/python3.11/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/home/alice/miniconda3/envs/clarq/lib/python3.11/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alice/miniconda3/envs/clarq/lib/python3.11/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/home/alice/miniconda3/envs/clarq/lib/python3.11/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alice/miniconda3/envs/clarq/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 103, in handle_request
+    return self._connection.handle_request(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alice/miniconda3/envs/clarq/lib/python3.11/site-packages/httpcore/_sync/http11.py", line 136, in handle_request
+    raise exc
+  File "/home/alice/miniconda3/envs/clarq/lib/python3.11/site-packages/httpcore/_sync/http11.py", line 106, in handle_request
+    ) = self._receive_response_headers(**kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alice/miniconda3/envs/clarq/lib/python3.11/site-packages/httpcore/_sync/http11.py", line 177, in _receive_response_headers
+    event = self._receive_event(timeout=timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alice/miniconda3/envs/clarq/lib/python3.11/site-packages/httpcore/_sync/http11.py", line 231, in _receive_event
+    raise RemoteProtocolError(msg)
+httpcore.RemoteProtocolError: Server disconnected without sending a response.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/alice/miniconda3/envs/clarq/lib/python3.11/site-packages/openai/_base_client.py", line 982, in request
+    response = self._client.send(
+               ^^^^^^^^^^^^^^^^^^
+  File "/home/alice/miniconda3/envs/clarq/lib/python3.11/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alice/miniconda3/envs/clarq/lib/python3.11/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alice/miniconda3/envs/clarq/lib/python3.11/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alice/miniconda3/envs/clarq/lib/python3.11/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alice/miniconda3/envs/clarq/lib/python3.11/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+  File "/home/alice/miniconda3/envs/clarq/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/home/alice/miniconda3/envs/clarq/lib/python3.11/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.RemoteProtocolError: Server disconnected without sending a response.
+2026-01-05 19:58:51,709 - DEBUG - 2 retries left
+2026-01-05 19:58:51,710 - INFO - Retrying request to /chat/completions in 0.421945 seconds
+2026-01-05 19:58:52,134 - DEBUG - Request options: {'method': 'post', 'url': '/chat/completions', 'headers': {'X-Stainless-Raw-Response': 'true'}, 'files': None, 'idempotency_key': 'stainless-python-retry-67f9b1a1-4888-4eb4-abd6-65fdafe8045e', 'json_data': {'messages': [{'content': "\nReturn **only** a valid JSON object without any extra text.\nBelow are two passages of text. First: Gold Information and its Purpose, second: Generated Information. Analyze whether the second contains the purpose of the gold information.\n\nGold Information and its Purpose:\n1. wizard angela works at lily magic school.  Purpose: There are multiple magic schools in the game scenario, and the previous response did not specify which school to visit to learn ice magic. This response addresses the question of which magic school to go to, specifying that you should go to Lily Magic School to learn ice magic from Wizard Angela. Note: Use this response only if the other party has noticed that there are multiple magic schools and is unsure which one to go to.\n\nGenerated Information:\n1. your plan looks good, do you have any specific questions.\n2. you are overthinking it; the task is not that complicated and you do not need to worry about these details.\n3. i'm not quite sure either, do you have any specific questions.\n4. i'm not quite sure either, do you have any specific questions.\n5. i'm not quite sure either, do you have any specific questions.\n6. i'm not quite sure either, do you have any specific questions.\n7. i'm not quite sure either, do you have any specific questions.\n\nReturn JSON with fields { 'analysis': '...', 'match': true/false }.", 'role': 'user'}], 'model': 'Qwen/Qwen3-235B-A22B-Instruct-2507', 'stream': False, 'temperature': 1e-05}}
+2026-01-05 19:58:52,136 - DEBUG - Sending HTTP Request: POST https://api.tokenfactory.nebius.com/v1/chat/completions
+2026-01-05 19:58:52,137 - DEBUG - connect_tcp.started host='api.tokenfactory.nebius.com' port=443 local_address=None timeout=None socket_options=None
+2026-01-05 19:58:52,491 - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x7e8f4e5ab250>
+2026-01-05 19:58:52,492 - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x7e8f4f053c80> server_hostname='api.tokenfactory.nebius.com' timeout=None
+2026-01-05 19:58:52,694 - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x7e8f4e5b1d90>
+2026-01-05 19:58:52,695 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2026-01-05 19:58:52,696 - DEBUG - send_request_headers.complete
+2026-01-05 19:58:52,697 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2026-01-05 19:58:52,698 - DEBUG - send_request_body.complete
+2026-01-05 19:58:52,699 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2026-01-05 19:58:52,889 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 401, b'Unauthorized', [(b'Date', b'Mon, 05 Jan 2026 16:58:53 GMT'), (b'Content-Type', b'application/json'), (b'Content-Length', b'63'), (b'Connection', b'keep-alive'), (b'access-control-allow-origin', b'*'), (b'vary', b'Origin'), (b'access-control-allow-credentials', b'true'), (b'x-request-id', b'f2d76e62219653260b38070ea8b7812a'), (b'Strict-Transport-Security', b'max-age=31536000; includeSubDomains')])
+2026-01-05 19:58:52,891 - INFO - HTTP Request: POST https://api.tokenfactory.nebius.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-05 19:58:52,892 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2026-01-05 19:58:52,893 - DEBUG - receive_response_body.complete
+2026-01-05 19:58:52,893 - DEBUG - response_closed.started
+2026-01-05 19:58:52,894 - DEBUG - response_closed.complete
+2026-01-05 19:58:52,895 - DEBUG - HTTP Response: POST https://api.tokenfactory.nebius.com/v1/chat/completions "401 Unauthorized" Headers({'date': 'Mon, 05 Jan 2026 16:58:53 GMT', 'content-type': 'application/json', 'content-length': '63', 'connection': 'keep-alive', 'access-control-allow-origin': '*', 'vary': 'Origin', 'access-control-allow-credentials': 'true', 'x-request-id': 'f2d76e62219653260b38070ea8b7812a', 'strict-transport-security': 'max-age=31536000; includeSubDomains'})
+2026-01-05 19:58:52,902 - DEBUG - request_id: f2d76e62219653260b38070ea8b7812a
+2026-01-05 19:58:52,903 - DEBUG - Encountered httpx.HTTPStatusError
+Traceback (most recent call last):
+  File "/home/alice/miniconda3/envs/clarq/lib/python3.11/site-packages/openai/_base_client.py", line 1027, in request
+    response.raise_for_status()
+  File "/home/alice/miniconda3/envs/clarq/lib/python3.11/site-packages/httpx/_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '401 Unauthorized' for url 'https://api.tokenfactory.nebius.com/v1/chat/completions'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+2026-01-05 19:58:52,906 - DEBUG - Not retrying
+2026-01-05 19:58:52,907 - DEBUG - Re-raising status error
+2026-01-05 19:58:57,911 - DEBUG - Request options: {'method': 'post', 'url': '/chat/completions', 'headers': {'X-Stainless-Raw-Response': 'true'}, 'files': None, 'idempotency_key': 'stainless-python-retry-70749867-9bde-4f11-964c-65c0e9739932', 'json_data': {'messages': [{'content': "\nReturn **only** a valid JSON object without any extra text.\nBelow are two passages of text. First: Gold Information and its Purpose, second: Generated Information. Analyze whether the second contains the purpose of the gold information.\n\nGold Information and its Purpose:\n1. wizard angela works at lily magic school.  Purpose: There are multiple magic schools in the game scenario, and the previous response did not specify which school to visit to learn ice magic. This response addresses the question of which magic school to go to, specifying that you should go to Lily Magic School to learn ice magic from Wizard Angela. Note: Use this response only if the other party has noticed that there are multiple magic schools and is unsure which one to go to.\n\nGenerated Information:\n1. your plan looks good, do you have any specific questions.\n2. you are overthinking it; the task is not that complicated and you do not need to worry about these details.\n3. i'm not quite sure either, do you have any specific questions.\n4. i'm not quite sure either, do you have any specific questions.\n5. i'm not quite sure either, do you have any specific questions.\n6. i'm not quite sure either, do you have any specific questions.\n7. i'm not quite sure either, do you have any specific questions.\n\nReturn JSON with fields { 'analysis': '...', 'match': true/false }.", 'role': 'user'}], 'model': 'Qwen/Qwen3-235B-A22B-Instruct-2507', 'stream': False, 'temperature': 1e-05}}
+2026-01-05 19:58:57,913 - DEBUG - Sending HTTP Request: POST https://api.tokenfactory.nebius.com/v1/chat/completions
+2026-01-05 19:58:57,914 - DEBUG - close.started
+2026-01-05 19:58:57,915 - DEBUG - close.complete
+2026-01-05 19:58:57,916 - DEBUG - connect_tcp.started host='api.tokenfactory.nebius.com' port=443 local_address=None timeout=None socket_options=None
+2026-01-05 19:58:58,263 - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x7e8f4e468310>
+2026-01-05 19:58:58,264 - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x7e8f4f053c80> server_hostname='api.tokenfactory.nebius.com' timeout=None
+2026-01-05 19:58:58,468 - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x7e8f4e468210>
+2026-01-05 19:58:58,469 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2026-01-05 19:58:58,470 - DEBUG - send_request_headers.complete
+2026-01-05 19:58:58,471 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2026-01-05 19:58:58,472 - DEBUG - send_request_body.complete
+2026-01-05 19:58:58,473 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2026-01-05 19:58:58,668 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 401, b'Unauthorized', [(b'Date', b'Mon, 05 Jan 2026 16:58:59 GMT'), (b'Content-Type', b'application/json'), (b'Content-Length', b'63'), (b'Connection', b'keep-alive'), (b'access-control-allow-origin', b'*'), (b'vary', b'Origin'), (b'access-control-allow-credentials', b'true'), (b'x-request-id', b'320559aeb3060bd5644896d19ff9f198'), (b'Strict-Transport-Security', b'max-age=31536000; includeSubDomains')])
+2026-01-05 19:58:58,670 - INFO - HTTP Request: POST https://api.tokenfactory.nebius.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-05 19:58:58,671 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2026-01-05 19:58:58,671 - DEBUG - receive_response_body.complete
+2026-01-05 19:58:58,672 - DEBUG - response_closed.started
+2026-01-05 19:58:58,672 - DEBUG - response_closed.complete
+2026-01-05 19:58:58,673 - DEBUG - HTTP Response: POST https://api.tokenfactory.nebius.com/v1/chat/completions "401 Unauthorized" Headers({'date': 'Mon, 05 Jan 2026 16:58:59 GMT', 'content-type': 'application/json', 'content-length': '63', 'connection': 'keep-alive', 'access-control-allow-origin': '*', 'vary': 'Origin', 'access-control-allow-credentials': 'true', 'x-request-id': '320559aeb3060bd5644896d19ff9f198', 'strict-transport-security': 'max-age=31536000; includeSubDomains'})
+2026-01-05 19:58:58,674 - DEBUG - request_id: 320559aeb3060bd5644896d19ff9f198
+2026-01-05 19:58:58,674 - DEBUG - Encountered httpx.HTTPStatusError
+Traceback (most recent call last):
+  File "/mnt/d/Github_Projects/ClarQ-LLM/utils/llm.py", line 867, in request
+    response_obj = self.client.invoke(message)  # doc: ChatNebius.invoke returns an object with .content
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alice/miniconda3/envs/clarq/lib/python3.11/site-packages/langchain_core/language_models/chat_models.py", line 398, in invoke
+    self.generate_prompt(
+  File "/home/alice/miniconda3/envs/clarq/lib/python3.11/site-packages/langchain_core/language_models/chat_models.py", line 1117, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alice/miniconda3/envs/clarq/lib/python3.11/site-packages/langchain_core/language_models/chat_models.py", line 927, in generate
+    self._generate_with_cache(
+  File "/home/alice/miniconda3/envs/clarq/lib/python3.11/site-packages/langchain_core/language_models/chat_models.py", line 1221, in _generate_with_cache
+    result = self._generate(
+             ^^^^^^^^^^^^^^^
+  File "/home/alice/miniconda3/envs/clarq/lib/python3.11/site-packages/langchain_openai/chat_models/base.py", line 1380, in _generate
+    raise e
+  File "/home/alice/miniconda3/envs/clarq/lib/python3.11/site-packages/langchain_openai/chat_models/base.py", line 1375, in _generate
+    raw_response = self.client.with_raw_response.create(**payload)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alice/miniconda3/envs/clarq/lib/python3.11/site-packages/openai/_legacy_response.py", line 364, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alice/miniconda3/envs/clarq/lib/python3.11/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alice/miniconda3/envs/clarq/lib/python3.11/site-packages/openai/resources/chat/completions/completions.py", line 1192, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/home/alice/miniconda3/envs/clarq/lib/python3.11/site-packages/openai/_base_client.py", line 1259, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alice/miniconda3/envs/clarq/lib/python3.11/site-packages/openai/_base_client.py", line 1047, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - {'detail': "Couldn't authenticate. Reason: Unable authenticate"}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/alice/miniconda3/envs/clarq/lib/python3.11/site-packages/openai/_base_client.py", line 1027, in request
+    response.raise_for_status()
+  File "/home/alice/miniconda3/envs/clarq/lib/python3.11/site-packages/httpx/_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '401 Unauthorized' for url 'https://api.tokenfactory.nebius.com/v1/chat/completions'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+2026-01-05 19:58:58,695 - DEBUG - Not retrying
+2026-01-05 19:58:58,696 - DEBUG - Re-raising status error
+2026-01-05 19:58:59,766 - DEBUG - close.started
+2026-01-05 19:58:59,771 - DEBUG - close.complete

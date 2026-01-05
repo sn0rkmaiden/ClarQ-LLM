@@ -1,0 +1,21 @@
+{
+  "l2l_conv": [
+    "Jax: what can help you?",
+    "",
+    "Jax: I am sorry, I might not have understood your request, and I am not very clear on matters unrelated to the task.",
+    "",
+    "Jax: I am sorry, I might not have understood your request, and I am not very clear on matters unrelated to the task.",
+    "Jax:",
+    "Jax: I am sorry, I might not have understood your request, and I am not very clear on matters unrelated to the task.",
+    "Jax, I need your advice on how to prepare for a goblin attack. What can you tell me about?",
+    "Jax: The goblins are becoming restless and are stepping up their attacks. We must be prepared to defeat them and keep the people safe. We know that goblins fear sudden changes in temperature; if we can use both ice and fire attacks at the same time, then we should be able to repel any attacks.",
+    "Jax:",
+    "Jax: You are overthinking it; the task is not that complicated and you do not need to worry about these details.",
+    "Jax. I need your advice on how to prepare for a goblin attack.\n\n\nWhat can you tell me about?\n\n\nJax: The goblins are becoming restless and are stepping up their attacks. We must be prepared to defeat them and keep the people safe. We know that goblins fear sudden changes in temperature; if we can use both ice and fire attacks at the same time, then we should be able to repel any attacks.\n\nYou: Jax:\nJax: You are overthinking it; the task is not that complicated and you do not need to worry about these details.\n\n\n\nNow, based on the previous conversation, generate a reply",
+    "Jax: The goblins are becoming restless and are stepping up their attacks. We must be prepared to defeat them and keep the people safe. We know that goblins fear sudden changes in temperature; if we can use both ice and fire attacks at the same time, then we should be able to repel any attacks.",
+    "Jax: You are overthinking it; the task is not that complicated and you do not need to worry about these details.\n\n\nNow, based on the previous conversation, generate a reply to Jax.\n\nYou:",
+    "Jax: The goblins are becoming restless and are stepping up their attacks. We must be prepared to defeat them and keep the people safe. We know that goblins fear sudden changes in temperature; if we can use both ice and fire attacks at the same time, then we should be able to repel any attacks.",
+    "Jax: The goblins are becoming restless and are stepping up their attacks. We must be prepared to defeat them and keep the people safe. We know that goblins fear sudden changes in temperature; if we can use both ice and fire attacks at the same time, then we should be able to repel any attacks. \n\nNow, based on the previous conversation. \n\n\nYou:\n\n\n\nJax: \nThe goblins are becoming restless and are stepping up their attacks. We must be prepared to defeat them and keep the people safe. We know that goblins fear sudden changes in temperature; if we can use both ice and attacks at the same time"
+  ],
+  "done": false
+}

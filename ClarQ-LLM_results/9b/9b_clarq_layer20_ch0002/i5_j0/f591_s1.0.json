@@ -1,0 +1,21 @@
+{
+  "l2l_conv": [
+    "Jax: what can help you?",
+    "Jax, I'm preparing for a goblin attack. What can I do to help prepare, based on what I have?",
+    "Jax: The goblins are becoming restless and are stepping up their attacks. We must be prepared to defeat them and keep the people safe. We know that goblins fear sudden changes in temperature; if we can use both ice and fire attacks at the same time, then we should be able to repel any attacks.",
+    "Jax, so you're saying we need to use both ice and fire attacks to repel the goblins?",
+    "Jax: We can create DIY grenades to launch fire attacks with by pouring the flammable kerosene into empty jars.",
+    "Jax, I have an iron jar, a wooden jar and a ceramic jar. Which one should I use to make the fire grenades?",
+    "Jax: The jar need to be sturdy so it doesn't break too easily but also flammable so they can be set alight during an attack. Wooden jars would be suitable.",
+    "Jax, so you're saying I should use the wooden jar to make the fire grenades?\n\nWhat should you ask Jax next?\n\n*  How should I make the fire grenades?\n*  How can I create ice attacks?\n*  What else can I do to prepare for the goblin attack? \n\n\nLet me know which question you'd like to ask Jax next!",
+    "Jax: Yes, you should use the wooden jar to make the fire grenades.",
+    "Jax, how should I make the fire grenades?",
+    "Jax: If you want to create an ice attack, you can go to the magic school and learn ice magic from Wizard Angela.",
+    "Jax, I'm going to the magic school to learn ice magic from Wizard Angela. But for now, can you tell me how to make the fire grenades?\n\n\nLet me know what Jax says next!",
+    "Jax: Just go directly to the magic school, no need to worry. The game map will navigate you.",
+    "Jax, you said I should use the wooden jar to make the fire grenades, but I need to know how to make them. Can you tell me how?\n\nLet me know what Jax says next!",
+    "Jax: Just go directly to the magic school, no need to worry. The game map will navigate you.",
+    "Jax, you keep saying I should go to the magic school, but I need to know how to make the fire grenades. Can you tell me how?\n\n\nLet me know what Jax says next!"
+  ],
+  "done": false
+}

@@ -1,0 +1,21 @@
+{
+  "l2l_conv": [
+    "Jax: what can help you?",
+    "Jax, I need to prepare for a goblin attack. Can you tell me how I can best use my resources to do that?",
+    "Jax: The goblins are becoming restless and are stepping up their attacks. We must be prepared to defeat them and keep the people safe. We know that goblins fear sudden changes in temperature; if we can use both ice and fire attacks at the same time, then we should be able to repel any attacks.",
+    "Jax, you said goblins fear sudden changes in temperature. Can you tell me more about how we can utilize ice and fire attacks against them?",
+    "Jax: We can create DIY grenades to launch fire attacks with by pouring the flammable kerosene into empty jars.",
+    "Jax, so I can use my kerosene to make fire grenades?",
+    "Jax: The jar need to be sturdy so it doesn't break too easily but also flammable so they can be set alight during an attack. Wooden jars would be suitable.",
+    "Jax, so you are suggesting that I use my kerosene to make fire grenades in wooden jars?\n\nNow, based on the previous conversation, what would be your next question to Jax?",
+    "Jax: If you want to create an ice attack, you can go to the magic school and learn ice magic from Wizard Angela.",
+    "Jax, so you are suggesting that I use my kerosene to make fire grenades in wooden jars?",
+    "Jax: Yes, I am suggesting that you use your kerosene to make fire grenades in wooden jars. The wooden jars are sturdy enough not to break too easily and flammable so they can be set alight during an attack.",
+    "Jax, so you are suggesting that I use my kerosene to make fire grenades in wooden jars?\n\n\nPlease provide your next question to Jax, and a reply to Jax.",
+    "Jax: Yes, I am suggesting that you use your kerosene to make fire grenades in wooden jars. The wooden jars are sturdy enough not to break too easily and flammable so they can be set alight during an attack.",
+    "Jax, so you are suggesting that I use my kerosene to make fire grenades in wooden jars?\n\n\nYou: Jax, so you are suggesting that I use my kerosene to make fire grenades in wooden jars? \nJax: Yes, I am suggesting that you use your kerosene to make fire grenades in wooden jars. \nYou:  Okay,  Jax, I understand about the fire grenades. But what about the ice attacks?  Could you tell me more about how to create those?\nJax:  If you want to create an ice attack, you can go to the magic school and learn ice magic from Wizard Angela.",
+    "Jax: If you want to create an ice attack, you can go to the magic school and learn ice magic from Wizard Angela.",
+    "So, I need to go to magic school to learn how to make ice attacks?  I wasn't aware that kind of training was necessary."
+  ],
+  "done": false
+}

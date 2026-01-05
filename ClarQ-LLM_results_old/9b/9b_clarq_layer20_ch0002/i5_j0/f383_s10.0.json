@@ -1,0 +1,18 @@
+{
+  "l2l_conv": [
+    "Jax: what can help you?",
+    "Jax, I need to prepare for a goblin attack. Can you give me some advice on what to do based on my current items and skills?",
+    "Jax: The goblins are becoming restless and are stepping up their attacks. We must be prepared to defeat them and keep the people safe. We know that goblins fear sudden changes in temperature; if we can use both ice and fire attacks at the same time, then we should be able to repel any attacks.",
+    "Jax, you mentioned ice and fire attacks. I have kerosene and jars. Could you tell me how I can use these to create a fire attack?",
+    "Jax: We can create DIY grenades to launch fire attacks with by pouring the flammable kerosene into empty jars.",
+    "Jax, I understand I can make fire grenades. What about ice attacks? Do you know of a way I can create those with the magic schools?\n\n```\n```",
+    "Jax: If you want to create an ice attack, you can go to the magic school and learn ice magic from Wizard Angela.",
+    "Jax, you mentioned Wizard Angela. Do you know if she teaches ice attacks that could be used with fire to repel goblins?\n\n```\n```",
+    "Jax: Just go directly to the magic school, no need to worry. If the scene is not explicitly restricted, you can go directly there, the game map will navigate you.",
+    "Okay, I'll head to the magic school and talk to Wizard Angela. I'll let you know what I learn. Thanks for the advice, Jax.\n\n```\n```\n\nRemember to use the correct dialogue and punctuation.",
+    "Jax: Just go directly to the magic school, no need to worry. If the scene is not explicitly restricted, you can go directly there, the game map will navigate you.",
+    "Okay, I'll head to the magic school and talk to Wizard Angela. I'll let you know what I learn. Thanks for the advice, Jax.\n\n\n\n```\n```",
+    "Jax: I am sorry, I might not have understood your request, and I am not very clear on matters unrelated to the task. If you want to end the conversation, you can said Goodbye to me."
+  ],
+  "done": true
+}

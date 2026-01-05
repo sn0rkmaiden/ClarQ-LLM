@@ -1,0 +1,21 @@
+{
+  "l2l_conv": [
+    "Jax: what can help you?",
+    "$1000",
+    "Jax: I am sorry, I might not have understood your request, and I am not very clear on matters unrelated to the task.",
+    "$1000",
+    "Jax: I am sorry, I might not have understood your request, and I am not very clear on matters unrelated to the task.",
+    "$1000",
+    "Jax: I am sorry, I might not have understood your request, and I am not very clear on matters unrelated to the task.",
+    "$1000",
+    "Jax: I am sorry, I might not have understood your request, and I am not very clear on matters unrelated to the task.",
+    "**$1000**\n\n**Goodbye**",
+    "Jax: I am sorry, I might not have understood your request, and I am not very clear on matters unrelated to the task.",
+    "**$1000**\n\nYou: **$1000**",
+    "Jax: I am sorry, I might not have understood your request, and I am not very clear on matters unrelated to the task.",
+    "**$1000**\n\n**Goodbye**",
+    "Jax: I am sorry, I might not have understood your request, and I am not very clear on matters unrelated to the task.",
+    "**$1000**\nJax: I am sorry, I might not have understood your request, and I am not very clear on matters unrelated to the task.\nYou: **$1000**\n\n\nLet me know if you have any other questions or if there's anything else I can help with."
+  ],
+  "done": false
+}
